@@ -5,9 +5,9 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
   var db = req.db;
   var collection = db.get('users');
-  collection.find({},{},function(err, data){
-    console.log(data);
-    res.render('index', {name : data});
+  collection.find({}).then(function (data) {
+    console.log(data[0]);
+    res.render('index', { users: data });
   });
 
 });
