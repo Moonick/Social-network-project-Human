@@ -8,19 +8,12 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var mongodb = require('mongodb');
-var monk = require('monk');
-var db = monk('mongodb://alen:alen1234@ds151060.mlab.com:51060/social-network')
-
 var app = express();
 
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('mongodb://alen:alen1234@ds151060.mlab.com:51060/social-network');
 
-var users = db.get('users');
-users.insert({ name: "Zvezdelin", age: "3.14" });
-urers.find({}, {})
 
 
 
@@ -35,10 +28,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(function (req, res, next) {
-  req.db = db;
-  next();
-});
 
 app.use('/', index);
 app.use('/users', users);
