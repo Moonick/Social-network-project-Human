@@ -6,10 +6,8 @@ router.get('/', function (req, res, next) {
   var db = req.db;
   var collection = db.get('users');
   collection.find({}).then(function (data) {
-    console.log(data[0]);
     res.render('index', { users: data });
   });
-
 });
 
 module.exports = router;
