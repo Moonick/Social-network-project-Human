@@ -14,6 +14,16 @@ var db = monk('mongodb://alen:alen1234@ds151060.mlab.com:51060/social-network')
 
 var app = express();
 
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('mongodb://alen:alen1234@ds151060.mlab.com:51060/social-network');
+
+var users = db.get('users');
+users.insert({ name: "Zvezdelin", age: "3.14" });
+urers.find({}, {})
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -35,22 +45,27 @@ app.use('/users', users);
 
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
+<<<<<<< HEAD
 
 module.exports = app;
+=======
+module.exports = app;
+>>>>>>> d6d5d408799f7ed2bbbbf50712cf3e62b7f72e3f
