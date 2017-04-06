@@ -63,9 +63,5 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-<<<<<<< HEAD
 
 module.exports = app;
-=======
-module.exports = app;
->>>>>>> d6d5d408799f7ed2bbbbf50712cf3e62b7f72e3f
