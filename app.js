@@ -10,16 +10,6 @@ var users = require('./routes/users');
 
 var app = express();
 
-var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk('mongodb://alen:alen1234@ds151060.mlab.com:51060/social-network');
-
-var users = db.get('users');
-users.insert({ name: "Zvezdelin", age: "3.14" });
-urers.find({}, {})
-
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
