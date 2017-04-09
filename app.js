@@ -31,7 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
     req.db = db;
-    console.log("here");
     next();
 })
 app.use('/', index);
