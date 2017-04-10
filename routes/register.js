@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 router.post('/', urlencodedParser, function(req, res) {
     var db = req.db;
     var users = db.get('users');
-    users.find({ email: req.body.email }).then(function(data) {
+    users.findOne({ email: req.body.email }).then(function(data) {
         if (data.length == 0) {
             users.insert(req.body);
             res.send('0');

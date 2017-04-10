@@ -3,12 +3,12 @@ $(function() {
         event.preventDefault();
     });
 
-    $('input[type=submit]').on('click', function(event) {
+    $('.btnReg').on('click', function(event) {
 
-        var fname = $('.register input[name=fname]').val().trim();
-        var lname = $('.register input[name=lname]').val().trim();
-        var pass = $('.register input[name=password]').val().trim();
-        var email = $('.register input[name=email]').val().trim();
+        var fname = $('.register input[name=fname]').val();
+        var lname = $('.register input[name=lname]').val();
+        var pass = $('.register input[name=password]').val();
+        var email = $('.register input[name=email]').val();
 
         var data = {
             fname: fname,
