@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressSession = require('express-session');
-
+var fs = require('fs');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -41,7 +41,7 @@ function requireLogin(req, res, next) {
     }
 };
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     req.db = db;
     next();
 })
@@ -54,14 +54,14 @@ app.use('/logout', logout);
 
 // catch 404 and forward to error handler
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
