@@ -1,15 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
     res.render('login', {});
 });
 
-router.post('/', function(req, res) {
+router.post('/', function (req, res) {
     var db = req.db;
     var users = db.get('users');
-    users.findOne({ email: req.body.email, password: req.body.password }, function(err, user) {
-
+    users.findOne({ email: req.body.email, password: req.body.password }, function (err, user) {
         if (err) {
             return res.status(500).send();
         } else if (!user) {
@@ -18,7 +17,7 @@ router.post('/', function(req, res) {
         } else {
             if (req.body.password === user.password) {
                 req.session.user = user;
-                res.redirect('/');
+
             } else {
                 res.render('login', { error: 'Invalid email or password.' });
             }
