@@ -11,12 +11,14 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var register = require('./routes/register');
+var logout = require('./routes/logout');
 
 var app = express();
 
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('mongodb://alen:alen1234@ds151060.mlab.com:51060/social-network');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -27,19 +29,27 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(expressSession({ secret: 'kjdasbdlas83k54fs5d', resave: false, saveUninitialized: true }))
+app.use(expressSession({ secret: 'kjdasbdlas83k54fs5d', resave: false, saveUninitialized: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+function requireLogin(req, res, next) {
+    if (!req.session.user) {
+        res.redirect('/login');
+    } else {
+        next()
+    }
+};
 
 app.use(function(req, res, next) {
     req.db = db;
     next();
 })
 app.use('/login', login);
-app.use('/', index);
-app.use('/users', users);
+app.use('/', requireLogin, index);
+app.use('/users', requireLogin, users);
 app.use('/register', register);
+app.use('/logout', logout);
 
 
 // catch 404 and forward to error handler
