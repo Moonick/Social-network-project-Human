@@ -11,24 +11,14 @@ router.get('/', function(req, res, next) {
 router.post('/', urlencodedParser, function(req, res) {
     var db = req.db;
     var users = db.get('users');
-    users.findOne({ email: req.body.email }).then(function(data) {
+    users.find({ email: req.body.email }).then(function(data) {
         if (data.length == 0) {
             users.insert(req.body);
-            res.send('0');
+            res.redirect('/login');
         } else {
-            res.send('-1');
+            res.render('register', { error: 'Invalid email or password.' });
         }
     });
-
-    // .then(function(err, data) {
-    //     if (err) {
-    //         collection.insert(req.body)
-    //         res.render('index', { users: data });
-    //     }
-    //     console.log(req.body);
-
-    //     console.log(data);
-    //     console.log(err);
 
 });
 

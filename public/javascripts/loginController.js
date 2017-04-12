@@ -1,6 +1,5 @@
-$(function () {
+$(function() {
 
-<<<<<<< HEAD
     // $('form.login').on('submit', function(event) {
     //     event.preventDefault();
     // });
@@ -33,6 +32,4 @@ $(function () {
     //         }
     //     });
     // });
-=======
->>>>>>> c4869715d8e64257fb5340bd38295066a61b2c10
 });
