@@ -1,5 +1,6 @@
 body {
-    background-color: #458283;
+    background-color: #EFD2A6;
+    font-family: 'Raleway', sans-serif;
     padding: 0;
     margin: 0;
     color: black;
@@ -16,17 +17,18 @@ body {
 }
 
 p.form-title {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
+    /*font-family: 'Open Sans', sans-serif;*/
+    font-size: 25px;
+    /*font-weight: 900;*/
+    font-weight: 900;
     text-align: center;
-    margin-top: 5%;
+    margin-top: 150px;
     text-transform: uppercase;
     letter-spacing: 4px;
 }
 
 form {
-    width: 250px;
+    width: 300px;
     margin: 0 auto;
 }
 
@@ -35,7 +37,7 @@ form input[type="password"],
 form input[type="email"] {
     width: 100%;
     margin: 0;
-    padding: 5px 10px;
+    padding: 10px 10px;
     background: 0;
     border: 0;
     border-bottom: 1px solid #FFFFFF;
@@ -48,6 +50,12 @@ form input[type="email"] {
     outline: 0;
 }
 
+form input[type="text"]::-webkit-input-placeholder,
+form input[type="password"]::-webkit-input-placeholder,
+form input[type="email"]::-webkit-input-placeholder {
+    color: black;
+}
+
 form input[type="submit"] {
     width: 100%;
     font-size: 14px;
@@ -57,13 +65,15 @@ form input[type="submit"] {
     outline: 0;
     cursor: pointer;
     letter-spacing: 1px;
+    background-color: #32cb93;
 }
 
 form input[type="submit"]:hover {
     transition: background-color 0.5s ease;
 }
 
-form .remember-forgot {
+
+/*form .remember-forgot {
     float: left;
     width: 100%;
     margin: 10px 0 0 0;
@@ -73,16 +83,21 @@ form .forgot-pass-content {
     min-height: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
-}
+}*/
 
 form label,
 form a {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 400;
 }
 
 form a {
-    transition: color 0.5s ease;
+    color: #32cb93;
+    padding: 10px;
+}
+
+form .create-account {
+    padding: 15px;
 }
 
 form a:hover {
@@ -102,57 +117,4 @@ form.register .red-border {
     left: 0;
     z-index: 999;
     display: none;
-}
-
-.show-pass-reset {
-    display: block !important;
-}
-
-.pass-reset {
-    margin: 0 auto;
-    width: 250px;
-    position: relative;
-    margin-top: 22%;
-    z-index: 999;
-    background: #FFFFFF;
-    padding: 20px 15px;
-}
-
-.pass-reset label {
-    font-size: 12px;
-    font-weight: 400;
-    margin-bottom: 15px;
-}
-
-.pass-reset input[type="email"] {
-    width: 100%;
-    margin: 5px 0 0 0;
-    padding: 5px 10px;
-    background: 0;
-    border: 0;
-    border-bottom: 1px solid #000000;
-    outline: 0;
-    font-style: italic;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-    color: #000000;
-    outline: 0;
-}
-
-.pass-reset input[type="submit"] {
-    width: 100%;
-    border: 0;
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin-top: 10px;
-    outline: 0;
-    cursor: pointer;
-    letter-spacing: 1px;
-}
-
-.pass-reset input[type="submit"]:hover {
-    transition: background-color 0.5s ease;
 }

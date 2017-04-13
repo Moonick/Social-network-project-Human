@@ -7,11 +7,10 @@ var bodyParser = require('body-parser');
 var expressSession = require('express-session');
 var fs = require('fs');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var logout = require('./routes/logout');
+var posts = require('./routes/posts');
 
 var app = express();
 
@@ -47,9 +46,8 @@ app.use(function(req, res, next) {
 })
 app.use('/login', login);
 app.use('/register', register);
-app.use('/', requireLogin, index);
-app.use('/users', requireLogin, users);
 app.use('/logout', logout);
+app.use('/posts', posts);
 
 
 // catch 404 and forward to error handler
