@@ -9,5 +9,12 @@ router.get('/', function(req, res) {
         res.json(posts);
     });
 });
+router.post('/', function(req, res) {
+    var db = req.db;
+    var posts = db.get('posts');
+    // posts.insert(req.body);
+    // console.log(req.body)
+
+});
 
 module.exports = router;

@@ -1,5 +1,8 @@
 body {
-    background-color: #EFD2A6;
+    background-image: url("../images/login.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     font-family: 'Raleway', sans-serif;
     padding: 0;
     margin: 0;
@@ -14,6 +17,9 @@ body {
     top: 0;
     left: 0;
     z-index: 99;
+    background-color: white;
+    opacity: 0.5;
+    /*border: 2px solid black;*/
 }
 
 p.form-title {
@@ -71,19 +77,6 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     transition: background-color 0.5s ease;
 }
-
-
-/*form .remember-forgot {
-    float: left;
-    width: 100%;
-    margin: 10px 0 0 0;
-}
-
-form .forgot-pass-content {
-    min-height: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}*/
 
 form label,
 form a {
