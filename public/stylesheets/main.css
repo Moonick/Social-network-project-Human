@@ -1,5 +1,6 @@
 body {
     color: black;
+    background-color: #EDF2F6;
 }
 
 a {
@@ -14,7 +15,7 @@ a {
     margin-top: 50px;
     padding: 15px;
     min-height: 568px;
-    background-color: white;
+    background-color: #EDF2F6;
 }
 
 @media (min-width: 768px) {
@@ -28,12 +29,34 @@ a {
 }
 
 .navbar-default {
-    background-color: #32CB93;
+    background-color: #404257;
 }
 
 .navbar-default .navbar-brand {
+    color: #FE5E3A;
+    font-family: 'Russo One', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.navbar-default .navbar-brand:hover {
     color: white;
 }
+
+
+/*
+.nav>li>a:focus,
+.nav>li>a:hover {
+    text-decoration: none;
+    background-color: #eee;
+    border-bottom: 5px solid #FE5E3A;
+}
+
+.nav .open>a,
+.nav .open>a:focus,
+.nav .open>a:hover {
+    border-color: none;
+}*/
 
 .navbar-top-links {
     margin-right: 0;
@@ -106,8 +129,19 @@ a {
     border-bottom: 1px solid #e7e7e7;
 }
 
+
+/*.sidebar ul li a {
+    background-color: #404257;
+}*/
+
 .sidebar ul li a.active {
-    background-color: #32CB93;
+    background-color: #404257;
+    color: white;
+}
+
+.sidebar ul li a.hover {
+    background-color: white;
+    color: #FE5E3A;
 }
 
 .sidebar .arrow {
@@ -223,6 +257,20 @@ a {
 
 .login-panel {
     margin-top: 25%;
+}
+
+.panel-default>.panel-heading {
+    height: 58px;
+}
+
+.profile-img {
+    width: 40px;
+    height: auto;
+    border-radius: 100%;
+}
+
+#create-post a {
+    color: black;
 }
 
 

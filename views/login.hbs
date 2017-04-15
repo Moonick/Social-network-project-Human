@@ -1,20 +1,31 @@
+<div class="layer">
+</div>
 
 <div class="container">
     <div class="row">
-        <div class="wrap">
-            <p class="form-title">Sign In</p>
-            <p>{{error}}</p>
-            <form method="POST" class="login">
-                <input type="text" name="email" placeholder="E-mail" />
-                <input type="password" name="password" placeholder="Password" />
-                <input type="submit" value="Sign In" class="btn btn-success btn-sm bntLogin" />
-                <div class="row">
-                    <div class="col-md-12 create-account text-center">
-                        <a href="/register" class="forgot-pass">Create account</a>
-                    </div>
+        <div class="col-md-4">
+            <h1>Human</h1>
+            <div class="left"></div>
+            <h2 class="text-center">Welcome to Human!</h2>
+            <button class="btn btn-center">Register Now!</button>
+        </div>
+        <div class="col-md-8">
+            <div class="right">
+                <div class="box-form">
+                    <p class="text-center title">Login to your account</p>
+                    <form method="POST" class="login">
+                        <input type="text" name="email" placeholder="E-mail" />
+                        <input type="password" name="password" placeholder="Password" />
+                        <input type="submit" value="Sign In" class="btn btn-success btn-sm bntLogin" />
+                        <div class="row">
+                            <div class="col-md-12 create-account text-center">
+                                <a href="/register" class="forgot-pass">Create account</a>
+                            </div>
+                        </div>
+                        <p>{{error}}</p>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
 </div>
