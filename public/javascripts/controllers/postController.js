@@ -3,7 +3,6 @@ app.controller('postController', function ($scope, postService) {
         $scope.posts = res.data;
     });
     $scope.addPost = function() {
-        alert('banani')
         var post = { text: "Hi" };
         $scope.posts.unshift(post);
         postService.addPostToDB(post);
