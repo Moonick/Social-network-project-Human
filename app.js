@@ -29,31 +29,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(expressSession({ secret: 'kjdasbdlas83k54fs5d', resave: false, saveUninitialized: true }));
+// app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use("/", function (req, res, next) {
-    if (req.session.user) {
-        return (express.static(path.join(__dirname, 'public')));
-    } else {
-        res.redirect('/login');
-    }
-});
 
 
 function requireLogin(req, res, next) {
     if (!req.session.user) {
         res.redirect('/login');
     } else {
-        next()
+        next();
     }
 };
 
 app.use(function (req, res, next) {
     req.db = db;
     next();
-})
+});
 app.use('/login', login);
 app.use('/register', register);
+app.use('/', requireLogin, express.static(path.join(__dirname, 'public')));
 app.use('/logout', logout);
 app.use('/posts', posts);
 
