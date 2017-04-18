@@ -11,6 +11,7 @@ var login = require('./routes/login');
 var register = require('./routes/register');
 var logout = require('./routes/logout');
 var posts = require('./routes/posts');
+var user = require('./routes/user');
 
 var app = express();
 
@@ -48,6 +49,8 @@ app.use(function (req, res, next) {
 app.use('/login', login);
 app.use('/register', register);
 app.use('/', requireLogin, express.static(path.join(__dirname, 'public')));
+app.use('/user', user);
+
 app.use('/logout', logout);
 app.use('/posts', posts);
 

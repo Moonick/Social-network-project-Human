@@ -3,6 +3,10 @@ $(function () {
 
     $('#create-post .btnPicture').on('click',function(){
         $('#create-post input[type=file]').click();
+    });
+    $.get("/user",function(data){
+       $("ul.dropdown-user a")[0].text=data.fname+" "+data.lname;
+       $("#side-menu> li >a")[0].text=data.fname+" "+data.lname;
     })
 });
 
