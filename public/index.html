@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<<<<<<< HEAD
     <title>people</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
@@ -12,6 +13,16 @@
     <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+=======
+    <title>HUMAN</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+>>>>>>> 318b438af19536373eea43b4d4363cad73c5d79f
 </head>
 
 <body ng-app="myApp">
@@ -319,6 +330,7 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div id="create-post">
+<<<<<<< HEAD
                                 <div class="panel-body">
                                     <img class="profile-img pull-left" src="../images/profile.jpg" alt="Profile pic">
                                     <textarea class="text-post pull-rigth" name="text" placeholder="What's on your mind?"></textarea>
@@ -330,6 +342,17 @@
                                     <button type="button" class="btn btn-default btn pull-right" ng-controller="postController" ng-click="addPost()">Post</button>
                                 </div>
 
+=======
+                                <img ng-src="#profile-pic" alt="">
+                                <textarea rows="3" cols="90" placeholder="What's on your mind?"></textarea>
+                                <div id="inputForFiles">
+                                    <input type="file">
+                                </div>
+                                <button type="button" class="btn btn-default btn btnPicture"><i class="fa fa-picture-o" aria-hidden="true"></i> Photo/Video</button>
+                                <button type="button" class="btn btn-default btn"><i class="fa fa-map-marker" aria-hidden="true"></i> Location</button>
+                                <button type="button" class="btn btn-default btn">Tag Friends</button>
+                                <button type="button" class="btn btn-default btn pull-right" ng-controller="postController" ng-click="addPost()">Post</button>
+>>>>>>> 318b438af19536373eea43b4d4363cad73c5d79f
                             </div>
                         </div>
                         <!-- /.panel-body -->
@@ -541,23 +564,25 @@
     </div>
     <!-- /#wrapper -->
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js " integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=" anonymous "></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js " integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa " crossorigin="anonymous "></script>
-    <script src="javascripts/script.js "></script>
-    <script src="javascripts/menu.js "></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js " integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin=" anonymous "></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js " integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa "
+            crossorigin="anonymous "></script>
+            <script src="javascripts/script.js "></script>
+            <script src="javascripts/menu.js "></script>
 
-    <!-- modules -->
-    <script src="javascripts/app.js "></script>
+            <!-- modules -->
+            <script src="javascripts/app.js "></script>
 
-    <!-- services -->
-    <script src="javascripts/services/postService.js "></script>
+            <!-- services -->
+            <script src="javascripts/services/postService.js "></script>
 
-    <!-- controllers -->
-    <script src="javascripts/controllers/postController.js "></script>
+            <!-- controllers -->
+            <script src="javascripts/controllers/postController.js "></script>
 
-    <!-- directives -->
-    <script src="javascripts/directives/posts.js "></script>
+            <!-- directives -->
+            <script src="javascripts/directives/posts.js "></script>
 
 </body>
 
