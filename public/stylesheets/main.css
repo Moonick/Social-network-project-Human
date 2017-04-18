@@ -43,21 +43,6 @@ a {
     color: white;
 }
 
-
-/*
-.nav>li>a:focus,
-.nav>li>a:hover {
-    text-decoration: none;
-    background-color: #eee;
-    border-bottom: 5px solid #FE5E3A;
-}
-
-.nav .open>a,
-.nav .open>a:focus,
-.nav .open>a:hover {
-    border-color: none;
-}*/
-
 .navbar-top-links {
     margin-right: 0;
 }
@@ -125,14 +110,15 @@ a {
     padding: 15px;
 }
 
-.sidebar ul li {
-    border-bottom: 1px solid #e7e7e7;
+.input-search {
+    margin-top: 7px;
+    display: table;
 }
 
-
-/*.sidebar ul li a {
-    background-color: #404257;
-}*/
+.sidebar ul li {
+    padding-left: 15px;
+    border-bottom: 1px solid #e7e7e7;
+}
 
 .sidebar ul li a.active {
     background-color: #404257;
@@ -175,6 +161,7 @@ a {
         position: absolute;
         width: 250px;
         margin-top: 51px;
+        padding-left: 15px;
     }
     .navbar-top-links .dropdown-messages,
     .navbar-top-links .dropdown-tasks,
@@ -215,10 +202,6 @@ a {
 .btn-warning.btn-outline:hover,
 .btn-danger.btn-outline:hover {
     color: white;
-}
-
-.post-border {
-    border: 1px solid grey;
 }
 
 .chat {
@@ -270,6 +253,27 @@ a {
 }
 
 #create-post a {
+    color: black;
+}
+
+.text-post {
+    width: 90%;
+    resize: auto;
+    overflow: hidden;
+    border: 0;
+    padding-left: 20px;
+}
+
+.text-post:focus {
+    outline: none;
+}
+
+.panel-footer {
+    height: 40px;
+    background-color: white;
+}
+
+.panel-footer a {
     color: black;
 }
 

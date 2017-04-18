@@ -12,13 +12,6 @@
                     <li>
                         <a href="" ng-click="hidePost()"> Hide Post</a>
                     </li>
-                    <li><a href="#">Another action</a>
-                    </li>
-                    <li><a href="#">Something else here</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -26,9 +19,9 @@
     <!-- /.panel-heading -->
     <div class="panel-body">
         <div id="create-post">
-            <p class="post-border">{{data.text}}</p>
+            <p>{{data.text}}</p>
             <img ng-src="{{data.picture}}" alt="Post image" width="100%" height="auto">
-            <div class="panel-heading">
+            <div class="panel-footer">
                 <div class="pull-left">
                     <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</a>
                 </div>
@@ -39,5 +32,14 @@
         </div>
     </div>
     <!-- /.panel-body -->
+    <div class="panel-footer">
+        <div class="pull-left">
+            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</a>
+        </div>
+        <div class="pull-right">
+            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> Comment</a>
+        </div>
+    </div>
+    <!-- /.panel-footer -->
 </div>
 <!-- /.panel -->
