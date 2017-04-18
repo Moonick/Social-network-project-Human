@@ -29,7 +29,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(expressSession({ secret: 'kjdasbdlas83k54fs5d', resave: false, saveUninitialized: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use("/", function (req, res, next) {
+    if (req.session.user) {
+        return (express.static(path.join(__dirname, 'public')));
+    } else {
+        res.redirect('/login');
+    }
+});
 
 
 function requireLogin(req, res, next) {
@@ -40,7 +48,7 @@ function requireLogin(req, res, next) {
     }
 };
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     req.db = db;
     next();
 })
@@ -52,14 +60,14 @@ app.use('/posts', posts);
 
 // catch 404 and forward to error handler
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

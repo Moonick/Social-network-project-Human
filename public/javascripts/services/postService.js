@@ -5,10 +5,10 @@ app.factory('postService', function($http, $rootScope) {
     Posts.prototype.downloadPosts = function() {
         return this.posts;
     };
-    Posts.prototype.addPostToDB = function(post) {
-        $http.post('/posts', post).then(function(res) {
-            // this.posts.unshift(post);
-        });
-    }
+    // Posts.prototype.addPostToDB = function(post) {
+    //     $http.post('/posts', post).then(function(res) {
+    //         console.log(res);
+    //     });
+    // }
     return new Posts();
 });
