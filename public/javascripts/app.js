@@ -4,4 +4,5 @@ app.config(function($routeProvider) {
         templateUrl: "./javascripts/directives/posts.htm",
         controller: 'postController'
     })
+
 });
