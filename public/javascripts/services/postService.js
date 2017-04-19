@@ -5,10 +5,8 @@ app.factory('postService', function($http, $rootScope) {
     Posts.prototype.downloadPosts = function() {
         return this.posts;
     };
-    // Posts.prototype.addPostToDB = function(post) {
-    //     $http.post('/posts', post).then(function(res) {
-    //         console.log(res);
-    //     });
-    // }
+    Posts.prototype.addLike = function(postId) {
+        $http.post('/posts/' + postId).then(function(res) {});
+    }
     return new Posts();
 });

@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: function(req, file, cb) {
         cb(null, 'uploads/')
     },
-    filename: function (req, file, cb) {
+    filename: function(req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + ".jpg");
     }
 });
@@ -13,22 +13,23 @@ var storage = multer.diskStorage({
 var uploading = multer({ storage: storage })
 
 
-router.get('/', function (req, res) {
+router.get('/', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
-    posts.find({}, { sort: { date: -1 } }, function (err, posts) {
+    posts.find({}, { sort: { date: -1 } }, function(err, posts) {
         res.json(posts);
     });
 });
-router.post('/', uploading.any(), function (req, res) {
+router.post('/', uploading.any(), function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
-    // posts.insert(req.body);
+
     function pad(n) { return (n < 10 ? '0' + n : n); }
+
     function convertDate(dateString) {
         var date = new Date(dateString);
-        return (pad(date.getHours() + 4)) + ":" + pad(date.getMinutes()) + " "
-            + pad(date.getDate()) + "/" + pad((date.getMonth() + 1)) + "/" + date.getFullYear();
+        return (pad(date.getHours() + 4)) + ":" + pad(date.getMinutes()) + " " +
+            pad(date.getDate()) + "/" + pad((date.getMonth() + 1)) + "/" + date.getFullYear();
     }
     var picture;
     if (req.files[0] == undefined) {
@@ -47,11 +48,21 @@ router.post('/', uploading.any(), function (req, res) {
         ],
         location: "",
         comments: [],
-        likes: 10
+        likes: []
     }
     posts.insert(newPost);
     res.redirect("/");
 });
+router.post('/:postId', function(req, res) {
+    var db = req.db;
+    var posts = db.get('posts');
+    var postId = req.params.postId;
+    posts.update({ _id: postId }, {
+        $addToSet: { likes: req.session.user._id }
+    }).then(function(data) {
 
+    })
+    res.end();
+})
 
 module.exports = router;
