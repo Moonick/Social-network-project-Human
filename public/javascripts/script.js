@@ -1,13 +1,16 @@
 $(function () {
     $('#side-menu').metisMenu();
 
-    $('#create-post .btnPicture').on('click',function(){
+    $('#create-post .btnPicture').on('click', function () {
         $('#create-post input[type=file]').click();
     });
-    $.get("/user",function(data){
-       $("ul.dropdown-user a")[0].text=data.fname+" "+data.lname;
-       $("#side-menu> li >a")[0].text=data.fname+" "+data.lname;
-    })
+    $.get("/user", function (data) {
+        $("ul.dropdown-user a")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
+        $("#side-menu> li >a")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
+        function capitalizeFirstLetter(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+    });
 });
 
 //Loads the correct sidebar on window load,
