@@ -6,11 +6,16 @@ $(function() {
     });
 
     $.get("/user", function(data) {
-        $("#side-menu> li >a img")[0].src = data.profImgUrl;
+        var img = document.createElement('img');
+        img.style.width = "30px";
+        img.style.height = "auto";
+        img.src = data.profImgUrl;
+        var span = document.createElement('span');
+        span.innerText = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
+        $("#side-menu> li >a")[0].append(img);
+
         $("ul.dropdown-user a")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
-        $(".user-name")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
-        // console.log($("#side-menu> li >a img")[0])
-        console.log($(".user-name")[0])
+        $("#side-menu>li>a")[0].append(span);
 
         function capitalizeFirstLetter(str) {
             return str.charAt(0).toUpperCase() + str.slice(1);
