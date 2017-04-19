@@ -2,7 +2,7 @@ app.controller('postController', function($scope, postService) {
     postService.downloadPosts().then(function(res) {
         $scope.posts = res.data;
     });
-<<<<<<< HEAD
+
 
     $scope.loadMore = function() {
         var last = $scope.images[$scope.images.length - 1];
@@ -19,20 +19,5 @@ app.controller('postController', function($scope, postService) {
     }
 
 
-    $scope.like = function() {
-=======
-    $scope.addPost = function () {
-        postService.downloadPosts().then(function (res) {
-            var posts = res.data;
-            console.log(posts);
-            $scope.posts = posts;
-
-        })
-    }
-
-
-    $scope.like = function () {
->>>>>>> 477934b4120f3cb20d912a96ce51935a34fd20f8
-
-    }
+    $scope.like = function() {}
 });
