@@ -6,10 +6,10 @@ $(function() {
     });
 
     $.get("/user", function(data) {
-        // $("#side-menu> li >a img")[0].src = data.profImgUrl;
+        $("#side-menu> li >a img")[0].src = data.profImgUrl;
         $("ul.dropdown-user a")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
         $(".user-name")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
-        console.log($("#side-menu> li >a img")[0])
+        // console.log($("#side-menu> li >a img")[0])
         console.log($(".user-name")[0])
 
         function capitalizeFirstLetter(str) {
