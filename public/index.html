@@ -11,8 +11,11 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js " integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=" anonymous "></script>
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="./javascripts/ng-infinite-scroll.min.js"></script>
 </head>
 
 <body ng-app="myApp">
@@ -212,7 +215,9 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href=""> User profile</a>
+                            <a href=""><img src="" alt="Profile picture" width="30px" height="auto">
+                                <div class="user-name"></div>
+                            </a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> News feed</a>
@@ -337,9 +342,12 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
+
                     <div ng-controller="postController">
-                        <div ng-repeat="post in posts">
-                            <posts data='post'></posts>
+                        <div infinite-scroll='loadMore()'>
+                            <div ng-repeat="post in data">
+                                <posts data='post'></posts>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -543,7 +551,6 @@
     </div>
     <!-- /#wrapper -->
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js " integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=" anonymous "></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js " integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa " crossorigin="anonymous "></script>
     <script src="javascripts/script.js "></script>

@@ -1,15 +1,17 @@
-$(function () {
+$(function() {
     $('#side-menu').metisMenu();
 
-    $('#create-post .btnPicture').on('click', function () {
+    $('#create-post .btnPicture').on('click', function() {
         $('#create-post input[type=file]').click();
     });
-    $('#create-post input[type=submit]').on('submit',function(event){
-        event.preventDefault();
-    })
-    $.get("/user", function (data) {
+
+    $.get("/user", function(data) {
+        // $("#side-menu> li >a img")[0].src = data.profImgUrl;
         $("ul.dropdown-user a")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
-        $("#side-menu> li >a")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
+        $(".user-name")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
+        console.log($("#side-menu> li >a img")[0])
+        console.log($(".user-name")[0])
+
         function capitalizeFirstLetter(str) {
             return str.charAt(0).toUpperCase() + str.slice(1);
         }
@@ -19,8 +21,8 @@ $(function () {
 //Loads the correct sidebar on window load,
 //collapses the sidebar on window resize.
 // Sets the min-height of #page-wrapper to window size
-$(function () {
-    $(window).bind("load resize", function () {
+$(function() {
+    $(window).bind("load resize", function() {
         var topOffset = 50;
         var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
         if (width < 768) {
@@ -42,7 +44,7 @@ $(function () {
     // var element = $('ul.nav a').filter(function() {
     //     return this.href == url;
     // }).addClass('active').parent().parent().addClass('in').parent();
-    var element = $('ul.nav a').filter(function () {
+    var element = $('ul.nav a').filter(function() {
         return this.href == url;
     }).addClass('active').parent();
 
