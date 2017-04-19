@@ -11,4 +11,4 @@ app.directive('posts', function() {
             };
         }
     };
-});;
+});

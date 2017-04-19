@@ -600,5 +600,6 @@ table.dataTable thead .sorting:after {
         left: -14px;
         border-right-width: 14px;
         border-left-width: 0;
-    }
+   }
+
 }

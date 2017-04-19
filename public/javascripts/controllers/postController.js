@@ -3,14 +3,15 @@ app.controller('postController', function ($scope, postService) {
         $scope.posts = res.data;
     });
     $scope.addPost = function () {
-        var text = $('#create-post textarea')[0].value;
-        var post = {
-            text: text
-        };
-        $scope.posts.unshift(post);
+        postService.downloadPosts().then(function (res) {
+            var posts = res.data;
+            console.log(posts);
+            $scope.posts = posts;
+
+        })
     }
 
-    
+
     $scope.like = function () {
 
     }
