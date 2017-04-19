@@ -11,9 +11,11 @@ router.get('/', function(req, res, next) {
 router.post('/', urlencodedParser, function(req, res) {
     var db = req.db;
     var users = db.get('users');
-    users.find({ email: req.body.email }).then(function(data) {
+    var user = req.body;
+    user.profileImageUrl = "http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png";
+    users.find({ email: user.email }).then(function(data) {
         if (data.length == 0) {
-            users.insert(req.body);
+            users.insert(user);
             res.redirect('/login');
         } else {
             res.render('register', { error: 'Invalid email or password.' });

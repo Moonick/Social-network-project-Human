@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="./javascripts/ng-infinite-scroll.min.js"></script>
 </head>
 
 <body ng-app="myApp">
@@ -212,7 +213,9 @@
                     <ul class="nav" id="side-menu">
 
                         <li>
-                            <a href=""> User profile</a>
+                            <a href=""><img src="" alt="Profile picture" width="30px" height="auto">
+                                <div class="user-name"></div>
+                            </a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> News feed</a>
@@ -337,9 +340,11 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-                    <div ng-controller="postController">
-                        <div ng-repeat="post in posts">
-                            <posts data='post'></posts>
+                    <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
+                        <div ng-controller="postController">
+                            <div ng-repeat="post in posts">
+                                <posts data='post'></posts>
+                            </div>
                         </div>
                     </div>
                 </div>
