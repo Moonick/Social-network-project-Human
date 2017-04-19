@@ -27,13 +27,19 @@ router.post('/', uploading.any(), function (req, res) {
     function pad(n) { return (n < 10 ? '0' + n : n); }
     function convertDate(dateString) {
         var date = new Date(dateString);
-        return (pad(date.getHours()+4)) + ":" +pad(date.getMinutes()) + " "
-        +pad(date.getDate()) + "/" + pad((date.getMonth() + 1)) + "/" + date.getFullYear();
+        return (pad(date.getHours() + 4)) + ":" + pad(date.getMinutes()) + " "
+            + pad(date.getDate()) + "/" + pad((date.getMonth() + 1)) + "/" + date.getFullYear();
+    }
+    var picture;
+    if (req.files[0] == undefined) {
+        picture = "";
+    } else {
+        picture = req.files[0].path;
     }
     var newPost = {
         user_id: req.session.user._id,
         text: req.body.text,
-        picture: req.files[0].path,
+        picture: picture,
         postedBy: req.session.user.fname + " " + req.session.user.lname,
         date: convertDate(Date.now()),
         taggedFriends: [
