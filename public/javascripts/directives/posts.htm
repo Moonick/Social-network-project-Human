@@ -6,7 +6,7 @@
             <span>{{data.postedBy}}</span>
         </div>
         <div class="pull-right" style="padding-top: 10px;">
-            <span class="post-date"><i>Posted on {{data.date}}</i></span>
+            <span class="post-date"><i>Posted at {{data.date}}</i></span>
             <div class="btn-group">
                 <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                 <ul class="dropdown-menu pull-right" role="menu">
@@ -19,8 +19,8 @@
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
-        <div id="create-post">
-            <p>{{data.text}}</p>
+        <div class="post">
+            <p class="post-text">{{data.text}}</p>
             <img ng-src="{{data.picture}}" alt="Post image" width="100%" height="auto">
             <div class="panel-footer">
                 <div class="pull-left">

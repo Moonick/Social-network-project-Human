@@ -4,6 +4,9 @@ $(function () {
     $('#create-post .btnPicture').on('click', function () {
         $('#create-post input[type=file]').click();
     });
+    $('#create-post input[type=submit]').on('submit',function(event){
+        event.preventDefault();
+    })
     $.get("/user", function (data) {
         $("ul.dropdown-user a")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
         $("#side-menu> li >a")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);

@@ -24,9 +24,11 @@ router.post('/', uploading.any(), function (req, res) {
     var db = req.db;
     var posts = db.get('posts');
     // posts.insert(req.body);
+    function pad(n) { return (n < 10 ? '0' + n : n); }
     function convertDate(dateString) {
         var date = new Date(dateString);
-        return date.getHours()+":"+date.getMinutes()+" "+date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
+        return (pad(date.getHours()+4)) + ":" +pad(date.getMinutes()) + " "
+        +pad(date.getDate()) + "/" + pad((date.getMonth() + 1)) + "/" + date.getFullYear();
     }
     var newPost = {
         user_id: req.session.user._id,

@@ -258,11 +258,16 @@ a {
     height: auto;
     border-radius: 100%;
 }
-
+#create-post textarea{
+    max-width: 100%;
+}
 #create-post a {
     color: black;
 }
-
+.post > p.post-text{
+    overflow:auto;
+    word-wrap: break-word;
+}
 .text-post {
     width: 90%;
     resize: auto;
