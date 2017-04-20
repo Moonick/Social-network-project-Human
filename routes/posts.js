@@ -70,8 +70,6 @@ router.post('/:postId', function(req, res) {
         res.send(data);
     })
 
-
-
     // })
 })
 
