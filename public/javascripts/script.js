@@ -5,22 +5,22 @@ $(function() {
         $('#create-post input[type=file]').click();
     });
 
-    $.get("/user", function(data) {
-        var img = document.createElement('img');
-        img.style.width = "30px";
-        img.style.height = "auto";
-        img.src = data.profImgUrl;
-        var span = document.createElement('span');
-        span.innerText = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
-        $("#side-menu> li >a")[0].append(img);
+    // $.get("/user", function(data) {
+    //     var img = document.createElement('img');
+    //     img.style.width = "30px";
+    //     img.style.height = "auto";
+    //     img.src = data.profImgUrl;
+    //     var span = document.createElement('span');
+    //     span.innerText = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
+    //     $("#side-menu> li >a")[0].append(img);
 
-        $("ul.dropdown-user a")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
-        $("#side-menu>li>a")[0].append(span);
+    //     $("ul.dropdown-user a")[0].text = capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname);
+    //     $("#side-menu>li>a")[0].append(span);
 
-        function capitalizeFirstLetter(str) {
-            return str.charAt(0).toUpperCase() + str.slice(1);
-        }
-    });
+    //     function capitalizeFirstLetter(str) {
+    //         return str.charAt(0).toUpperCase() + str.slice(1);
+    //     }
+    // });
 });
 
 //Loads the correct sidebar on window load,

@@ -100,14 +100,16 @@ a {
     right: 0;
     left: auto;
 }
-#inputForFiles{
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
+
+#inputForFiles {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
+
 .sidebar .sidebar-nav.navbar-collapse {
     padding-left: 0;
     padding-right: 0;
@@ -258,16 +260,20 @@ a {
     height: auto;
     border-radius: 100%;
 }
-#create-post textarea{
+
+#create-post textarea {
     max-width: 100%;
 }
+
 #create-post a {
     color: black;
 }
-.post > p.post-text{
-    overflow:auto;
+
+.post>p.post-text {
+    overflow: auto;
     word-wrap: break-word;
 }
+
 .text-post {
     width: 90%;
     resize: auto;
@@ -286,7 +292,12 @@ a {
 }
 
 .panel-footer a {
-    color: black;
+    color: #8C9097;
+    text-decoration: none;
+}
+
+a.change-color {
+    color: #FE5E3A;
 }
 
 
@@ -605,6 +616,5 @@ table.dataTable thead .sorting:after {
         left: -14px;
         border-right-width: 14px;
         border-left-width: 0;
-   }
-
+    }
 }

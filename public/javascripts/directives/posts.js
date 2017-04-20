@@ -11,9 +11,21 @@ app.directive('posts', ["postService", function(postService) {
             };
             scope.addLike = function($event) {
                 var postId = scope.data._id;
-                // scope.data.likes++;
-                // var postId = $($event.currentTarget).closest(".panel-footer").attr('id');
-                postService.addLike(postId);
+                postService.addLike(postId).then(function(res) {
+
+                    if (res.data[0].likes.indexOf(scope.$parent.user.userId) == -1) {
+                        scope.data.likes.length++;
+                        scope.toggleClass = function(event) {
+                            $(event.target).removeClass('change-color');
+                        }
+                    } else {
+                        scope.data.likes.length--;
+                        scope.toggleClass = function(event) {
+                            $(event.target).addClass('change-color');
+                        }
+                    }
+                });
+
             }
 
         }
