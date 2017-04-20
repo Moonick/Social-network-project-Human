@@ -10,8 +10,10 @@ app.directive('posts', ["postService", function(postService) {
                 scope.$parent.posts.splice(scope.$parent.posts.indexOf(scope.data), 1);
             };
             scope.addLike = function($event) {
-                var postId = $($event.currentTarget).closest(".panel-footer").attr('id');
-                postService.addLike(postId)
+                var postId = scope.data._id;
+                // scope.data.likes++;
+                // var postId = $($event.currentTarget).closest(".panel-footer").attr('id');
+                postService.addLike(postId);
             }
 
         }
