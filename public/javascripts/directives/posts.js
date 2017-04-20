@@ -25,9 +25,8 @@ app.directive('posts', ["postService", function(postService) {
                         }
                     }
                 });
-
-            }
-
+            };
+            $('.input-flex textarea')[0].css('overflow', 'hidden').autogrow()
         }
     };
 }]);

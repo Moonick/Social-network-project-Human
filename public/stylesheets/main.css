@@ -296,6 +296,33 @@ a {
     text-decoration: none;
 }
 
+.panel-comments {
+    padding: 10px 15px;
+    display: block;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+}
+
+.panel-comments textarea {
+    width: 90%;
+    height: 40px;
+}
+
+.panel-comments a {
+    color: #8C9097;
+}
+
+.input-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
 a.change-color {
     color: #FE5E3A;
 }
