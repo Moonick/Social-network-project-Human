@@ -6,7 +6,7 @@ app.factory('postService', function($http, $rootScope) {
         return this.posts;
     };
     Posts.prototype.addLike = function(postId) {
-        $http.post('/posts/' + postId).then(function(res) {});
+        return $http.post('/posts/' + postId);
     }
     return new Posts();
 });

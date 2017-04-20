@@ -1,16 +1,9 @@
 app.factory('userService', function($http, $rootScope) {
     function User() {
-        this.user = $http.post('/login').then(function(res) {
-            console.log(res);
-        });
+        this.user = $http.get('/user');
     };
-    // User.prototype.downloadPosts = function() {
-    //     return this.posts;
-    // };
-    // Posts.prototype.addPostToDB = function(post) {
-    //     $http.post('/posts', post).then(function(res) {
-    //         console.log(res);
-    //     });
-    // }
+    User.prototype.getCurrentUser = function() {
+        return this.user;
+    }
     return new User();
 });

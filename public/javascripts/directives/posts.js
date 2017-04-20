@@ -10,8 +10,22 @@ app.directive('posts', ["postService", function(postService) {
                 scope.$parent.posts.splice(scope.$parent.posts.indexOf(scope.data), 1);
             };
             scope.addLike = function($event) {
-                var postId = $($event.currentTarget).closest(".panel-footer").attr('id');
-                postService.addLike(postId)
+                var postId = scope.data._id;
+                postService.addLike(postId).then(function(res) {
+
+                    if (res.data[0].likes.indexOf(scope.$parent.user.userId) == -1) {
+                        scope.data.likes.length++;
+                        scope.toggleClass = function(event) {
+                            $(event.target).removeClass('change-color');
+                        }
+                    } else {
+                        scope.data.likes.length--;
+                        scope.toggleClass = function(event) {
+                            $(event.target).addClass('change-color');
+                        }
+                    }
+                });
+
             }
 
         }

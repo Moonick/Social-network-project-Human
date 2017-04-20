@@ -5,7 +5,8 @@ router.get('/', function(req, res) {
     var currentUser = {
         fname: req.session.user.fname,
         lname: req.session.user.lname,
-        profImgUrl: req.session.user.profileImageUrl
+        profImgUrl: req.session.user.profileImageUrl,
+        userId: req.session.user._id
     }
     res.json(currentUser);
 });

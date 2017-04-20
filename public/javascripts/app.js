@@ -4,4 +4,9 @@ app.config(function($routeProvider) {
         templateUrl: "./javascripts/directives/posts.htm",
         controller: 'postController'
     });
+    // .when('/', {
+    //     templateUrl: "",
+    //     controller: 'userController'
+    // });
+
 });
