@@ -4,7 +4,6 @@ $(function() {
     $('#create-post .btnPicture').on('click', function() {
         $('#create-post input[type=file]').click();
     });
-
     $.get("/user", function(data) {
         var img = document.createElement('img');
         img.style.width = "30px";

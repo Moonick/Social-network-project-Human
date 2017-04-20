@@ -66,8 +66,6 @@ router.post('/:postId', function (req, res) {
         }
     });
 
-
-
     // })
 })
 
