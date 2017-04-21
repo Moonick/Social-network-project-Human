@@ -22,7 +22,7 @@ $(function() {
     //         return str.charAt(0).toUpperCase() + str.slice(1);
     //     }
     // });
->>>>>>> 4c4d4ab01e885e19c6b36cf922469a033bafafb9
+
 });
 
 //Loads the correct sidebar on window load,
