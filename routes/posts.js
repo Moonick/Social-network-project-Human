@@ -12,7 +12,7 @@ var storage = multer.diskStorage({
 
 var uploading = multer({ storage: storage })
 
-
+//-----------------load all posts --------------------
 router.get('/', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
@@ -20,43 +20,42 @@ router.get('/', function(req, res) {
         res.json(posts);
     });
 });
+
+//-------------------new post------------------------
 router.post('/', uploading.any(), function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
-
-    function pad(n) { return (n < 10 ? '0' + n : n); }
-
-    function convertDate(dateString) {
-        var date = new Date(dateString);
-        return (pad(date.getHours() + 4)) + ":" + pad(date.getMinutes()) + " " +
-            pad(date.getDate()) + "/" + pad((date.getMonth() + 1)) + "/" + date.getFullYear();
-    }
+    var date = new Date();
     var picture;
+
     if (req.files[0] == undefined) {
         picture = "";
     } else {
         picture = req.files[0].path;
     }
+
     var newPost = {
         user_id: req.session.user._id,
         text: req.body.text,
         picture: picture,
         postedBy: req.session.user.fname + " " + req.session.user.lname,
-        date: convertDate(Date.now()),
-        taggedFriends: [
-
-        ],
+        date: date.toLocaleString(),
+        taggedFriends: [],
         location: "",
         comments: [],
         likes: []
     }
+
     posts.insert(newPost);
     res.redirect("/");
 });
+
+//--------------like-----------------------
 router.post('/:postId', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
     var postId = req.params.postId;
+
     posts.find({ _id: postId, likes: { $in: [req.session.user._id] } }).then(function(data) {
         if (data.length == 0) {
             posts.update({ _id: postId }, { $addToSet: { likes: req.session.user._id } });
@@ -66,11 +65,54 @@ router.post('/:postId', function(req, res) {
         }
 
     });
+
     posts.find({ _id: postId }).then(function(data) {
         res.send(data);
     })
 
-    // })
-})
+});
+router.put('/:postId', function(req, res) {
+    var db = req.db;
+    var posts = db.get('posts');
+    var postId = req.params.postId;
+    var comment = req.body;
+    comment.date = new Date().toLocaleString();
+
+    posts.find({ _id: postId }).then(function(data) {
+        posts.update({ _id: postId }, { $push: { comments: comment } });
+        res.sendStatus(201);
+    });
+});
+
+router.get('/:postId', function(req, res) {
+    var db = req.db;
+    var posts = db.get('posts');
+    var postId = req.params.postId;
+
+    posts.find({ _id: postId }).then(function(data) {
+        res.json(data);
+    });
+});
+
+router.post('/:postId/:userId', function(req, res) {
+    var db = req.db;
+    var posts = db.get('posts');
+    var postId = req.params.postId;
+
+    posts.find({ _id: postId, comments: { likes: { $in: [req.session.user._id] } } }).then(function(data) {
+        if (data.length == 0) {
+            posts.update({ _id: postId }, { $addToSet: { comments: { likes: req.session.user._id } } });
+
+        } else {
+            posts.update({ _id: postId }, { $pull: { comments: { likes: req.session.user._id } } });
+        }
+
+    });
+
+    posts.find({ _id: postId }).then(function(data) {
+        res.send(data);
+    })
+
+});
 
 module.exports = router;

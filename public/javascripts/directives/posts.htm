@@ -27,7 +27,7 @@
                     <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{data.likes.length}}</a>
                 </div>
                 <div class="pull-right">
-                    <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> </a>
+                    <a href="#"> {{data.comments.length}} <i class="fa fa-comments" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -35,19 +35,23 @@
     <!-- /.panel-body -->
     <div class="panel-footer ">
         <div class="pull-left">
-            <a href="" ng-click="addLike($event); " class="like-btn"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</a>
+            <a href="" ng-click="changeLike($event); " class="like-btn"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</a>
         </div>
         <div class="pull-right">
             <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> Comment</a>
         </div>
     </div>
-    <div class="panel-comments ">
-        <div class="input-flex">
-            <a href=""><img src="" alt="userImg"> </a>
-            <textarea type="text" name="comment" placeholder="Comment here"> </textarea>
+    <div class="panel-comments" ng-controller="commentController">
+        <div class=" input-flex ">
+            <a href=" "><img src=" " alt="userImg "> </a>
+            <textarea ng-model="commentText " type="text " name="comment " placeholder="Comment here "> </textarea>
         </div>
-        <div class="">
-            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> Comment</a>
+        <div class="input-flex ">
+            <a href="# "> {{}} <i class="fa fa-thumbs-up " aria-hidden="true "></i>  Like</a>
+            <button ng-click="addComment($event) " class="btn btn-default btn comment-btn ">Send</button>
+        </div>
+        <div ng-repeat="comment in comments ">
+            <comments data='comment'></comments>
         </div>
     </div>
     <!-- /.panel-footer -->
