@@ -1,4 +1,4 @@
-app.directive('posts', ["postService", function(postService) {
+app.directive('posts', ["postService", 'commentService', function(postService, commentService) {
     return {
         restrict: 'E',
         scope: {
@@ -8,6 +8,10 @@ app.directive('posts', ["postService", function(postService) {
         link: function(scope, $element) {
             var postId = scope.data._id;
             var userId = scope.$parent.user.userId;
+
+            scope.showHideComments = function() {
+                scope.IsVisible = scope.IsVisible ? false : true;
+            }
 
             scope.hidePost = function() {
                 scope.$parent.posts.splice(scope.$parent.posts.indexOf(scope.data), 1);
@@ -32,18 +36,12 @@ app.directive('posts', ["postService", function(postService) {
                     }
                 });
             };
-            // scope.addComment = function() {
-            //     var comment = {
-            //         text: scope.commentText,
-            //         postId: postId,
-            //         userId: userId,
-            //         fname: scope.$parent.user.fname,
-            //         lname: scope.$parent.user.lname
-            //     };
-            //     postService.addComment(postId, comment).then(function(res) {
-            //         console.log(res);
-            //     })
-            // }
+            scope.numOfComments = function() {
+                commentService.downloadComments(postId).then(function(res) {
+                    scope.comments = res.data;
+                })
+            }
+            scope.numOfComments()
             $('.input-flex textarea').css('overflow', 'hidden').autogrow();
         }
     };

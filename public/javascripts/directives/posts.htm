@@ -27,7 +27,7 @@
                     <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{data.likes.length}}</a>
                 </div>
                 <div class="pull-right">
-                    <a href="#"> {{data.comments.length}} <i class="fa fa-comments" aria-hidden="true"></i></a>
+                    <a href="#"> {{comments.length}} <i class="fa fa-comments" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -38,16 +38,15 @@
             <a href="" ng-click="changeLike($event); " class="like-btn"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</a>
         </div>
         <div class="pull-right">
-            <a href="#"><i class="fa fa-comments" aria-hidden="true"></i> Comment</a>
+            <a href="" ng-click="showHideComments()"><i class="fa fa-comments" aria-hidden="true"></i> Comment</a>
         </div>
     </div>
-    <div class="panel-comments" ng-controller="commentController">
-        <div class=" input-flex ">
-            <a href=" "><img src=" " alt="userImg "> </a>
+    <div class="panel-comments" ng-controller="commentController" ng-show="IsVisible">
+        <div class="input-flex ">
+            <a href=" "><img src=" " class='img-comments' alt="userImg "> </a>
             <textarea ng-model="commentText " type="text " name="comment " placeholder="Comment here "> </textarea>
         </div>
-        <div class="input-flex ">
-            <a href="# "> {{}} <i class="fa fa-thumbs-up " aria-hidden="true "></i>  Like</a>
+        <div class="btn-flex ">
             <button ng-click="addComment($event) " class="btn btn-default btn comment-btn ">Send</button>
         </div>
         <div ng-repeat="comment in comments ">

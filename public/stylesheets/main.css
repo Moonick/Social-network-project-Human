@@ -318,10 +318,24 @@ a {
     color: #8C9097;
 }
 
+.img-comments {
+    width: 32px;
+    padding: 5px;
+}
+
 .comment-btn {
-    height: 30px;
-    float: right;
     margin-bottom: 5px;
+    text-align: center;
+}
+
+.comment-likes {
+    font-size: 0.9em;
+    color: #8C9097;
+}
+
+.btn-flex {
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .input-flex {
@@ -331,9 +345,13 @@ a {
 }
 
 .comment-text {
-    background-color: white;
-    border: 1px solid blue;
-    width: 100%;
+    /*background-color: white;*/
+    /*border: 1px solid blue;*/
+    width: 88%;
+}
+
+.comment-text a {
+    text-decoration: none;
 }
 
 a.change-color {

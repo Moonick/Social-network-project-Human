@@ -11,8 +11,9 @@ var login = require('./routes/login');
 var register = require('./routes/register');
 var logout = require('./routes/logout');
 var posts = require('./routes/posts');
+var comments = require('./routes/comments');
 var user = require('./routes/user');
-var uploads=require('./routes/uploads');
+var uploads = require('./routes/uploads');
 
 
 var app = express();
@@ -44,7 +45,7 @@ function requireLogin(req, res, next) {
     }
 };
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     req.db = db;
     next();
 });
@@ -55,19 +56,20 @@ app.use('/user', user);
 
 app.use('/logout', logout);
 app.use('/posts', posts);
-app.use('/uploads', uploads)
+app.use('/comments', comments);
+app.use('/uploads', uploads);
 
 
 // catch 404 and forward to error handler
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

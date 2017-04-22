@@ -1,10 +1,13 @@
 <div class="input-flex">
-    <a href=""><img src="" alt="userImg"> </a>
+    <div>
+        <a href=""><img src="" class="img-comments" alt="userImg"> </a>
+    </div>
     <div class="comment-text">
         <p ng-model="commentText"><strong>{{data.fname + ' ' + data.lname}}</strong> {{data.text}}</p>
+        <div class="comment-likes">
+            <a href="" class="like-btn-comments" ng-click="changeLikeComment($event)">Like</a>
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{data.likes.length}}
+            <span>{{data.date}}</span>
+        </div>
     </div>
-
-</div>
-<div class="input-flex">
-    <a href="#" class="like-btn-comments"> {{}} <i class="fa fa-thumbs-up" aria-hidden="true"></i>  Like</a>
 </div>
