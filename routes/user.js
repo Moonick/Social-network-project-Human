@@ -10,10 +10,14 @@ router.get('/', function (req, res) {
     }
     res.json(currentUser);
 });
-router.get('/posts', function (req, res) {
+
+router.get('/posts', function(req, res) {
+
     var db = req.db;
     var posts = db.get('posts');
-    posts.find({user_id:req.session.user._id}).then(function (posts) {
+    var userID = req.session.user._id;
+
+    posts.find({ user_id: userID }).then(function(posts) {
         res.json(posts);
     });
 });

@@ -4,6 +4,10 @@ app.factory('userService', function($http, $rootScope) {
     };
     User.prototype.getCurrentUser = function() {
         return this.user;
-    }
+    };
+    User.prototype.downloadUserPosts = function() {
+        return this.userPosts = $http.get('/user/posts');
+    };
+
     return new User();
 });
