@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
     var currentUser = {
         fname: req.session.user.fname,
         lname: req.session.user.lname,
@@ -9,5 +9,12 @@ router.get('/', function(req, res) {
         userId: req.session.user._id
     }
     res.json(currentUser);
+});
+router.get('/posts', function (req, res) {
+    var db = req.db;
+    var posts = db.get('posts');
+    posts.find({user_id:req.session.user._id}).then(function (posts) {
+        res.json(posts);
+    });
 });
 module.exports = router;

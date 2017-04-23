@@ -12,9 +12,12 @@ app.directive('posts', ["postService", 'commentService', function (postService, 
             scope.showHideComments = function () {
                 scope.IsVisible = scope.IsVisible ? false : true;
             }
+            // $(".userName").text("&nbsp; " + scope.$parent.user.fname+" "+scope.$parent.user.lname);
 
             scope.hidePost = function () {
-                scope.$parent.posts.splice(scope.$parent.posts.indexOf(scope.data), 1);
+                var post = scope.data;
+                var arr = scope.$parent.$parent.posts;
+                arr.splice(arr.indexOf(post), 1);
             };
             scope.isLiked = function () {
                 if (scope.data.likes.indexOf(userId) == -1) {
