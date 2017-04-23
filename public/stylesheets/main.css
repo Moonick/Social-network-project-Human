@@ -251,7 +251,7 @@ a {
     margin-top: 25%;
 }
 
-.panel-default>.panel-heading {
+.post-panel {
     height: 58px;
 }
 
@@ -357,6 +357,60 @@ a {
 a.change-color {
     color: #FE5E3A;
 }
+
+
+/*-----------PROFILE-------------*/
+
+.cover-photo {
+    max-width: 100%;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.profile-photo {
+    position: absolute;
+    top: 90px;
+    left: 280px;
+    max-width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 100%;
+    border: 5px solid white;
+}
+
+div.btns-username {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 85px;
+}
+
+.btn-menu {
+    width: 45%;
+}
+
+.user-name {
+    width: 55%;
+    font-weight: bold;
+    /*padding: 10px;*/
+    margin-top: 40px;
+}
+
+.btn-menu a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #8C9097;
+    padding: 10px;
+}
+
+.btn-menu a:hover {
+    color: #FE5E3A;
+}
+
+
+/*--------------------------------*/
 
 .btn-circle {
     width: 30px;

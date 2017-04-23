@@ -3,10 +3,9 @@ app.config(function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: "../views/home.htm",
         controller: 'postController'
+    }).when('/profile', {
+        templateUrl: "../views/profile.htm",
+        controller: 'userController'
     });
-    // .when('/', {
-    //     templateUrl: "",
-    //     controller: 'userController'
-    // });
 
 });
