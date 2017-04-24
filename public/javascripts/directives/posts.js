@@ -14,9 +14,8 @@ app.directive('posts', ["postService", 'commentService', function(postService, c
             };
 
             scope.hidePost = function() {
-                var post = scope.data;
-                var arr = scope.$parent.$parent.posts;
-                arr.splice(arr.indexOf(post), 1);
+
+               $($element).hide()
             };
             scope.isLiked = function() {
                 if (scope.data.likes.indexOf(userId) == -1) {
