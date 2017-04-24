@@ -260,6 +260,13 @@ a {
     height: auto;
     border-radius: 100%;
 }
+/*----------------CHAT WINDOW-----------*/
+div.chat-window{
+    height: 400px;
+}
+#btn-chat{
+    
+}
 
 #create-post textarea {
     max-width: 100%;
