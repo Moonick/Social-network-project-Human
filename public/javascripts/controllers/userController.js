@@ -10,4 +10,5 @@ app.controller('userController', ['$scope', 'userService', function($scope, user
         $scope.user = res.data;
     });
     $scope.show = 1;
+
 }]);

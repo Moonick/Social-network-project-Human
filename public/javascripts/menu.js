@@ -1,11 +1,11 @@
-(function($, window, document, undefined) {
+(function ($, window, document, undefined) {
 
     var pluginName = "metisMenu",
         defaults = {
             toggle: true,
             doubleTapToGo: false
         };
-
+ 
     function Plugin(element, options) {
         this.element = $(element);
         this.settings = $.extend({}, defaults, options);
@@ -15,7 +15,7 @@
     }
 
     Plugin.prototype = {
-        init: function() {
+        init: function () {
 
             var $this = this.element,
                 $toggle = this.settings.toggle,
@@ -34,7 +34,7 @@
                 $this.find("li.active").has("ul").children("a").addClass("doubleTapToGo");
             }
 
-            $this.find("li").has("ul").children("a").on("click" + "." + pluginName, function(e) {
+            $this.find("li").has("ul").children("a").on("click" + "." + pluginName, function (e) {
                 e.preventDefault();
 
                 //Do we need to enable the double tap
@@ -57,7 +57,7 @@
             });
         },
 
-        isIE: function() { //https://gist.github.com/padolsey/527683
+        isIE: function () { //https://gist.github.com/padolsey/527683
             var undef,
                 v = 3,
                 div = document.createElement("div"),
@@ -72,7 +72,7 @@
         },
 
         //Enable the link on the second click.
-        doubleTapToGo: function(elem) {
+        doubleTapToGo: function (elem) {
             var $this = this.element;
 
             //if the class "doubleTapToGo" exists, remove it and return
@@ -91,15 +91,15 @@
             }
         },
 
-        remove: function() {
+        remove: function () {
             this.element.off("." + pluginName);
             this.element.removeData(pluginName);
         }
 
     };
 
-    $.fn[pluginName] = function(options) {
-        this.each(function() {
+    $.fn[pluginName] = function (options) {
+        this.each(function () {
             var el = $(this);
             if (el.data(pluginName)) {
                 el.data(pluginName).remove();
