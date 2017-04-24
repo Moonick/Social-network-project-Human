@@ -1,106 +1,39 @@
-<div id="page-wrapper">
-
-    <div class="row">
-        <div class="col-lg-8">
+<div id="page-wrapper" ng-controller="userController">
+    <div class="row ">
+        <div class="col-lg-12">
             <div class="panel panel-default img-panel ">
-                <div>
+                <div class="photos">
                     <img src="../images/cover-photo.jpg" class="cover-photo" alt="cover photo">
                     <img src="../images/profile-photo.jpg" class="profile-photo" alt="profile photo">
                 </div>
+
                 <div class="panel-heading text-left btns-username">
                     <div class="btn-menu">
-                        <a href="">Timeline</a>
-                        <a href="">Photos</a>
-                        <a href="">Friends</a>
+                        <a href="" ng-click="show=1">Timeline</a>
+                        <a href="" ng-click="show=2">Photos</a>
+                        <a href="" ng-click="show=3">Friends</a>
                     </div>
                     <div class="user-name">
-                        <p>User name</p>
+                        <p>{{user.fname +" "+ user.lname}}</p>
                     </div>
 
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div ng-controller="userController">
-                <div infinite-scroll='loadMore()'>
-                    <div ng-repeat="post in somePosts">
-                        <posts data='post'></posts>
-                    </div>
+    <div class="row" ng-show="show==1">
+        <div class="col-lg-8">
+            <div infinite-scroll='loadMore()'>
+                <div ng-repeat="post in somePosts">
+                    <posts data='post'></posts>
                 </div>
             </div>
         </div>
         <!-- /.col-lg-8 -->
 
         <div class="col-lg-4 ">
-            <div class="panel panel-default ">
-                <div class="panel-heading ">
-                    <i class="fa fa-bell fa-fw "></i> Notifications Panel
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body ">
-                    <div class="list-group ">
-                        <a href="# " class="list-group-item ">
-                            <i class="fa fa-comment fa-fw "></i> New Comment
-                            <span class="pull-right text-muted small "><em>4 minutes ago</em>
-                                    </span>
-                        </a>
-                        <a href="# " class="list-group-item ">
-                            <i class="fa fa-twitter fa-fw "></i> 3 New Followers
-                            <span class="pull-right text-muted small "><em>12 minutes ago</em>
-                                    </span>
-                        </a>
-                        <a href="# " class="list-group-item ">
-                            <i class="fa fa-envelope fa-fw "></i> Message Sent
-                            <span class="pull-right text-muted small "><em>27 minutes ago</em>
-                                    </span>
-                        </a>
-                        <a href="# " class="list-group-item ">
-                            <i class="fa fa-tasks fa-fw "></i> New Task
-                            <span class="pull-right text-muted small "><em>43 minutes ago</em>
-                                    </span>
-                        </a>
-                        <a href="# " class="list-group-item ">
-                            <i class="fa fa-upload fa-fw "></i> Server Rebooted
-                            <span class="pull-right text-muted small "><em>11:32 AM</em>
-                                    </span>
-                        </a>
-                        <a href="# " class="list-group-item ">
-                            <i class="fa fa-bolt fa-fw "></i> Server Crashed!
-                            <span class="pull-right text-muted small "><em>11:13 AM</em>
-                                    </span>
-                        </a>
-                        <a href="# " class="list-group-item ">
-                            <i class="fa fa-warning fa-fw "></i> Server Not Responding
-                            <span class="pull-right text-muted small "><em>10:57 AM</em>
-                                    </span>
-                        </a>
-                        <a href="# " class="list-group-item ">
-                            <i class="fa fa-shopping-cart fa-fw "></i> New Order Placed
-                            <span class="pull-right text-muted small "><em>9:49 AM</em>
-                                    </span>
-                        </a>
-                        <a href="# " class="list-group-item ">
-                            <i class="fa fa-money fa-fw "></i> Payment Received
-                            <span class="pull-right text-muted small "><em>Yesterday</em>
-                                    </span>
-                        </a>
-                    </div>
-                    <!-- /.list-group -->
-                    <a href="# " class="btn btn-default btn-block ">View All Alerts</a>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-            <div class="panel panel-default ">
-                <div class="panel-heading ">
-                    <i class="fa fa-bar-chart-o fa-fw "></i> Donut Chart Example
-                </div>
-                <div class="panel-body ">
-                    <div id="morris-donut-chart "></div>
-                    <a href="# " class="btn btn-default btn-block ">View Details</a>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
+
             <div class="chat-panel panel panel-default ">
                 <div class="panel-heading ">
                     <i class="fa fa-comments fa-fw "></i> Chat
@@ -221,6 +154,57 @@
         </div>
         <!-- /.col-lg-4 -->
     </div>
-    <!-- /.row -->
+    <div class="row" ng-show="show==2" ng-controller="photosController">
+
+        <div class="col-lg-12">
+            <div id="add-photo" class="panel panel-default photos-panel">
+                <div class="panel-heading">
+                    Photos
+                    <div class="pull-right">
+                        <form action="/photos" method="POST" enctype="multipart/form-data">
+                            <div class="btn-group">
+                                <div id="inputForFiles">
+                                    <input type="file" name="picture">
+                                </div>
+                                <button type="button" class="btn btn-default btn btnPicture"><i class="fa fa-picture-o" aria-hidden="true"></i> Add Photo</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <h2>all photos</h2>
+                    <div class='list-group gallery'>
+                        <div infinite-scroll='loadMore()'>
+                            <div ng-repeat="photo in somePhotos">
+                                <photos data='photo'></photos>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="show==3">
+        <div class="col-lg-12">
+            <div class="panel panel-default photos-panel">
+                <div class="panel-heading">
+                    Friends
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default">Add Friends</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <h2>all friends</h2>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+    </div>
 </div>
+
 <!-- /#page-wrapper -->

@@ -7,7 +7,6 @@ app.controller('commentController', ['$scope', 'commentService', 'userService', 
         $scope.comments = res.data;
 
         $scope.addComment = function(event) {
-            // console.log('shishi')
             var comment = {
                 text: $scope.commentText,
                 postId: postId,

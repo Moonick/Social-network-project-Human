@@ -1,6 +1,6 @@
 body {
     color: black;
-    background-color: #EDF2F6;
+    background-color: white;
 }
 
 a {
@@ -18,13 +18,13 @@ a {
     background-color: #EDF2F6;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
     #page-wrapper {
         position: inherit;
-        margin-top: 50px;
-        margin-left: 250px;
+        margin: 50px 150px 0 150px;
         padding: 20px 30px;
         border-left: 1px solid #e7e7e7;
+        border-right: 1px solid #e7e7e7;
     }
 }
 
@@ -120,8 +120,26 @@ a {
 }
 
 .input-search {
-    margin-top: 7px;
+    margin-top: 10px;
     display: table;
+    /*width: 100%;*/
+}
+
+.news-feed {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.news-feed a:hover {
+    text-decoration: none;
+    color: #FE5E3A;
+}
+
+.news-feed a:visited {
+    text-decoration: none;
+    color: #FE5E3A;
 }
 
 .sidebar ul li {
@@ -361,6 +379,10 @@ a.change-color {
 
 /*-----------PROFILE-------------*/
 
+.photos {
+    position: relative;
+}
+
 .cover-photo {
     max-width: 100%;
     width: 100%;
@@ -372,7 +394,8 @@ a.change-color {
 .profile-photo {
     position: absolute;
     top: 90px;
-    left: 280px;
+    left: 419px;
+    z-index: 1;
     max-width: 150px;
     height: 150px;
     object-fit: cover;
@@ -410,7 +433,11 @@ div.btns-username {
 }
 
 
-/*--------------------------------*/
+/*---------------PHOTOS USER-----------------*/
+
+.photos-panel .panel-heading {
+    height: 55px;
+}
 
 .btn-circle {
     width: 30px;
