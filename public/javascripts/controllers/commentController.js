@@ -5,7 +5,6 @@ app.controller('commentController', ['$scope', 'commentService', 'userService', 
 
     commentService.downloadComments(postId).then(function(res) {
         $scope.comments = res.data;
-
         $scope.addComment = function(event) {
             var comment = {
                 text: $scope.commentText,
@@ -13,6 +12,7 @@ app.controller('commentController', ['$scope', 'commentService', 'userService', 
                 userId: userId,
                 fname: user.fname,
                 lname: user.lname,
+                profilePicture:user.profImgUrl || "../images/profile.jpg",
                 likes: [],
                 date: new Date().toLocaleString()
             };

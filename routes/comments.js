@@ -19,6 +19,7 @@ router.post('/', function(req, res) {
     var db = req.db;
     var comments = db.get('comments');
     var comment = req.body;
+    console.log(comment);
 
     comments.insert(comment).then(function(data) {
         res.status(201).json(data);
