@@ -9,9 +9,16 @@ app.directive('photos', ["photoService", function(photoService) {
             var postId = scope.data._id;
             var userId = scope.$parent.user.userId;
 
-            // scope.showHideComments = function() {
-            //     scope.IsVisible = scope.IsVisible ? false : true;
-            // };
+            scope.showHideComments = function() {
+                    $(".overlay, #showComments").show();
+                    console.log('banani')
+                    $(".close-comments-photo").on('click', function() {
+                        $(".overlay, #showComments").hide();
+                    })
+                }
+                // scope.showHideComments = function() {
+                //     scope.IsVisible = scope.IsVisible ? false : true;
+                // };
 
 
             // scope.isLiked = function() {

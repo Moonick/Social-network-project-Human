@@ -278,13 +278,15 @@ a {
     height: auto;
     border-radius: 100%;
 }
+
+
 /*----------------CHAT WINDOW-----------*/
-div.chat-window{
+
+div.chat-window {
     height: 400px;
 }
-#btn-chat{
-    
-}
+
+#btn-chat {}
 
 #create-post textarea {
     max-width: 100%;
@@ -402,7 +404,7 @@ a.change-color {
     position: absolute;
     top: 90px;
     left: 419px;
-    z-index: 1;
+    /*z-index: 1;*/
     max-width: 150px;
     height: 150px;
     object-fit: cover;
@@ -445,6 +447,69 @@ div.btns-username {
 .photos-panel .panel-heading {
     height: 55px;
 }
+
+.thumbnail {
+    border: 1px solid black;
+    border-radius: 0;
+    text-decoration: none;
+}
+
+.thumbnail img {}
+
+.thumbnail .text-muted {
+    text-decoration: none;
+}
+
+.img-gallery-size {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+
+/*==================add album===============*/
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    display: none;
+}
+
+#uploadPhoto {
+    position: fixed;
+    top: 150px;
+    left: 300px;
+    width: 50%;
+    height: 50%;
+    z-index: 10;
+    display: none;
+    background-color: white;
+}
+
+
+/*=============photo comments=================*/
+
+#showComments {
+    position: fixed;
+    top: 150px;
+    left: 300px;
+    width: 50%;
+    height: 50%;
+    z-index: 10;
+    display: none;
+    background-color: white;
+}
+
+
+/*-------------------------------------------*/
 
 .btn-circle {
     width: 30px;

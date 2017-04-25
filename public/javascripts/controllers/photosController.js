@@ -6,11 +6,16 @@ app.controller('photosController', ['$scope', 'photoService', 'userService', fun
             $scope.somePhotos = $scope.photos.slice(0, $scope.somePhotos.length + 5);
         };
     });
+
+
     $(document).ready(function() {
 
         $(".fancybox").fancybox({
             openEffect: "none",
-            closeEffect: "none"
+            closeEffect: "none",
+            beforeShow: function() {
+                this.title = $(this.element).data("caption");
+            }
         });
     });
 }]);

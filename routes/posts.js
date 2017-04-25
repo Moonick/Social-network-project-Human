@@ -2,27 +2,27 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: function(req, file, cb) {
         cb(null, 'uploads/')
     },
-    filename: function (req, file, cb) {
+    filename: function(req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + ".jpg");
     }
 });
 
-var uploading = multer({ storage: storage })
+var uploading = multer({ storage: storage });
 
 //-----------------load all posts --------------------
-router.get('/', function (req, res) {
+router.get('/', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
-    posts.find({}, { sort: { date: -1 } }, function (err, posts) {
+    posts.find({}, { sort: { date: -1 } }, function(err, posts) {
         res.json(posts);
     });
 });
 
 //-------------------new post------------------------
-router.post('/', uploading.any(), function (req, res) {
+router.post('/', uploading.any(), function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
     var date = new Date();
@@ -33,7 +33,7 @@ router.post('/', uploading.any(), function (req, res) {
     } else {
         picture = req.files[0].path;
     }
-    
+
     var newPost = {
         user_id: req.session.user._id,
         text: req.body.text,
@@ -51,12 +51,12 @@ router.post('/', uploading.any(), function (req, res) {
 });
 
 //--------------like-----------------------
-router.post('/:postId', function (req, res) {
+router.post('/:postId', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
     var postId = req.params.postId;
 
-    posts.find({ _id: postId, likes: { $in: [req.session.user._id] } }).then(function (data) {
+    posts.find({ _id: postId, likes: { $in: [req.session.user._id] } }).then(function(data) {
         if (data.length == 0) {
             posts.update({ _id: postId }, { $addToSet: { likes: req.session.user._id } });
 
@@ -66,7 +66,7 @@ router.post('/:postId', function (req, res) {
 
     });
 
-    posts.find({ _id: postId }).then(function (data) {
+    posts.find({ _id: postId }).then(function(data) {
         res.send(data);
     })
 
