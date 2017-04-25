@@ -21,7 +21,7 @@
     <div class="panel-body">
         <div class="post">
             <p class="post-text">{{data.text}}</p>
-            <img ng-src="{{data.picture}}" err-src="../images/profile.jpg" alt="" width="100%" height="auto">
+            <img ng-src="{{}}" err-src="../images/profile.jpg" alt="" width="100%" height="auto">
             <div class="panel-footer ">
                 <div class="pull-left">
                     <a href=""> {{data.likes.length}}</a>
@@ -38,7 +38,7 @@
 
     <div class="panel-comments" ng-controller="commentController" ng-show="IsVisible">
         <div class="input-flex ">
-            <a href=" "><img ng-src="{{data.user.profImgUrl}}" err-src="../images/profile.jpg" class='img-comments' alt="userImg "> </a>
+            <a href="#profile"><img ng-src="{{user.profImgUrl}}" err-src="../images/profile.jpg" class='img-comments' alt="userImg "> </a>
             <textarea ng-model="commentText " type="text " name="comment " placeholder="Comment here "> </textarea>
         </div>
         <div class="btn-flex ">
