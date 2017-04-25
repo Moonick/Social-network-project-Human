@@ -14,9 +14,9 @@ app.directive('posts', ["postService", 'commentService', function(postService, c
             };
 
             scope.hidePost = function() {
-
-               $($element).hide()
+                $($element).hide()
             };
+
             scope.isLiked = function() {
                 if (scope.data.likes.indexOf(userId) == -1) {
                     $($element.find('.like-btn')).removeClass('change-color');

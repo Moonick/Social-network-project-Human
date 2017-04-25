@@ -17,7 +17,6 @@
             </div>
         </div>
     </div>
-    <!-- /.panel-heading -->
     <div class="panel-body">
         <div class="post">
             <p class="post-text">{{data.text}}</p>
@@ -34,8 +33,7 @@
             </div>
         </div>
     </div>
-    <!-- /.panel-body -->
-
+    <!--========================= hide/show comments ==========================-->
     <div class="panel-comments" ng-controller="commentController" ng-show="IsVisible">
         <div class="input-flex ">
             <a href="#profile"><img ng-src="{{user.profImgUrl}}" err-src="../images/profile.jpg" class='img-comments' alt="userImg "> </a>
@@ -48,6 +46,4 @@
             <comments data='comment'></comments>
         </div>
     </div>
-    <!-- /.panel-footer -->
 </div>
-<!-- /.panel -->

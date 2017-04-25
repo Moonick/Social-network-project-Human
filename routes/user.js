@@ -61,7 +61,7 @@ router.post('/newpost', uploading.any(), function(req, res) {
     posts.insert(newPost);
     res.redirect("/#/profile");
 });
-
+// ===================== add new photo ============================
 router.post('/uploadphoto', uploading.any(), function(req, res) {
     var db = req.db;
     var photos = db.get('photos');

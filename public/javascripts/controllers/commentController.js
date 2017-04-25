@@ -2,9 +2,13 @@ app.controller('commentController', ['$scope', 'commentService', 'userService', 
     var postId = $scope.$parent.data._id;
     var userId = $scope.$parent.data.userId;
     var user = $scope.$parent.$parent.user;
-    console.log('postid ' + postId);
+
+
+
     commentService.downloadComments(postId).then(function(res) {
         $scope.comments = res.data;
+        console.log($scope)
+
         $scope.addComment = function(event) {
             var comment = {
                 text: $scope.commentText,

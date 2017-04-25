@@ -1,4 +1,4 @@
-app.controller('userController', ['$scope', 'userService', function($scope, userService) {
+app.controller('userController', ['$scope', '$rootScope', 'userService', function($scope, $rootScope, userService) {
     userService.downloadUserPosts().then(function(res) {
         $scope.posts = res.data;
         $scope.somePosts = $scope.posts.slice(0, 5);
@@ -7,7 +7,7 @@ app.controller('userController', ['$scope', 'userService', function($scope, user
         };
     });
     userService.getCurrentUser().then(function(res) {
-        $scope.user = res.data;
+        $rootScope.user = res.data;
     });
     $scope.show = 1;
     $scope.uploadPhoto = function() {

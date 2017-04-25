@@ -499,13 +499,17 @@ div.btns-username {
 
 #showComments {
     position: fixed;
-    top: 150px;
+    top: 100px;
     left: 300px;
     width: 50%;
-    height: 50%;
+    height: auto;
     z-index: 10;
-    display: none;
+    overflow-y: auto;
     background-color: white;
+}
+
+.comments-area {
+    /*overflow-y: scroll;*/
 }
 
 

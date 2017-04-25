@@ -19,24 +19,28 @@
                 <a href="" ng-click="showHideComments()"><i class="fa fa-comments" aria-hidden="true"></i> Comment</a>
             </div>
         </div>
-        <!--============================== comments ==================================-->
-        <div class="overlay"></div>
-        <div id="showComments">
-            <center>
-                <div class="pull-right close-comments-photo"><i class="fa fa-times-circle-o fa-3x" aria-hidden="true"></i></div>
-                <div class="panel-comments" ng-controller="commentController">
-                    <div class="input-flex ">
-                        <a href=" "><img ng-src="{{data.user.profImgUrl}}" err-src="../images/profile.jpg" class='img-comments' alt="userImg "> </a>
-                        <textarea ng-model="commentText " type="text " name="comment " placeholder="Comment here "> </textarea>
+        <!--============================== show/hide comments ==================================-->
+        <div id="comments" ng-show="IsVisible">
+            <div class="overlay"></div>
+            <div id="showComments">
+                <center>
+                    <div class="pull-right" ng-click="showHideComments()"><i class="fa fa-times-circle-o fa-3x" aria-hidden="true"></i></div>
+                    <div class="panel-comments" ng-controller="commentController" ng-show="IsVisible">
+                        <div class="input-flex ">
+                            <a href=" "><img ng-src="{{data.user.profImgUrl}}" err-src="../images/profile.jpg" class='img-comments' alt="userImg "> </a>
+                            <textarea ng-model="commentText " type="text " name="comment " placeholder="Comment here "> </textarea>
+                        </div>
+                        <div class="btn-flex ">
+                            <button ng-click="addComment($event) " class="btn btn-default btn comment-btn ">Send</button>
+                        </div>
+                        <div class="comments-area">
+                            <div ng-repeat="comment in comments">
+                                <comments data='comment'></comments>
+                            </div>
+                        </div>
                     </div>
-                    <div class="btn-flex ">
-                        <button ng-click="addComment($event) " class="btn btn-default btn comment-btn ">Send</button>
-                    </div>
-                    <div ng-repeat="comment in comments ">
-                        <comments data='comment'></comments>
-                    </div>
-                </div>
-            </center>
+                </center>
+            </div>
         </div>
 
     </div>

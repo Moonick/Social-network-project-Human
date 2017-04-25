@@ -12,7 +12,7 @@ var storage = multer.diskStorage({
 
 var uploading = multer({ storage: storage });
 
-//-----------------load all photos --------------------
+//================== load all photos =========================
 router.get('/', function(req, res) {
     var db = req.db;
     var photos = db.get('photos');
@@ -22,54 +22,22 @@ router.get('/', function(req, res) {
     });
 });
 
-// //-------------------new post------------------------
-// router.post('/', uploading.any(), function(req, res) {
-//     var db = req.db;
-//     var posts = db.get('posts');
-//     var date = new Date();
-//     var picture;
+//================== like =========================
+router.post('/:photoId', function(req, res) {
+    var db = req.db;
+    var photos = db.get('photos');
+    var photoId = req.params.photoId;
 
-//     if (req.files[0] == undefined) {
-//         picture = "";
-//     } else {
-//         picture = req.files[0].path;
-//     }
+    photos.find({ _id: photoId, likes: { $in: [req.session.user._id] } }).then(function(data) {
+        if (data.length == 0) {
+            photos.update({ _id: photoId }, { $addToSet: { likes: req.session.user._id } });
+        } else {
+            photos.update({ _id: photoId }, { $pull: { likes: req.session.user._id } });
+        }
+    });
 
-//     var newPost = {
-//         user_id: req.session.user._id,
-//         text: req.body.text,
-//         picture: picture,
-//         postedBy: req.session.user.fname + " " + req.session.user.lname,
-//         date: date.toLocaleString(),
-//         taggedFriends: [],
-//         location: "",
-//         comments: [],
-//         likes: []
-//     }
-
-//     posts.insert(newPost);
-//     res.redirect("/");
-// });
-
-// //--------------like-----------------------
-// router.post('/:postId', function(req, res) {
-//     var db = req.db;
-//     var posts = db.get('posts');
-//     var postId = req.params.postId;
-
-//     posts.find({ _id: postId, likes: { $in: [req.session.user._id] } }).then(function(data) {
-//         if (data.length == 0) {
-//             posts.update({ _id: postId }, { $addToSet: { likes: req.session.user._id } });
-
-//         } else {
-//             posts.update({ _id: postId }, { $pull: { likes: req.session.user._id } });
-//         }
-
-//     });
-
-//     posts.find({ _id: postId }).then(function(data) {
-//         res.send(data);
-//     })
-
-// });
+    photos.find({ _id: photoId }).then(function(data) {
+        res.send(data);
+    })
+});
 module.exports = router;
