@@ -2,7 +2,7 @@ app.controller('commentController', ['$scope', 'commentService', 'userService', 
     var postId = $scope.$parent.data._id;
     var userId = $scope.$parent.data.userId;
     var user = $scope.$parent.$parent.user;
-
+    console.log('postid ' + postId);
     commentService.downloadComments(postId).then(function(res) {
         $scope.comments = res.data;
         $scope.addComment = function(event) {
@@ -12,7 +12,7 @@ app.controller('commentController', ['$scope', 'commentService', 'userService', 
                 userId: userId,
                 fname: user.fname,
                 lname: user.lname,
-                profilePicture:user.profImgUrl || "../images/profile.jpg",
+                profilePicture: user.profImgUrl || "../images/profile.jpg",
                 likes: [],
                 date: new Date().toLocaleString()
             };
