@@ -19,6 +19,19 @@ $(function () {
         setTimeout(addImageBtnPhoto, 500);
         setTimeout(addImageBtnPost, 500);
     });
+    function disablePostButton() {
+        $("#create-post #btnCreatePost").attr("disabled", true);
+        $("#create-post textarea[name=text]").on('input', function () {
+            console.log($("#create-post #btnCreatePost"))
+            var text = $("#create-post textarea[name=text]").val();
+            if (text.length > 0) {
+                $("#create-post #btnCreatePost").removeAttr("disabled");
+            } else {
+                $("#create-post #btnCreatePost").attr("disabled", true);;
+            }
+        });
+    }
+    setTimeout(disablePostButton, 500);
 
 
     $.get("/user", function (data) {

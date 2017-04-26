@@ -7,7 +7,6 @@ app.controller('commentController', ['$scope', 'commentService', 'userService', 
 
     commentService.downloadComments(postId).then(function(res) {
         $scope.comments = res.data;
-        console.log($scope)
 
         $scope.addComment = function(event) {
             var comment = {
