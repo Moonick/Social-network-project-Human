@@ -11,7 +11,7 @@
                         <div id="create-post">
                             <img ng-src="{{}}" err-src="../public/images/profile.jpg" alt="">
                             <form action="/posts" method="POST" enctype="multipart/form-data">
-                                <textarea class="post-text" rows="3" cols="90" placeholder="What's on your mind?" maxlength="700" name="text"></textarea>
+                                <textarea class="post-text" rows="3" cols="90" placeholder="What's on your mind?" required maxlength="700" name="text"></textarea>
                                 <div id="inputForFiles">
                                     <input type="file" name="picture">
                                 </div>

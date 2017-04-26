@@ -32,7 +32,7 @@
                         <div id="create-post">
                             <img ng-src="{{}}" err-src="../public/images/profile.jpg" alt="">
                             <form action="/user/newpost" method="POST" enctype="multipart/form-data">
-                                <textarea class="post-text" rows="3" cols="90" placeholder="What's on your mind?" maxlength="700" name="text"></textarea>
+                                <textarea class="post-text" rows="3" cols="90" required placeholder="What's on your mind?" maxlength="700" name="text"></textarea>
                                 <div id="inputForFiles">
                                     <input type="file" name="picture">
                                 </div>
@@ -160,7 +160,7 @@
                 <!-- /.panel-body -->
                 <div class="panel-footer ">
                     <div class="input-group ">
-                        <input id="btn-input " type="text " class="form-control input-sm " placeholder="Type your message here... " />
+                        <input id="btn-input " type="text" required class="form-control input-sm " placeholder="Type your message here... " />
                         <span class="input-group-btn ">
                                     <button class="btn btn-warning btn-sm " id="btn-chat ">
                                         Send
