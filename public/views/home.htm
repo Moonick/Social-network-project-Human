@@ -2,26 +2,28 @@
     <div class="row">
         <div class="col-lg-8">
             <!--==================add new post=============================-->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>Status</h4>
-                </div>
-                <div class="panel-body">
-                    <div id="create-post">
-                        <img ng-src="{{}}" err-src="../public/images/profile.jpg" alt="">
-                        <form action="/posts" method="POST" enctype="multipart/form-data">
-                            <textarea rows="3" cols="90" placeholder="What's on your mind?" maxlength="700" name="text"></textarea>
-                            <div id="inputForFiles">
-                                <input type="file" name="picture">
-                            </div>
-                            <button type="button" class="btn btn-default btn btnPicture"><i class="fa fa-picture-o" aria-hidden="true"></i> Photo/Video</button>
-                            <button type="button" class="btn btn-default btn"><i class="fa fa-map-marker" aria-hidden="true"></i> Location</button>
-                            <button type="button" class="btn btn-default btn">Tag Friends</button>
-                            <input type="submit" class="btn btn-default btn pull-right" value="Post">
-                        </form>
+            <section id="addPost">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h5>Status</h5>
+                    </div>
+                    <div class="panel-body">
+                        <div id="create-post">
+                            <img ng-src="{{}}" err-src="../public/images/profile.jpg" alt="">
+                            <form action="/posts" method="POST" enctype="multipart/form-data">
+                                <textarea class="post-text" rows="3" cols="90" placeholder="What's on your mind?" maxlength="700" name="text"></textarea>
+                                <div id="inputForFiles">
+                                    <input type="file" name="picture">
+                                </div>
+                                <button type="button" class="btn btn-default btn btnPicture"><i class="fa fa-picture-o" aria-hidden="true"></i> Photo/Video</button>
+                                <button type="button" class="btn btn-default btn"><i class="fa fa-map-marker" aria-hidden="true"></i> Location</button>
+                                <button type="button" class="btn btn-default btn">Tag Friends</button>
+                                <input type="submit" class="btn btn-default btn pull-right" value="Post">
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
             <!--======================load all posts=========================-->
             <div ng-controller="postController">
                 <div infinite-scroll='loadMore()'>

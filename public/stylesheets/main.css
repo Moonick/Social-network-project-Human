@@ -3,8 +3,28 @@ body {
     background-color: white;
 }
 
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+    outline: none;
+}
+
 a {
-    color: white;
+    color: #FE5E3A;
+}
+
+a:hover,
+a:focus,
+a:active,
+a.active {
+    color: #FE5E3A;
+}
+
+::selection {
+    text-shadow: none;
+    background: #FE5E3A;
 }
 
 #wrapper {
@@ -288,8 +308,38 @@ div.chat-window {
 
 #btn-chat {}
 
-#create-post textarea {
+
+/*=============== ADD NEW POST ==============*/
+
+#addPost h5 {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#addPost .post-text {
+    border: none;
+    border-left: 3px solid #FE5E3A;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    outline: none;
     max-width: 100%;
+}
+
+#addPost input[type=submit] {
+    width: 80px;
+    background-color: #FE5E3A;
+    border-color: #FE5E3A;
+    color: white;
+    font-weight: bold;
+}
+
+#addPost input[type=submit]:hover {
+    background-color: white;
+    color: #FE5E3A;
+}
+
+#addPost button:hover {
+    color: #FE5E3A;
 }
 
 #create-post a {
