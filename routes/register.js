@@ -16,6 +16,7 @@ router.post('/', urlencodedParser, function (req, res, next) {
     var user = req.body;
     user.profileImageUrl = "http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png";
     user.friends=[];
+    user.coverPhotoUrl="";
     if (user.fname.length < 3 || user.lname.length < 3) {
         res.render('register', { error: "Your name must have at least 3 characters!" });
     } else {
