@@ -296,7 +296,7 @@ a {
 }
 
 
-/*----------------CHAT WINDOW-----------*/
+/*=============== CHAT WINDOW ===============*/
 
 div.chat-window {
     height: 400px;
@@ -343,7 +343,7 @@ div.chat-window {
 }
 
 
-/*================ POST ==================*/
+/*=================== POST ==================*/
 
 .postBy {
     font-size: 1.1em;
@@ -357,6 +357,7 @@ div.chat-window {
     overflow: auto;
     word-wrap: break-word;
     padding-right: 20px;
+    text-align: left;
 }
 
 .text-post {
@@ -382,7 +383,7 @@ div.chat-window {
 }
 
 
-/*========== COMMENTS ==========*/
+/*================== COMMENTS ===================*/
 
 .panel-comments {
     padding: 10px 15px;
@@ -417,7 +418,7 @@ div.chat-window {
 
 .comment-btn {
     font-weight: bold;
-    font-size: 1.1em;
+    margin-right: 5px;
     margin-bottom: -2px;
     text-align: center;
     color: white;
@@ -425,8 +426,8 @@ div.chat-window {
 }
 
 .comment-btn:hover {
-    background-color: #404257;
-    border-color: #404257;
+    background-color: white;
+    border-color: #FE5E3A;
     color: #FE5E3A;
 }
 
@@ -447,8 +448,6 @@ div.chat-window {
 }
 
 .comment-text {
-    /*background-color: white;*/
-    /*border: 1px solid blue;*/
     width: 93%;
 }
 
@@ -467,29 +466,78 @@ a.change-color {
     position: relative;
 }
 
+.photos input[type=file] {
+    display: none;
+}
+
 .cover-photo {
     max-width: 100%;
     width: 100%;
     height: 200px;
+}
+
+.cover-photo img {
+    max-width: 100%;
+    width: 100%;
+    height: 200px;
     object-fit: cover;
-    overflow: hidden;
+    /*padding: 10px;*/
 }
 
 .profile-photo {
     position: absolute;
     top: 90px;
     left: 419px;
-    /*z-index: 1;*/
-    max-width: 150px;
+    width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 100%;
     border: 5px solid white;
+    overflow: hidden;
+}
+
+.profile-photo img {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    max-width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.addProfImg {
+    display: none;
+    position: absolute;
+    top: 105px;
+    left: 7px;
+    width: 122px;
+    height: 39px;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.addCoverImg {
+    display: none;
+    position: absolute;
+    top: 161px;
+    right: 0px;
+    width: 130px;
+    height: 39px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 div.btns-username {
-    /*display: flex;
-    justify-content: space-around;*/
     align-items: center;
     height: 85px;
 }
@@ -520,7 +568,7 @@ div.btns-username {
 }
 
 
-/*---------------PHOTOS USER-----------------*/
+/*=================== PHOTOS USER ==================*/
 
 .close-photo {
     color: #FE5E3A;
@@ -532,12 +580,10 @@ div.btns-username {
 }
 
 .thumbnail {
-    border: 1px solid black;
     border-radius: 0;
     text-decoration: none;
+    margin-bottom: 0;
 }
-
-.thumbnail img {}
 
 .thumbnail .text-muted {
     text-decoration: none;
@@ -548,11 +594,10 @@ div.btns-username {
     height: 150px;
     object-fit: cover;
     overflow: hidden;
-    border: 1px solid black;
 }
 
 
-/*==================add photo===============*/
+/*================== ADD PHOTO===============*/
 
 .overlay {
     position: fixed;
@@ -644,21 +689,28 @@ div.btns-username {
 }
 
 
-/*=============photo comments=================*/
+/*============= PHOTO COMMENTS =================*/
 
 #showComments {
     position: fixed;
-    top: 100px;
+    top: 80px;
     left: 300px;
     width: 50%;
     height: auto;
-    z-index: 10;
+    z-index: 1055;
     overflow-y: auto;
     background-color: white;
 }
 
-.comments-area {
-    /*overflow-y: scroll;*/
+#showComments .text-right {
+    background-color: #f5f5f5;
+    padding: 10px;
+    color: #FE5E3A;
+}
+
+#showComments .comments-area {
+    overflow: auto;
+    max-height: 350px;
 }
 
 

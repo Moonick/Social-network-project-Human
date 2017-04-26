@@ -18,4 +18,18 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
         })
     };
 
+
+    function addBtnOnHover(imgDiv, btn) {
+        $(imgDiv).hover(
+            function() {
+                $(btn).show()
+            },
+            function() {
+                $(btn).hide()
+            });
+    };
+    addBtnOnHover('.profile-photo', '.addProfImg');
+    addBtnOnHover('.cover-photo', '.addCoverImg');
+
+
 }]);
