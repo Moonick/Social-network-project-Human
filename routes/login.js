@@ -1,33 +1,38 @@
 var express = require('express');
 var router = express.Router();
+var bcrypt = require('bcrypt'),
+    SALT_WORK_FACTOR = 10;
 
-router.get('/', function(req, res) {
+
+router.get('/', function (req, res) {
     if (req.session.user) {
         res.redirect('/');
     } else {
         res.render('login', {});
     }
-
 });
 
-router.post('/', function(req, res) {
+router.post('/', function (req, res) {
     var db = req.db;
     var users = db.get('users');
-    users.findOne({ email: req.body.email, password: req.body.password }, function(err, user) {
+    var userLogin = req.body;
+
+    users.findOne({ email: req.body.email }, function (err, user) {
         if (err) {
             return res.send();
         } else if (!user) {
             res.render('login', { error: 'Invalid email or password.' });
         } else {
-            if (req.body.password === user.password) {
-                req.session.user = user;
-                res.locals.user = user;
-                res.redirect('/');
-            } else {
-                res.render('login', { error: 'Invalid email or password.' });
-            }
+            bcrypt.compare(userLogin.password, user.password, function (error, isMatch) {
+                console.log(isMatch);
+                if (error) return res.render('login', { error: 'Invalid email or password.' });
+                if (!isMatch) return res.render('login', { error: 'Invalid email or password.' });
+                if (isMatch) {
+                    req.session.user = user;
+                    res.redirect('/');
+                }
+            });
         }
     });
 });
-
 module.exports = router;
