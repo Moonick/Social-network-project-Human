@@ -3,8 +3,20 @@
         <div class="col-lg-12">
             <div class="panel panel-default img-panel ">
                 <div class="photos">
-                    <img src="../images/cover-photo.jpg" class="cover-photo" alt="cover photo">
-                    <img src="../images/profile-photo.jpg" class="profile-photo" alt="profile photo">
+                    <div class="cover-photo">
+                        <img src="../images/cover-photo.jpg" alt="cover photo">
+                        <form action="/photos/coverAvatar" method="POST" enctype="multipart/form-data">
+                            <input id="addCoverImg" type="file" name="cover">
+                            <button type="submit">submit</button>
+                        </form>
+
+                        <label for="addCoverImg" class="addCoverImg">add Cover photo</label>
+                    </div>
+                    <div class="profile-photo">
+                        <img ng-src="{{user.profImgUrl}}" err-src="../images/profile-photo.jpg" alt="profile photo">
+                        <input id="addProfImg" type="file" name="avatar" onchange="this.form.submit()">
+                        <label for="addProfImg" class="addProfImg">add Avatar</label>
+                    </div>
                 </div>
                 <div class="panel-heading text-left btns-username">
                     <div class="btn-menu">
@@ -211,8 +223,8 @@
                     </center>
                 </div>
                 <!--===================== LOAD ALL PHOTOS ===============================-->
-                <div class="panel-body">
-                    <h2>all photos</h2>
+                <div class="panel-body" style="padding-bottom: 15px;">
+                    <!--<h2>all photos</h2>-->
                     <div class='list-group gallery'>
                         <div infinite-scroll='loadMore()'>
                             <div ng-repeat="photo in somePhotos">

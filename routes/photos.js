@@ -40,4 +40,11 @@ router.post('/:photoId', function(req, res) {
         res.send(data);
     })
 });
+// ================ add avatar/cover ======================
+router.post('/coverAvatar', uploading.any(), function(req, res) {
+    // var db = req.db;
+    // var photos = db.get('photos');
+    console.log(req);
+    res.end();
+});
 module.exports = router;

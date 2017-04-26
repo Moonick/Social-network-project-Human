@@ -63,7 +63,6 @@ router.post('/:postId', function(req, res) {
         } else {
             posts.update({ _id: postId }, { $pull: { likes: req.session.user._id } });
         }
-
     });
 
     posts.find({ _id: postId }).then(function(data) {
@@ -71,51 +70,5 @@ router.post('/:postId', function(req, res) {
     })
 
 });
-
-// router.put('/:postId', function(req, res) {
-//     var db = req.db;
-//     var posts = db.get('posts');
-//     var postId = req.params.postId;
-//     var comment = req.body;
-//     comment.date = new Date().toLocaleString();
-
-//     posts.find({ _id: postId }).then(function(data) {
-//         posts.update({ _id: postId }, { $push: { comments: comment } });
-//         res.sendStatus(201);
-//     });
-// });
-
-// router.get('/:postId', function(req, res) {
-//     var db = req.db;
-//     var posts = db.get('posts');
-//     var postId = req.params.postId;
-
-//     posts.find({ _id: postId }).then(function(data) {
-//         res.json(data);
-//     });
-// });
-
-// router.post('/:postId/:userId', function(req, res) {
-//     var db = req.db;
-//     var posts = db.get('posts');
-//     var postId = req.params.postId;
-
-
-//     posts.find({ _id: postId, comments: { likes: { $in: [req.session.user._id] } } }).then(function(data) {
-//         console.log(data)
-//         if (data.length == 0) {
-//             posts.update({ _id: postId }, { comments: { likes: { $addToSet: req.session.user._id } } });
-
-//         } else {
-//             posts.update({ _id: postId }, { comments: { likes: { $pull: req.session.user._id } } });
-//         }
-
-//     });
-
-//     posts.find({ _id: postId }).then(function(data) {
-//         res.send(data);
-//     })
-
-// });
 
 module.exports = router;

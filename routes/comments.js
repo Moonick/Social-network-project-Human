@@ -19,7 +19,7 @@ router.post('/', function(req, res) {
     var db = req.db;
     var comments = db.get('comments');
     var comment = req.body;
-    console.log(comment);
+    // console.log(comment);
 
     comments.insert(comment).then(function(data) {
         res.status(201).json(data);
@@ -32,15 +32,12 @@ router.put('/:comId', function(req, res) {
     var comments = db.get('comments');
     var comId = req.params.comId;
 
-
     comments.find({ _id: comId, likes: { $in: [req.session.user._id] } }).then(function(data) {
         if (data.length == 0) {
             comments.update({ _id: comId }, { $addToSet: { likes: req.session.user._id } });
-
         } else {
             comments.update({ _id: comId }, { $pull: { likes: req.session.user._id } });
         }
-
     });
 
     comments.find({ _id: comId }).then(function(data) {
