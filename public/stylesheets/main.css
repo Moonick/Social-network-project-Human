@@ -1,6 +1,7 @@
 body {
     color: black;
     background-color: white;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 a,
@@ -9,16 +10,11 @@ a:focus,
 a:active,
 a.active {
     outline: none;
+    color: #FE5E3A;
+    text-decoration: none;
 }
 
 a {
-    color: #FE5E3A;
-}
-
-a:hover,
-a:focus,
-a:active,
-a.active {
     color: #FE5E3A;
 }
 
@@ -311,12 +307,12 @@ div.chat-window {
 
 /*=============== ADD NEW POST ==============*/
 
-#addPost h5 {
+.addPost h5 {
     font-weight: bold;
     font-size: 1.2em;
 }
 
-#addPost .post-text {
+.addPost .post-text {
     border: none;
     border-left: 3px solid #FE5E3A;
     padding-left: 10px;
@@ -325,7 +321,7 @@ div.chat-window {
     max-width: 100%;
 }
 
-#addPost input[type=submit] {
+.addPost input[type=submit] {
     width: 80px;
     background-color: #FE5E3A;
     border-color: #FE5E3A;
@@ -333,12 +329,12 @@ div.chat-window {
     font-weight: bold;
 }
 
-#addPost input[type=submit]:hover {
+.addPost input[type=submit]:hover {
     background-color: white;
     color: #FE5E3A;
 }
 
-#addPost button:hover {
+.addPost button:hover {
     color: #FE5E3A;
 }
 
@@ -346,9 +342,21 @@ div.chat-window {
     color: black;
 }
 
+
+/*================ POST ==================*/
+
+.postBy {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
 .post>p.post-text {
     overflow: auto;
     word-wrap: break-word;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .text-post {
@@ -363,15 +371,18 @@ div.chat-window {
     outline: none;
 }
 
-.panel-footer {
-    height: 40px;
+.post .panel-footer {
     background-color: white;
+    padding-bottom: 0;
 }
 
 .panel-footer a {
     color: #8C9097;
     text-decoration: none;
 }
+
+
+/*========== COMMENTS ==========*/
 
 .panel-comments {
     padding: 10px 15px;
@@ -387,8 +398,12 @@ div.chat-window {
 }
 
 .panel-comments textarea {
-    width: 90%;
+    width: 93%;
     height: 40px;
+    outline: none;
+    border: none;
+    border-left: 3px solid #FE5E3A;
+    padding: 10px;
 }
 
 .panel-comments a {
@@ -396,13 +411,23 @@ div.chat-window {
 }
 
 .img-comments {
-    width: 32px;
-    padding: 5px;
+    width: 30px;
+    padding-top: 3px;
 }
 
 .comment-btn {
-    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: -2px;
     text-align: center;
+    color: white;
+    background-color: #FE5E3A;
+}
+
+.comment-btn:hover {
+    background-color: #404257;
+    border-color: #404257;
+    color: #FE5E3A;
 }
 
 .comment-likes {
@@ -424,7 +449,7 @@ div.chat-window {
 .comment-text {
     /*background-color: white;*/
     /*border: 1px solid blue;*/
-    width: 88%;
+    width: 93%;
 }
 
 .comment-text a {
@@ -436,7 +461,7 @@ a.change-color {
 }
 
 
-/*-----------PROFILE-------------*/
+/*================= USER PROFILE====================*/
 
 .photos {
     position: relative;
@@ -463,28 +488,31 @@ a.change-color {
 }
 
 div.btns-username {
-    display: flex;
-    justify-content: space-around;
+    /*display: flex;
+    justify-content: space-around;*/
     align-items: center;
     height: 85px;
 }
 
 .btn-menu {
-    width: 45%;
+    width: 37%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .user-name {
-    width: 55%;
+    width: 100%;
+    text-align: center;
     font-weight: bold;
-    /*padding: 10px;*/
-    margin-top: 40px;
+    font-size: 1.3em;
 }
 
 .btn-menu a {
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.2em;
     color: #8C9097;
-    padding: 10px;
+    padding-top: 10px;
 }
 
 .btn-menu a:hover {
@@ -493,6 +521,11 @@ div.btns-username {
 
 
 /*---------------PHOTOS USER-----------------*/
+
+.close-photo {
+    color: #FE5E3A;
+    padding: 10px;
+}
 
 .photos-panel .panel-heading {
     height: 55px;

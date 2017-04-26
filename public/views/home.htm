@@ -1,8 +1,8 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-8">
-            <!--==================add new post=============================-->
-            <section id="addPost">
+            <!--================== ADD NEW POST =============================-->
+            <section class="addPost">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h5>Status</h5>
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </section>
-            <!--======================load all posts=========================-->
+            <!--====================== LOAD ALL POSTS =========================-->
             <div ng-controller="postController">
                 <div infinite-scroll='loadMore()'>
                     <div ng-repeat="post in somePosts">

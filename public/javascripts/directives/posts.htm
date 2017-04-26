@@ -1,9 +1,10 @@
 <div class="panel panel-default">
     <div class="panel-heading post-panel">
         <div class="pull-left">
-            <!--insert profile image-->
-            <img class="profile-img" src="../images/profile.jpg" alt="Profile pic">
-            <span>{{data.postedBy}}</span>
+            <a href="#profile">
+                <img class="profile-img" src="../images/profile.jpg" alt="Profile pic">
+                <span class="postBy">{{data.postedBy}}</span>
+            </a>
         </div>
         <div class="pull-right" style="padding-top: 10px;">
             <span class="post-date"><i>Posted at {{data.date}}</i></span>
@@ -21,7 +22,9 @@
         <div class="post">
             <p class="post-text">{{data.text}}</p>
             <img ng-src="{{data.picture}}" err-src="../images/profile.jpg" alt="" width="100%" height="auto">
-            <div class="panel-footer ">
+
+            <!--============= LIKE AND COMMENT BNTS ===================-->
+            <div class="panel-footer">
                 <div class="pull-left">
                     <a href=""> {{data.likes.length}}</a>
                     <a href="" ng-click="changeLike($event)" class="like-btn"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like</a>
@@ -35,12 +38,12 @@
     </div>
     <!--========================= hide/show comments ==========================-->
     <div class="panel-comments" ng-controller="commentController" ng-show="IsVisible">
-        <div class="input-flex ">
+        <div class="input-flex">
             <a href="#profile"><img ng-src="{{user.profImgUrl}}" err-src="../images/profile.jpg" class='img-comments' alt="userImg "> </a>
             <textarea ng-model="commentText " type="text " name="comment " placeholder="Comment here "> </textarea>
         </div>
         <div class="btn-flex ">
-            <button ng-click="addComment($event) " class="btn btn-default btn comment-btn ">Send</button>
+            <button ng-click="addComment($event) " class="btn btn-default btn comment-btn">Send</button>
         </div>
         <div ng-repeat="comment in comments ">
             <comments data='comment'></comments>
