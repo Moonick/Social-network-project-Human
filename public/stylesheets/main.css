@@ -352,10 +352,10 @@ div.chat-window {
     text-decoration: none;
 }
 
-.post>p.post-text {
+.post>p.post-text,
+.comment-text>p {
     overflow: auto;
     word-wrap: break-word;
-    padding-left: 20px;
     padding-right: 20px;
 }
 
@@ -562,19 +562,85 @@ div.btns-username {
     height: 100%;
     background: #000;
     opacity: 0.6;
+    z-index: 1050;
     filter: alpha(opacity=60);
     display: none;
 }
 
 #uploadPhoto {
     position: fixed;
-    top: 150px;
-    left: 300px;
-    width: 50%;
-    height: 50%;
-    z-index: 10;
+    top: 25%;
+    left: 30%;
+    width: 500px;
+    height: 300px;
+    z-index: 1055;
     display: none;
     background-color: white;
+    border-radius: 3px;
+}
+
+.content-upload {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#uploadPhoto form {
+    padding-top: 50px;
+    text-align: left;
+}
+
+#uploadPhoto form .upload-title,
+#uploadPhoto form .upload-location {
+    padding: 10px;
+}
+
+#uploadPhoto form input[type=text] {
+    height: 30px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #FE5E3A;
+    text-align: left;
+}
+
+#uploadPhoto form label {
+    width: 100px;
+    font-size: 1.1em;
+    margin-right: 5px;
+}
+
+#uploadPhoto form input[type=file] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+#uploadPhoto form input[type=file]+label {
+    width: 120px;
+    background-color: #FE5E3A;
+    border: 1px solid #FE5E3A;
+    color: white;
+}
+
+#uploadPhoto form input[type=file]+label:hover {
+    background-color: white;
+    border: 1px solid #FE5E3A;
+    color: #FE5E3A;
+}
+
+#uploadPhoto form button {
+    color: white;
+    background-color: #353539;
+    display: flex;
+    text-justify: row;
+}
+
+#uploadPhoto form .upload-btns {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
 }
 
 

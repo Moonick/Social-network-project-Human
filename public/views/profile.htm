@@ -190,14 +190,23 @@
                     <center>
                         <div id="uploadPhoto">
                             <div class="pull-right close-photo"><i class="fa fa-times fa-2x" aria-hidden="true"></i></div>
-                            <form method="POST" action="/user/uploadphoto" enctype="multipart/form-data">
-                                <label for="photoName">Image Title</label>
-                                <input type="text" id="photoName" placeholder="Add title" name="title">
-                                <label for="photoLocation">Location</label>
-                                <input type="text" id="photoLocation" placeholder="Add Location" name="location">
-                                <input type="file" name="addPhoto" value="Add Photo">
-                                <button class="btn btn-default btn comment-btn">Upload Photo</button>
-                            </form>
+                            <div class="content-upload">
+                                <form method="POST" action="/user/uploadphoto" enctype="multipart/form-data">
+                                    <div class="upload-title">
+                                        <label for="photoName">Image Title</label>
+                                        <input type="text" id="photoName" placeholder="Add title" name="title">
+                                    </div>
+                                    <div class="upload-location">
+                                        <label for="photoLocation">Location</label>
+                                        <input type="text" id="photoLocation" placeholder="Add Location" name="location">
+                                    </div>
+                                    <div class="upload-btns">
+                                        <input id="choosePhoto" type="file" name="addPhoto" value="Add Photo">
+                                        <label for="choosePhoto" class="btn btn-default btn comment-btn">Choose File</label>
+                                        <button class="btn btn-default btn comment-btn">Upload Photo</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </center>
                 </div>
