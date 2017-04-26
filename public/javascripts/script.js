@@ -6,14 +6,12 @@ $(function () {
             $('#create-post input[type=file]').click();
         });
     }
-    setTimeout(addImageBtnPost, 500);
 
     function addImageBtnPhoto() {
         $('#add-photo .btnPicture').on('click', function () {
             $('#add-photo input[type=file]').click();
         });
     }
-    setTimeout(addImageBtnPhoto, 500);
     $(window).on('hashchange', function (e) {
         //execute code
         setTimeout(addImageBtnPhoto, 500);
