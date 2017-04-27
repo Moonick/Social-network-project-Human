@@ -471,6 +471,10 @@ a.change-color {
     border-radius: 0;
 }
 
+.search-friends {
+    border-bottom: 1px solid gainsboro;
+}
+
 .searchFriends {
     position: absolute;
     top: 34px;
@@ -506,14 +510,11 @@ a.change-color {
     font-weight: bold;
 }
 
-.search-friends p {}
-
 .search-avatar {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     object-fit: cover;
-    border: 3px solid white;
-    border-radius: 100%;
+    border: 2px solid gainsboro;
 }
 
 

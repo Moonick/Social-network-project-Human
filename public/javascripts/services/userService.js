@@ -2,13 +2,15 @@ app.factory('userService', function($http, $rootScope) {
     function User() {
         this.user = $http.get('/user');
         this.posts = $http.get('/user/posts');
-        this.users = $http.get('/user/all');
+        this.users;
     };
     User.prototype.getCurrentUser = function() {
         return this.user;
     };
-    User.prototype.getAllUsers = function() {
-        return this.users;
+    User.prototype.getUsers = function(userName) {
+
+        return this.users = $http.get('/user/' + userName);
+
     };
     User.prototype.downloadUserPosts = function() {
         return this.posts;

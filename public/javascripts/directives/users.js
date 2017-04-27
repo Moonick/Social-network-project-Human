@@ -6,11 +6,7 @@ app.directive('users', ["userService", function(userService) {
         },
         templateUrl: './javascripts/directives/users.htm',
         link: function(scope, $element) {
-
-
-            scope.sendFriendRequest = function() {
-
-            };
+            scope.sendFriendRequest = function() {};
 
         }
     };
