@@ -24,7 +24,6 @@ router.post('/', function (req, res) {
             res.render('login', { error: 'Invalid email or password.' });
         } else {
             bcrypt.compare(userLogin.password, user.password, function (error, isMatch) {
-                console.log(isMatch);
                 if (error) return res.render('login', { error: 'Invalid email or password.' });
                 if (!isMatch) return res.render('login', { error: 'Invalid email or password.' });
                 if (isMatch) {
