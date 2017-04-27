@@ -9,6 +9,10 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
     userService.getCurrentUser().then(function(res) {
         $rootScope.user = res.data;
     });
+    userService.getAllUsers().then(function(res) {
+        $scope.users = res.data;
+    })
+
     $scope.show = 1;
     $scope.uploadPhoto = function() {
         $(".overlay, #uploadPhoto").show();
@@ -17,7 +21,6 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
             $(".overlay, #uploadPhoto").hide();
         })
     };
-
 
     function addBtnOnHover(imgDiv, btn) {
         $(imgDiv).hover(
@@ -31,5 +34,8 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
     addBtnOnHover('.profile-photo', '.addProfImg');
     addBtnOnHover('.cover-photo', '.addCoverImg');
 
+    $scope.showUsers = function() {
+        $scope.IsVisible = $scope.IsVisible ? false : true;
+    };
 
 }]);
