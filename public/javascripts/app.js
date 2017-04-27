@@ -6,9 +6,6 @@ app.config(function($routeProvider) {
     }).when('/profile', {
         templateUrl: "../views/profile.htm",
         controller: 'userController'
-    }).when('/photosTest', {
-        templateUrl: "../views/photosTest.htm",
-        controller: 'userController'
     });
 
 });

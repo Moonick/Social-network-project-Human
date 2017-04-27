@@ -2,40 +2,55 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: function(req, file, cb) {
         cb(null, 'uploads/')
     },
-    filename: function (req, file, cb) {
+    filename: function(req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + ".jpg");
     }
 });
 
 var uploading = multer({ storage: storage });
-
-router.get('/', function (req, res) {
+// =================== GET CURRENT USER ====================
+router.get('/', function(req, res) {
     var currentUser = {
         fname: req.session.user.fname,
         lname: req.session.user.lname,
         profImgUrl: req.session.user.profileImageUrl,
         userId: req.session.user._id,
-        coverPhotoUrl:req.session.user.coverPhotoUrl
+        coverPhotoUrl: req.session.user.coverPhotoUrl
     }
     res.json(currentUser);
 });
+// =================== ALL USERS ====================
+router.get('/all', function(req, res) {
+    var db = req.db;
+    var users = db.get('users');
+
+    users.find({}, [
+        "fname",
+        "lname",
+        "profileImageUrl",
+        "coverPhotoUrl"
+    ]).then(function(data) {
+        res.json(data);
+    });
+
+});
 
 //-------------load user posts -----------------
-router.get('/posts', function (req, res) {
+router.get('/posts', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
     var userID = req.session.user._id;
 
-    posts.find({ user_id: userID }, { sort: { date: -1 } }).then(function (posts) {
+    posts.find({ user_id: userID }, { sort: { date: -1 } }).then(function(posts) {
         res.json(posts);
     });
 });
 
 //-------------------new post------------------------
-router.post('/newpost', uploading.any(), function (req, res) {
+router.post('/newpost', uploading.any(), function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
     var date = new Date();
@@ -63,7 +78,7 @@ router.post('/newpost', uploading.any(), function (req, res) {
     res.redirect("/#/profile");
 });
 // ===================== add new photo ============================
-router.post('/uploadphoto', uploading.any(), function (req, res) {
+router.post('/uploadphoto', uploading.any(), function(req, res) {
     var db = req.db;
     var photos = db.get('photos');
     var date = new Date();
@@ -87,7 +102,10 @@ router.post('/uploadphoto', uploading.any(), function (req, res) {
     photos.insert(picture);
     res.redirect("/#/profile");
 });
-router.post('/coverAvatar', uploading.any(), function (req, res) {
+
+// ================ add avatar/cover ======================
+
+router.post('/coverAvatar', uploading.any(), function(req, res) {
     var db = req.db;
     var photos = db.get('photos');
     var users = db.get("users");
@@ -103,13 +121,15 @@ router.post('/coverAvatar', uploading.any(), function (req, res) {
         likes: []
     };
     if (req.files[0].fieldname === "cover") {
-        users.update({ _id: req.session.user._id }, { $set: { coverPhotoUrl: req.files[0].path } }).then(function (data) {
+        users.update({ _id: req.session.user._id }, { $set: { coverPhotoUrl: req.files[0].path } }).then(function(data) {
             res.redirect('/#/profile');
         });
     } else if (req.files[0].fieldname === "avatar") {
-        users.update({ _id: req.session.user._id }, { $set: { profileImageUrl: req.files[0].path } }).then(function (data) {
+        users.update({ _id: req.session.user._id }, { $set: { profileImageUrl: req.files[0].path } }).then(function(data) {
             res.redirect('/#/profile');
         });
     }
 });
+
+
 module.exports = router;

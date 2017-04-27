@@ -40,6 +40,5 @@ router.post('/:photoId', function(req, res) {
         res.send(data);
     })
 });
-// ================ add avatar/cover ======================
 
 module.exports = router;
