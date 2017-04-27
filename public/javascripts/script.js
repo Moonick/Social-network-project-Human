@@ -13,7 +13,6 @@ $(function() {
         });
     }
     $(window).on('hashchange', function(e) {
-        //execute code
         setTimeout(addImageBtnPhoto, 500);
         setTimeout(addImageBtnPost, 500);
     });

@@ -16,6 +16,7 @@
     "express-validation": "^1.0.2",
     "hbs": "~4.0.1",
     "jquery": "^3.2.1",
+    "knox": "^0.9.2",
     "mongodb": "^2.2.25",
     "monk": "^4.0.0",
     "morgan": "~1.8.1",
