@@ -14,6 +14,7 @@ router.post('/', urlencodedParser, function(req, res, next) {
     var db = req.db;
     var users = db.get('users');
     var user = req.body;
+    user.fullName = user.fname + " " + user.lname;
     user.profileImageUrl = "http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png";
     user.friends = [];
     user.coverPhotoUrl = "";

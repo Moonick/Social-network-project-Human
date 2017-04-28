@@ -11,6 +11,7 @@ var storage = multer.diskStorage({
 });
 
 var uploading = multer({ storage: storage });
+
 // =================== GET CURRENT USER ====================
 router.get('/', function(req, res) {
     var currentUser = {
@@ -22,17 +23,14 @@ router.get('/', function(req, res) {
     }
     res.json(currentUser);
 });
-// =================== ALL USERS ====================
-router.get('/all', function(req, res) {
+// =================== GET USER BY NAME  ====================
+router.get('/:userName', function(req, res) {
     var db = req.db;
     var users = db.get('users');
+    var userName = new RegExp(req.params.userName, "i");
 
-    users.find({}, [
-        "fname",
-        "lname",
-        "profileImageUrl",
-        "coverPhotoUrl"
-    ]).then(function(data) {
+
+    users.find({ fullName: userName }, ["_id", "fname", "lname", "fullName", "profileImageUrl", "coverPhotoUrl", "friends"]).then(function(data) {
         res.json(data);
     });
 

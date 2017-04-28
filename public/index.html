@@ -34,7 +34,7 @@
                 <a class="navbar-brand" href="#/">human</a>
             </div>
             <div class="col-md-4 input-search custom-search-form" ng-controller="userController">
-                <input type="text" class="form-control search" ng-focus="showUsers()" ng-blur="showUsers()" placeholder="Find a friend...">
+                <input type="text" class="form-control search" ng-keyup="filterUsers()" ng-focus="showUsers()" ng-blur="showUsers()" placeholder="Find a friend...">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
                 </span>
