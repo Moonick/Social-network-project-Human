@@ -24,7 +24,7 @@ router.get('/', function(req, res) {
     res.json(currentUser);
 });
 // =================== GET USER BY NAME  ====================
-router.get('/:userName', function(req, res) {
+router.get('/find/:userName', function(req, res) {
     var db = req.db;
     var users = db.get('users');
     var userName = new RegExp(req.params.userName, "i");
@@ -41,6 +41,7 @@ router.get('/posts', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
     var userID = req.session.user._id;
+    console.log("here");
 
     posts.find({ user_id: userID }, { sort: { date: -1 } }).then(function(posts) {
         res.json(posts);

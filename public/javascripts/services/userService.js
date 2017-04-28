@@ -9,7 +9,7 @@ app.factory('userService', function($http, $rootScope) {
     };
     User.prototype.getUsers = function(userName) {
 
-        return this.users = $http.get('/user/' + userName);
+        return this.users = $http.get('/user/find/' + userName);
 
     };
     User.prototype.downloadUserPosts = function() {
