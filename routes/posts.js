@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
+
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, 'uploads/')
@@ -10,9 +11,17 @@ var storage = multer.diskStorage({
     }
 });
 
-var uploading = multer({ storage: storage });
+var uploading = multer({
+    storage: storage,
+    fileFilter: function(req, file, cb) {
+        if (file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
+            return cb(null, false)
+        }
+        cb(null, true)
+    },
+});
 
-//-----------------load all posts --------------------
+//================== LOAD ALL POSTS ==================
 router.get('/', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
@@ -21,7 +30,7 @@ router.get('/', function(req, res) {
     });
 });
 
-//-------------------new post------------------------
+//================== ADD NEW POST ==================
 router.post('/', uploading.any(), function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
@@ -50,7 +59,7 @@ router.post('/', uploading.any(), function(req, res) {
     res.redirect("/");
 });
 
-//--------------like-----------------------
+//================== LIKE A POST ==================
 router.post('/:postId', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');

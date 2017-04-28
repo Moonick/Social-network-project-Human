@@ -2,40 +2,53 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
 
     userService.downloadUserPosts().then(function(res) {
         $scope.posts = res.data;
-        console.log($scope.posts);
-        
+
         $scope.somePosts = $scope.posts.slice(0, 5);
         $scope.loadMore = function() {
             $scope.somePosts = $scope.posts.slice(0, $scope.somePosts.length + 5);
         };
     });
-
+    // ============= get current user =======================
     userService.getCurrentUser().then(function(res) {
         $rootScope.user = res.data;
     });
-
+    // ============= search users by full name ================
     $scope.filterUsers = function() {
         var userName = $('.search').val();
 
-
         function loadUsersByName() {
             userService.getUsers(userName).then(function(res) {
-                $scope.users = res.data;
-                if (userName !== '') {
-                    $('.searchFriends').show();
-                } else {
-                    $('users').html("");
-                    $('.searchFriends').hide();
+                var users = res.data;
+                for (var index = 0; index < users.length; index++) {
+                    if (users[index]._id === $rootScope.user.userId) {
+                        users.splice(index, 1);
+                    }
                 }
+                $scope.users = res.data;
             });
         }
         setTimeout(loadUsersByName, 1000);
-
-
-
+    };
+    // ================= show dropdown with found users by full name =========
+    $scope.showUsers = function() {
+        if ($('.search').val() !== "") {
+            $('.searchFriends').show();
+            $("body").css("overflow", " hidden");
+        } else {
+            $('.searchFriends').hide();
+            $("body").css("overflow", " auto");
+        }
+        $('body').on('click', function(evt) {
+            if (evt.target.id == "searchFriendsInput" || evt.target.className == "searchFriends") {
+                return;
+            }
+            $('.searchFriends').hide();
+        })
     };
 
+    // ===================== show user timeline first =====================
     $scope.show = 1;
+    // ===================== add photo button - modal window ==============
     $scope.uploadPhoto = function() {
         $(".overlay, #uploadPhoto").show();
 
@@ -43,7 +56,7 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
             $(".overlay, #uploadPhoto").hide();
         })
     };
-
+    // ===================== buttons for profile and cover photo ==========
     function addBtnOnHover(imgDiv, btn) {
         $(imgDiv).hover(
             function() {
@@ -55,16 +68,5 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
     };
     addBtnOnHover('.profile-photo', '.addProfImg');
     addBtnOnHover('.cover-photo', '.addCoverImg');
-
-    $scope.showUsers = function() {
-        $scope.IsVisible = $scope.IsVisible ? false : true;
-        if ($scope.IsVisible) {
-            $("body").css("overflow", " hidden");
-        } else {
-            $("body").css("overflow", " auto");
-        }
-
-
-    };
 
 }]);

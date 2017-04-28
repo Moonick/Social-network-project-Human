@@ -290,8 +290,9 @@ a {
 }
 
 .profile-img {
-    width: 40px;
-    height: auto;
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
     border-radius: 100%;
 }
 
@@ -412,7 +413,10 @@ div.chat-window {
 }
 
 .img-comments {
-    width: 30px;
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border: 2px solid #FE5E3A;
     padding-top: 3px;
 }
 
@@ -478,8 +482,8 @@ a.change-color {
 .searchFriends {
     position: absolute;
     top: 34px;
-    left: 16px;
-    width: 428px;
+    left: 15px;
+    width: 425px;
     max-height: 300px;
     overflow: auto;
     color: #8C9097;
@@ -539,7 +543,6 @@ a.change-color {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    /*padding: 10px;*/
 }
 
 .profile-photo {

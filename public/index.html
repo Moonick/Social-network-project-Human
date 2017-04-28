@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Work+Sans" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js " integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=" anonymous "></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=" anonymous"></script>
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular.min.js"></script>
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular-route.js"></script>
     <script src="./javascripts/ng-infinite-scroll.min.js"></script>
@@ -28,18 +28,18 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top navbar-fixed-top row" role="navigation" style="margin-bottom: 0">
-            <div class="col-md-2 navbar-header ">
+        <nav class="navbar navbar-default navbar-static-top navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="col-md-2 navbar-header">
 
                 <a class="navbar-brand" href="#/">human</a>
             </div>
             <div class="col-md-4 input-search custom-search-form" ng-controller="userController">
-                <input type="text" class="form-control search" ng-keyup="filterUsers()" ng-focus="showUsers()" ng-blur="showUsers()" placeholder="Find a friend...">
+                <input id="searchFriendsInput" type="text" class="form-control search" ng-focus="showUsers()" ng-keyup="filterUsers(); showUsers()" placeholder="Find a friend...">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
                 </span>
-                <div class="searchFriends" ng-show="IsVisible">
-                    <div ng-repeat="user in users ">
+                <div class="searchFriends">
+                    <div ng-repeat="user in users">
                         <users data='user'></users>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
             <div class="col-md-2 news-feed">
                 <a href="#/"><i class="fa fa-newspaper-o" aria-hidden="true"></i> News feed</a>
             </div>
-            <ul class="col-md-4 nav navbar-top-links navbar-right ">
+            <ul class="col-md-4 nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                         <i class="fa fa-user-plus" aria-hidden="true"></i> <i class="fa fa-caret-down"></i>
@@ -204,7 +204,7 @@
                 <!-- /.dropdown -->
                 <li>
                     <a href="#profile" id="link-profile" class="dropdown-toggle userName" data-toggle="dropdown">
-                        <i class="fa fa-user fa-fw"></i>Username
+                        <img class="profile-img" ng-src="{{$root.user.profImgUrl}}" err-src="../images/profile.jpg" alt="Profile pic"> {{user.fname + " " + user.lname}}
                     </a>
                 </li>
                 <li class="dropdown">
@@ -225,29 +225,29 @@
         <!-- /#wrapper -->
 
         <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js " integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa " crossorigin="anonymous "></script>
-        <script src="javascripts/script.js "></script>
-        <script src="javascripts/menu.js "></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="javascripts/script.js"></script>
+        <script src="javascripts/menu.js"></script>
 
         <!-- modules -->
-        <script src="javascripts/app.js "></script>
+        <script src="javascripts/app.js"></script>
 
         <!-- services -->
-        <script src="javascripts/services/postService.js "></script>
-        <script src="javascripts/services/userService.js "></script>
-        <script src="javascripts/services/commentService.js "></script>
-        <script src="javascripts/services/photoService.js "></script>
+        <script src="javascripts/services/postService.js"></script>
+        <script src="javascripts/services/userService.js"></script>
+        <script src="javascripts/services/commentService.js"></script>
+        <script src="javascripts/services/photoService.js"></script>
 
         <!-- controllers -->
-        <script src="javascripts/controllers/postController.js "></script>
-        <script src="javascripts/controllers/commentController.js "></script>
-        <script src="javascripts/controllers/userController.js "></script>
-        <script src="javascripts/controllers/photosController.js "></script>
+        <script src="javascripts/controllers/postController.js"></script>
+        <script src="javascripts/controllers/commentController.js"></script>
+        <script src="javascripts/controllers/userController.js"></script>
+        <script src="javascripts/controllers/photosController.js"></script>
         <!-- directives -->
-        <script src="javascripts/directives/posts.js "></script>
-        <script src="javascripts/directives/comments.js "></script>
-        <script src="javascripts/directives/photos.js "></script>
-        <script src="javascripts/directives/users.js "></script>
+        <script src="javascripts/directives/posts.js"></script>
+        <script src="javascripts/directives/comments.js"></script>
+        <script src="javascripts/directives/photos.js"></script>
+        <script src="javascripts/directives/users.js"></script>
 
 </body>
 

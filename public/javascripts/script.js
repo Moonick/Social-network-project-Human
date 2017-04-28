@@ -17,16 +17,6 @@ $(function() {
         setTimeout(addImageBtnPost, 500);
     });
 
-    $.get("/user", function(data) {
-        function capitalizeFirstLetter(str) {
-            return str.charAt(0).toUpperCase() + str.slice(1);
-        }
-        var username = $("#link-profile");
-        username.text(capitalizeFirstLetter(data.fname) + " " + capitalizeFirstLetter(data.lname));
-        // $("#side-menu> li >a")[0].append(img);
-    });
-
-
 });
 
 //Loads the correct sidebar on window load,
