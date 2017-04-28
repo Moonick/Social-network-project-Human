@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 
-//------------------load all comments ------------
+//=============== LOAD ALL COMMENTS ============
 router.get('/:postId', function(req, res) {
     var db = req.db;
     var comments = db.get('comments');
@@ -13,8 +13,7 @@ router.get('/:postId', function(req, res) {
     });
 });
 
-//-----------------add comment to a post --------
-
+//================ ADD NEW COMMENT ==============
 router.post('/', function(req, res) {
     var db = req.db;
     var comments = db.get('comments');
@@ -26,7 +25,7 @@ router.post('/', function(req, res) {
     });
 });
 
-//-------------- like a comment --------
+//================= LIKE A COMMENT =============
 router.put('/:comId', function(req, res) {
     var db = req.db;
     var comments = db.get('comments');

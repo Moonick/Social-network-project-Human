@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
+
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, 'uploads/')
@@ -10,7 +11,15 @@ var storage = multer.diskStorage({
     }
 });
 
-var uploading = multer({ storage: storage });
+var uploading = multer({
+    storage: storage,
+    fileFilter: function(req, file, cb) {
+        if (file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
+            return cb(null, false)
+        }
+        cb(null, true)
+    },
+});
 
 // =================== GET CURRENT USER ====================
 router.get('/', function(req, res) {
@@ -23,12 +32,11 @@ router.get('/', function(req, res) {
     }
     res.json(currentUser);
 });
-// =================== GET USER BY NAME  ====================
+// =================== GET USER BY NAME ====================
 router.get('/find/:userName', function(req, res) {
     var db = req.db;
     var users = db.get('users');
     var userName = new RegExp(req.params.userName, "i");
-
 
     users.find({ fullName: userName }, ["_id", "fname", "lname", "fullName", "profileImageUrl", "coverPhotoUrl", "friends"]).then(function(data) {
         res.json(data);
@@ -36,19 +44,34 @@ router.get('/find/:userName', function(req, res) {
 
 });
 
-//-------------load user posts -----------------
+//================== SEND FRIEND REQUEST ==============
+router.post('/friendRequest/:userId', function(req, res) {
+    var db = req.db;
+    var users = db.get('users');
+    var userId = req.params.userId;
+    console.log(userId)
+
+    users.update({ _id: res.session.user._id }, { $addToSet: { sendFriendRequests: userId } }).then(function() {
+
+    })
+
+    // users.update({ _id: userId }, { $addToSet: { receiveFriendRequests: req.session.user._id } })
+    res.status(200);
+});
+
+
+//================== LOAD USER POSTS ==================
 router.get('/posts', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
     var userID = req.session.user._id;
-    console.log("here");
 
     posts.find({ user_id: userID }, { sort: { date: -1 } }).then(function(posts) {
         res.json(posts);
     });
 });
 
-//-------------------new post------------------------
+//================== ADD NEW POST ===================
 router.post('/newpost', uploading.any(), function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
@@ -76,7 +99,7 @@ router.post('/newpost', uploading.any(), function(req, res) {
     posts.insert(newPost);
     res.redirect("/#/profile");
 });
-// ===================== add new photo ============================
+// ===================== ADD NEW PHOTO ============================
 router.post('/uploadphoto', uploading.any(), function(req, res) {
     var db = req.db;
     var photos = db.get('photos');
@@ -102,7 +125,7 @@ router.post('/uploadphoto', uploading.any(), function(req, res) {
     res.redirect("/#/profile");
 });
 
-// ================ add avatar/cover ======================
+// ================ ADD AVATAR/COVER PHOTO ======================
 
 router.post('/coverAvatar', uploading.any(), function(req, res) {
     var db = req.db;
