@@ -1,7 +1,7 @@
 app.factory('userService', function($http, $rootScope) {
     function User() {
         this.user = $http.get('/user');
-        this.posts = $http.get('/user/posts');
+        this.posts;
         this.users;
         this.friendRequests = $http.get('/user/friendRequests');
         this.friends = $http.get('/user/friends');
@@ -12,8 +12,8 @@ app.factory('userService', function($http, $rootScope) {
     User.prototype.getUsers = function(userName) {
         return this.users = $http.get('/user/find/' + userName);
     };
-    User.prototype.downloadUserPosts = function() {
-        return this.posts;
+    User.prototype.downloadUserPosts = function(userId) {
+        return this.posts = $http.get('/user/posts/' + userId);
     };
     User.prototype.sendFriendRequest = function(userId) {
         return $http.post('/user/friendRequest/' + userId);

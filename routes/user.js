@@ -57,10 +57,10 @@ router.post('/friendRequest/:userId', function(req, res) {
 });
 
 //================== LOAD USER POSTS ==================
-router.get('/posts', function(req, res) {
+router.get('/posts/:userId', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
-    var userID = req.session.user._id;
+    var userID = req.params.userId;
 
     posts.find({ user_id: userID }, { sort: { date: -1 } }).then(function(posts) {
         res.json(posts);
@@ -94,7 +94,7 @@ router.post('/newpost', uploading.any(), function(req, res) {
     };
 
     posts.insert(newPost);
-    res.redirect("/#/profile");
+    res.redirect("/#/profile/" + req.session.user._id);
 });
 // ===================== ADD NEW PHOTO ============================
 router.post('/uploadphoto', uploading.any(), function(req, res) {
@@ -128,6 +128,7 @@ router.post('/coverAvatar', uploading.any(), function(req, res) {
     var photos = db.get('photos');
     var users = db.get("users");
     var posts = db.get('posts');
+    var comments = db.get('comments');
     var date = new Date();
 
     var picture = {
@@ -144,14 +145,16 @@ router.post('/coverAvatar', uploading.any(), function(req, res) {
     if (req.files[0].fieldname === "cover") {
         users.update({ _id: req.session.user._id }, { $set: { coverPhotoUrl: req.files[0].path } }).then(function(data) {
             photos.insert(picture);
-            res.redirect('/#/profile');
+            res.redirect('/#/profile/' + req.session.user._id);
         });
     } else if (req.files[0].fieldname === "avatar") {
         posts.update({ user_id: req.session.user._id }, { $set: { userProfImg: req.files[0].path } }, { multi: true });
+        comments.update({ user_id: req.session.user._id }, { $set: { userProfImg: req.files[0].path } }, { multi: true });
         users.update({ _id: req.session.user._id }, { $set: { profileImageUrl: req.files[0].path } }).then(function(data) {
             photos.insert(picture);
-            res.redirect('/#/profile');
+            res.redirect('/#/profile/' + req.session.user._id);
         });
+
     }
 });
 // ======================= LOAD FRIEND REQUESTS ==================

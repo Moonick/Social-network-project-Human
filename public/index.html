@@ -121,7 +121,7 @@
                 <!-- /.dropdown -->
 
                 <li>
-                    <a href="#profile" id="link-profile" class="dropdown-toggle userName" data-toggle="dropdown">
+                    <a href="#/profile/{{user._id}}" id="link-profile" class="dropdown-toggle userName" data-toggle="dropdown">
                         <img class="profile-img" ng-src="{{$root.user.profileImageUrl}}" err-src="../images/profile.jpg" alt="Profile pic"> {{user.fname + " " + user.lname}}
                     </a>
                 </li>
@@ -142,10 +142,8 @@
 
         <!-- /#wrapper -->
 
-        <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrWAHi3kqH-8jHnncZhlgOYNTXpwlvgd0&libraries=places&callback=initAutocomplete"
-        async defer></script>
+
         <script src="javascripts/script.js"></script>
         <script src="javascripts/menu.js"></script>
 

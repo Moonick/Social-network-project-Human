@@ -1,4 +1,4 @@
-app.directive('comments', ["commentService", function(commentService) {
+app.directive('comments', ["$rootScope", "commentService", function($rootScope, commentService) {
     return {
         restrict: 'E',
         scope: {
@@ -8,8 +8,8 @@ app.directive('comments', ["commentService", function(commentService) {
         link: function(scope, $element) {
             var comments = scope.$parent.comments;
             var postId = scope.data.postId;
-            var userId = scope.$parent.user.userId;
-            var user = scope.$parent.user;
+            var userId = $rootScope.user.userId;
+            var user = $rootScope.user;
             var comId = scope.data._id;
 
             if (comments.length !== 0) {

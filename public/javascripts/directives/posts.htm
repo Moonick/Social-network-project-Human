@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading post-panel">
         <div class="pull-left">
-            <a href="#profile">
+            <a href="#/profile/{{data.user_id}}">
                 <img class="profile-img" ng-src="{{data.userProfImg}}" err-src="../images/profile.jpg" alt="Profile pic">
                 <span class="postBy">{{data.postedBy}}</span>
             </a>
@@ -39,7 +39,7 @@
     <!--========================= hide/show comments ==========================-->
     <div class="panel-comments" ng-controller="commentController" ng-show="IsVisible">
         <div class="input-flex">
-            <a href="#profile"><img ng-src="{{user.profImgUrl}}" err-src="../images/profile.jpg" class='img-comments' alt="userImg "> </a>
+            <a href="#/profile/{{$root.user._id}}"><img ng-src="{{$root.user.profileImageUrl}}" err-src="../images/profile.jpg" class='img-comments' alt="userImg "> </a>
             <textarea ng-model="commentText " type="text " name="comment " placeholder="Comment here "> </textarea>
         </div>
         <div class="btn-flex ">

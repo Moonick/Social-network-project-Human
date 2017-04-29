@@ -1,6 +1,8 @@
 app.controller('userController', ['$http', '$scope', '$rootScope', 'userService', function($http, $scope, $rootScope, userService) {
+    var url = window.location.href;
+    var userId = url.substring(url.lastIndexOf('/') + 1);
     // ================== LOAD ALL USER POSTS ===================
-    userService.downloadUserPosts().then(function(res) {
+    userService.downloadUserPosts(userId).then(function(res) {
         $scope.posts = res.data;
 
         $scope.somePosts = $scope.posts.slice(0, 5);
