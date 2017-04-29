@@ -1,0 +1,13 @@
+<div class='list-group gallery'>
+    <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+        <a class="thumbnail fancybox " ng-href="{{data.profileImageUrl}}">
+            <div class="img-gallery-size">
+                <img class="img-responsive friend-image" alt=" " ng-src={{data.profileImageUrl}} />
+            </div>
+        </a>
+
+        <div class='text-center'>
+            <a href="#/profile/{{data._id}}"><span class='text-muted'>{{data.fullName}}</span></a>
+        </div>
+    </div>
+</div>

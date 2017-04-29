@@ -25,7 +25,7 @@
 </head>
 
 <body ng-app="myApp">
-    <div id="wrapper">
+    <div id="wrapper" ng-controller="userController">
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top navbar-fixed-top" role="navigation" style="margin-bottom: 0">
@@ -33,7 +33,7 @@
 
                 <a class="navbar-brand" href="#/">human</a>
             </div>
-            <div class="col-md-4 input-search custom-search-form" ng-controller="userController">
+            <div class="col-md-4 input-search custom-search-form">
                 <input id="searchFriendsInput" type="text" class="form-control search" ng-focus="showUsers()" ng-keyup="filterUsers(); showUsers()" placeholder="Find a friend...">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
@@ -50,7 +50,7 @@
             <ul class="col-md-4 nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <i class="fa fa-user-plus" aria-hidden="true"></i> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user-plus" aria-hidden="true"></i> </i>
                     </a>
                     <ul class="dropdown-menu dropdown-tasks">
                         <li>
@@ -70,7 +70,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-envelope fa-fw"></i> </i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
                         <li>
@@ -121,12 +121,12 @@
                 <!-- /.dropdown -->
 
                 <li>
-                    <a href="#profile" id="link-profile" class="dropdown-toggle userName" data-toggle="dropdown">
+                    <a href="#/profile/{{user._id}}" id="link-profile" class="dropdown-toggle userName" data-toggle="dropdown">
                         <img class="profile-img" ng-src="{{$root.user.profileImageUrl}}" err-src="../images/profile.jpg" alt="Profile pic"> {{user.fname + " " + user.lname}}
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sliders" aria-hidden="true"></i></a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
                     </ul>
@@ -142,7 +142,6 @@
 
         <!-- /#wrapper -->
 
-        <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="javascripts/script.js"></script>
         <script src="javascripts/menu.js"></script>
@@ -162,12 +161,14 @@
         <script src="javascripts/controllers/userController.js"></script>
         <script src="javascripts/controllers/photosController.js"></script>
         <script src="javascripts/controllers/friendRequestController.js"></script>
+        <script src="javascripts/controllers/friendsController.js"></script>
         <!-- directives -->
         <script src="javascripts/directives/posts.js"></script>
         <script src="javascripts/directives/comments.js"></script>
         <script src="javascripts/directives/photos.js"></script>
         <script src="javascripts/directives/users.js"></script>
         <script src="javascripts/directives/friendRequests.js"></script>
+        <script src="javascripts/directives/friends.js"></script>
 
 </body>
 

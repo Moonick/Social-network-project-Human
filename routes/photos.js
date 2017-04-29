@@ -23,10 +23,11 @@ var uploading = multer({
 });
 
 //================== LOAD ALL PHOTOS ==================
-router.get('/', function(req, res) {
+router.get('/:userId', function(req, res) {
     var db = req.db;
     var photos = db.get('photos');
-    var userId = req.session.user._id
+    var userId = req.params.userId;
+
     photos.find({ user_id: userId }, { sort: { date: -1 } }, function(err, photos) {
         res.json(photos);
     });
