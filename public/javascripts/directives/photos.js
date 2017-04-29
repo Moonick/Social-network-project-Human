@@ -1,4 +1,4 @@
-app.directive('photos', ["photoService", "commentService", function(photoService, commentService) {
+app.directive('photos', ["$rootScope", "photoService", "commentService", function($rootScope, photoService, commentService) {
     return {
         restrict: 'E',
         scope: {
@@ -7,7 +7,8 @@ app.directive('photos', ["photoService", "commentService", function(photoService
         templateUrl: './javascripts/directives/photos.htm',
         link: function(scope, $element) {
             var photoId = scope.data._id;
-            var userId = scope.$parent.user.userId;
+            var userId = $rootScope.user._id;
+
             scope.IsVisible = false;
             scope.showHideComments = function() {
                 scope.IsVisible = scope.IsVisible ? false : true;

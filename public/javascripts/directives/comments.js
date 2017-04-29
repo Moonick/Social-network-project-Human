@@ -8,7 +8,7 @@ app.directive('comments', ["$rootScope", "commentService", function($rootScope, 
         link: function(scope, $element) {
             var comments = scope.$parent.comments;
             var postId = scope.data.postId;
-            var userId = $rootScope.user.userId;
+            var userId = $rootScope.user._id;
             var user = $rootScope.user;
             var comId = scope.data._id;
 
