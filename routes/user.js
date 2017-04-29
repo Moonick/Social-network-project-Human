@@ -131,7 +131,7 @@ router.post('/uploadphoto', uploading.any(), function(req, res) {
     }
 
     photos.insert(picture);
-    res.redirect("/#/profile");
+    res.redirect("/#/profile/"+req.session.user._id);
 });
 
 // ================ ADD AVATAR/COVER PHOTO ======================
