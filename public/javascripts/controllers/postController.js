@@ -9,4 +9,6 @@ app.controller('postController', ['$scope', 'postService', 'userService', functi
     userService.getCurrentUser().then(function (res) {
         $scope.user = res.data;
     });
+  
+
 }]);
