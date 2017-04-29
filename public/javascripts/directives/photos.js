@@ -8,7 +8,6 @@ app.directive('photos', ["photoService", "commentService", function(photoService
         link: function(scope, $element) {
             var photoId = scope.data._id;
             var userId = scope.$parent.user.userId;
-
             scope.IsVisible = false;
             scope.showHideComments = function() {
                 scope.IsVisible = scope.IsVisible ? false : true;

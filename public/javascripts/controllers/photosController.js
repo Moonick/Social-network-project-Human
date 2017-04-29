@@ -9,7 +9,6 @@ app.controller('photosController', ['$scope', 'photoService', 'userService', fun
 
 
     $(document).ready(function() {
-
         $(".fancybox").fancybox({
             openEffect: "none",
             closeEffect: "none",

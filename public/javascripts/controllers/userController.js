@@ -1,4 +1,4 @@
-app.controller('userController', ['$scope', '$rootScope', 'userService', function($scope, $rootScope, userService) {
+app.controller('userController', ['$http', '$scope', '$rootScope', 'userService', function($http, $scope, $rootScope, userService) {
 
     userService.downloadUserPosts().then(function(res) {
         $scope.posts = res.data;
@@ -10,7 +10,8 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
     });
     // ============= get current user =======================
     userService.getCurrentUser().then(function(res) {
-        $rootScope.user = res.data;
+        $rootScope.user = res.data[0];
+        console.log(res.data[0])
     });
     // ============= search users by full name ================
     $scope.filterUsers = function() {
@@ -18,12 +19,6 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
 
         function loadUsersByName() {
             userService.getUsers(userName).then(function(res) {
-                var users = res.data;
-                for (var index = 0; index < users.length; index++) {
-                    if (users[index]._id === $rootScope.user.userId) {
-                        users.splice(index, 1);
-                    }
-                }
                 $scope.users = res.data;
             });
         }
@@ -33,10 +28,8 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
     $scope.showUsers = function() {
         if ($('.search').val() !== "") {
             $('.searchFriends').show();
-            $("body").css("overflow", " hidden");
         } else {
             $('.searchFriends').hide();
-            $("body").css("overflow", " auto");
         }
         $('body').on('click', function(evt) {
             if (evt.target.id == "searchFriendsInput" || evt.target.className == "searchFriends") {
@@ -48,6 +41,7 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
 
     // ===================== show user timeline first =====================
     $scope.show = 1;
+
     // ===================== add photo button - modal window ==============
     $scope.uploadPhoto = function() {
         $(".overlay, #uploadPhoto").show();
@@ -68,5 +62,7 @@ app.controller('userController', ['$scope', '$rootScope', 'userService', functio
     };
     addBtnOnHover('.profile-photo', '.addProfImg');
     addBtnOnHover('.cover-photo', '.addCoverImg');
+
+
 
 }]);

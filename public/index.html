@@ -56,36 +56,14 @@
                         <li>
                             <p><strong>Friend Requests</strong></p>
                         </li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Friend name</strong>
-                                        <a href="#" class="btn btn-default btn-inline">Confirm</a>
-                                        <a href="#" class="btn btn-default btn-inline">Delete Request</a>
-                                    </p>
+                        <div ng-controller="friendRequestController">
+                            <div infinite-scroll='loadMore()'>
+                                <div ng-repeat="friend in someRequests">
+                                    <friend-requests data='friend'></friend-requests>
                                 </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Friend 2</strong>
-                                        <a href="#" class="btn btn-default btn-inline">hello</a>
-                                        <a href="#" class="btn btn-default btn-inline">:)</a>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Friends</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
+                            </div>
+                        </div>
+
                     </ul>
                     <!-- /.dropdown-tasks -->
                 </li>
@@ -142,69 +120,9 @@
                 </li>
                 <!-- /.dropdown -->
 
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="">
-                                <div>
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small">12 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="">
-                                <div>
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-alerts -->
-                </li>
-                <!-- /.dropdown -->
                 <li>
                     <a href="#profile" id="link-profile" class="dropdown-toggle userName" data-toggle="dropdown">
-                        <img class="profile-img" ng-src="{{$root.user.profImgUrl}}" err-src="../images/profile.jpg" alt="Profile pic"> {{user.fname + " " + user.lname}}
+                        <img class="profile-img" ng-src="{{$root.user.profileImageUrl}}" err-src="../images/profile.jpg" alt="Profile pic"> {{user.fname + " " + user.lname}}
                     </a>
                 </li>
                 <li class="dropdown">
@@ -243,11 +161,13 @@
         <script src="javascripts/controllers/commentController.js"></script>
         <script src="javascripts/controllers/userController.js"></script>
         <script src="javascripts/controllers/photosController.js"></script>
+        <script src="javascripts/controllers/friendRequestController.js"></script>
         <!-- directives -->
         <script src="javascripts/directives/posts.js"></script>
         <script src="javascripts/directives/comments.js"></script>
         <script src="javascripts/directives/photos.js"></script>
         <script src="javascripts/directives/users.js"></script>
+        <script src="javascripts/directives/friendRequests.js"></script>
 
 </body>
 
