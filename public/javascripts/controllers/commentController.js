@@ -18,15 +18,17 @@ app.controller('commentController', ['$scope', '$rootScope', 'commentService', '
                 likes: [],
                 date: new Date().toLocaleString()
             };
+            if ($('.panel-comments textarea').val() !== "") {
+                commentService.addComment(comment).then(function(res) {
+                    if (res.status == 201) {
+                        $scope.comments.push(res.data);
+                        $('.panel-comments textarea').val("");
+                        $scope.$parent.numOfComments()
 
-            commentService.addComment(comment).then(function(res) {
-                if (res.status == 201) {
-                    $scope.comments.push(res.data);
-                    $('.panel-comments textarea').val("");
-                    $scope.$parent.numOfComments()
+                    }
+                });
+            }
 
-                }
-            });
         };
     });
 
