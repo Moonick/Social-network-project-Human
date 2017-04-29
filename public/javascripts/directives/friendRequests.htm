@@ -1,0 +1,11 @@
+<li>
+    <div class="col-md-5">
+        <img ng-src="{{data.profileImageUrl}}" err-src="../images/profile.jpg" class="img-comments" alt="userImg">
+        <span>{{data.fullName}}</span>
+    </div>
+    <div class="col-md-7">
+        <button class="confirm-btn" ng-click="confirmRequest($event)">Confirm</button>
+        <button ng-click="rejectRequest($event)">Reject</button>
+    </div>
+</li>
+<li class="divider"></li>

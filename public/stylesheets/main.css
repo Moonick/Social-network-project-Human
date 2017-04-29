@@ -136,13 +136,13 @@ a {
 }
 
 .input-search {
-    margin-top: 10px;
+    margin-top: 15px;
     display: table;
     /*width: 100%;*/
 }
 
 .news-feed {
-    margin-top: 15px;
+    margin-top: 25px;
     text-align: center;
     font-weight: bold;
     text-decoration: none;
@@ -413,11 +413,12 @@ div.chat-window {
 }
 
 .img-comments {
-    width: 35px;
-    height: 35px;
+    max-width: 35px;
+    max-height: 35px;
+    min-width: 35px;
+    min-height: 35px;
     object-fit: cover;
-    border: 2px solid #FE5E3A;
-    padding-top: 3px;
+    /*border: 2px solid #FE5E3A;*/
 }
 
 .comment-btn {
@@ -483,7 +484,7 @@ a.change-color {
     position: absolute;
     top: 34px;
     left: 15px;
-    width: 425px;
+    width: 419px;
     max-height: 300px;
     overflow: auto;
     color: #8C9097;
@@ -561,8 +562,10 @@ a.change-color {
     position: absolute;
     top: -6px;
     left: -6px;
+    min-width: 150px;
     max-width: 150px;
-    height: 150px;
+    min-height: 150px;
+    max-height: 150px;
     object-fit: cover;
     border-radius: 100%;
 }
