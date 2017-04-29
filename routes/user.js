@@ -26,7 +26,7 @@ router.get('/', function(req, res) {
     var db = req.db;
     var users = db.get('users');
 
-    users.find({ _id: req.session.user._id }, ["_id", "fname", "lname", "fullName", "profileImageUrl", "coverPhotoUrl"]).then(function(user) {
+    users.find({ _id: req.session.user._id }, ["_id", "fname", "lname", "fullName", "profileImageUrl", "coverPhotoUrl", "receiveFriendRequests", "sendFriendRequests", "friends"]).then(function(user) {
         res.json(user);
     });
 });
@@ -54,9 +54,7 @@ router.post('/friendRequest/:userId', function(req, res) {
         }
         res.end();
     });
-
 });
-
 
 //================== LOAD USER POSTS ==================
 router.get('/posts', function(req, res) {
@@ -93,7 +91,7 @@ router.post('/newpost', uploading.any(), function(req, res) {
         location: "",
         comments: [],
         likes: []
-    }
+    };
 
     posts.insert(newPost);
     res.redirect("/#/profile");
@@ -125,12 +123,13 @@ router.post('/uploadphoto', uploading.any(), function(req, res) {
 });
 
 // ================ ADD AVATAR/COVER PHOTO ======================
-
 router.post('/coverAvatar', uploading.any(), function(req, res) {
     var db = req.db;
     var photos = db.get('photos');
     var users = db.get("users");
+    var posts = db.get('posts');
     var date = new Date();
+
     var picture = {
         user_id: req.session.user._id,
         path: req.files[0].path,
@@ -144,10 +143,13 @@ router.post('/coverAvatar', uploading.any(), function(req, res) {
 
     if (req.files[0].fieldname === "cover") {
         users.update({ _id: req.session.user._id }, { $set: { coverPhotoUrl: req.files[0].path } }).then(function(data) {
+            photos.insert(picture);
             res.redirect('/#/profile');
         });
     } else if (req.files[0].fieldname === "avatar") {
+        posts.update({ user_id: req.session.user._id }, { $set: { userProfImg: req.files[0].path } }, { multi: true });
         users.update({ _id: req.session.user._id }, { $set: { profileImageUrl: req.files[0].path } }).then(function(data) {
+            photos.insert(picture);
             res.redirect('/#/profile');
         });
     }
@@ -166,7 +168,7 @@ router.get('/friendRequests', function(req, res) {
 
         users.find({ _id: { $in: usersReceive[0].receiveFriendRequests } }, ["_id", "fname", "lname", "fullName", "profileImageUrl", "coverPhotoUrl", "friends"]).then(function(usersFriendRequests) {
             res.json(usersFriendRequests);
-        })
+        });
 
     });
 });
@@ -196,5 +198,21 @@ router.post('/reject/:reqFriendId', function(req, res) {
     users.update({ _id: userID }, { $pull: { receiveFriendRequests: reqFriendId } });
     users.update({ _id: reqFriendId }, { $pull: { sendFriendRequests: userID } });
     res.status(201);
+});
+
+// ====================== LOAD ALL FRIENDS =========================
+router.get('/friends', function(req, res) {
+    var db = req.db;
+    var users = db.get('users');
+    var userID = req.session.user._id;
+    var userFriends = [];
+
+    users.find({ _id: userID }).then(function(user) {
+        userFriends = user[0].friends;
+
+        users.find({ _id: { $in: userFriends } }, ["_id", "fname", "lname", "fullName", "profileImageUrl", "coverPhotoUrl", "friends"]).then(function(usersFriends) {
+            res.json(usersFriends);
+        });
+    });
 });
 module.exports = router;

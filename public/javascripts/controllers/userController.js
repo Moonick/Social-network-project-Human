@@ -1,5 +1,5 @@
 app.controller('userController', ['$http', '$scope', '$rootScope', 'userService', function($http, $scope, $rootScope, userService) {
-
+    // ================== LOAD ALL USER POSTS ===================
     userService.downloadUserPosts().then(function(res) {
         $scope.posts = res.data;
 
@@ -8,12 +8,13 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
             $scope.somePosts = $scope.posts.slice(0, $scope.somePosts.length + 5);
         };
     });
-    // ============= get current user =======================
+
+    // ============= GET CURRENT USER =======================
     userService.getCurrentUser().then(function(res) {
         $rootScope.user = res.data[0];
-        console.log(res.data[0])
     });
-    // ============= search users by full name ================
+
+    // ============= SEARCH USER BY FULL NAME ================
     $scope.filterUsers = function() {
         var userName = $('.search').val();
 
@@ -24,7 +25,8 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
         }
         setTimeout(loadUsersByName, 1000);
     };
-    // ================= show dropdown with found users by full name =========
+
+    // ================= SHOW DROPDOWN WITH FOUND USERS BY FULL NAME  =========
     $scope.showUsers = function() {
         if ($('.search').val() !== "") {
             $('.searchFriends').show();
@@ -39,10 +41,10 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
         })
     };
 
-    // ===================== show user timeline first =====================
+    // ===================== SHOW USER TIMELINE FIRST =====================
     $scope.show = 1;
 
-    // ===================== add photo button - modal window ==============
+    // ===================== ADD PHOTO BUTTON - MODAL WINDOW ==============
     $scope.uploadPhoto = function() {
         $(".overlay, #uploadPhoto").show();
 
@@ -50,7 +52,8 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
             $(".overlay, #uploadPhoto").hide();
         })
     };
-    // ===================== buttons for profile and cover photo ==========
+
+    // ===================== BUTTONS FOR UPLOADING AVATAR/COVER PHOTOS ==========
     function addBtnOnHover(imgDiv, btn) {
         $(imgDiv).hover(
             function() {

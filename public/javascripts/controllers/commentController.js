@@ -3,11 +3,10 @@ app.controller('commentController', ['$scope', 'commentService', 'userService', 
     var userId = $scope.$parent.data.userId;
     var user = $scope.$parent.$parent.user;
 
-
-
+    // ============== LOAD ALL COMMENTS ================
     commentService.downloadComments(postId).then(function(res) {
         $scope.comments = res.data;
-
+        // =========== ADD NEW COMMENT ==============
         $scope.addComment = function(event) {
             var comment = {
                 text: $scope.commentText,

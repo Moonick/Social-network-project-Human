@@ -5,12 +5,16 @@
                 <div class="photos">
                     <form method="POST" action="/user/coverAvatar" enctype="multipart/form-data">
                         <div class="cover-photo">
-                            <img ng-src="{{user.coverPhotoUrl}}" err-src="../images/cover-photo.jpg" alt="cover photo">
+                            <a class="thumbnail fancybox cover-fancybox" ng-href="{{user.coverPhotoUrl}}">
+                                <img ng-src="{{user.coverPhotoUrl}}" err-src="../images/cover-photo.jpg" alt="cover photo">
+                            </a>
                             <input id="addCoverImg" type="file" name="cover" onchange="this.form.submit();">
                             <label for="addCoverImg" class="addCoverImg">add Cover photo</label>
                         </div>
                         <div class="profile-photo">
-                            <img ng-src="{{user.profileImageUrl}}" err-src="../images/profile-photo.jpg" alt="profile photo">
+                            <a class="thumbnail fancybox avatar-fancybox" ng-href="{{user.profileImageUrl}}">
+                                <img ng-src="{{user.profileImageUrl}}" err-src="../images/profile-photo.jpg" alt="profile photo">
+                            </a>
                             <input id="addProfImg" type="file" name="avatar" onchange="this.form.submit();">
                             <label for="addProfImg" class="addProfImg">add Avatar</label>
                         </div>
@@ -236,19 +240,23 @@
         </div>
     </div>
     <!--=================================FRIENDS==============================================-->
-    <div class="row" ng-show="show==3">
+    <div class="row" ng-show="show==3" ng-controller="friendsController">
         <div class="col-lg-12">
             <div class="panel panel-default photos-panel">
                 <div class="panel-heading">
-                    Friends
+                    <div class="pull-left">
+                        <h4> <i class="fa fa-users" aria-hidden="true"></i> Friends</h4>
+                    </div>
                     <div class="pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default">Add Friends</button>
-                        </div>
+                        <span>All Friends({{user.friends.length}}) </span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <h2>all friends</h2>
+                    <div infinite-scroll='loadMore()'>
+                        <div ng-repeat="friend in someFriends">
+                            <friends data='friend'></friends>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

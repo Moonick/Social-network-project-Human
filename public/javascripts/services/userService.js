@@ -3,7 +3,8 @@ app.factory('userService', function($http, $rootScope) {
         this.user = $http.get('/user');
         this.posts = $http.get('/user/posts');
         this.users;
-        this.friendRequests = $http.get('user/friendRequests');
+        this.friendRequests = $http.get('/user/friendRequests');
+        this.friends = $http.get('/user/friends');
     };
     User.prototype.getCurrentUser = function() {
         return this.user;
@@ -25,6 +26,9 @@ app.factory('userService', function($http, $rootScope) {
     };
     User.prototype.rejectRequest = function(reqFriendId) {
         return $http.post('/user/reject/' + reqFriendId);
+    };
+    User.prototype.downloadFriends = function() {
+        return this.friends;
     };
     return new User();
 });

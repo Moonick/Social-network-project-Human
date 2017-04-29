@@ -1,4 +1,5 @@
 app.controller('postController', ['$scope', 'postService', 'userService', function($scope, postService, userService) {
+    // =========== LOAD ALL POSTS =============
     postService.downloadPosts().then(function(res) {
         $scope.posts = res.data;
         $scope.somePosts = $scope.posts.slice(0, 5);
@@ -6,6 +7,7 @@ app.controller('postController', ['$scope', 'postService', 'userService', functi
             $scope.somePosts = $scope.posts.slice(0, $scope.somePosts.length + 5);
         };
     });
+    // ========= GET CURRENT USER =================
     userService.getCurrentUser().then(function(res) {
         $scope.user = res.data;
     });
