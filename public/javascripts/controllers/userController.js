@@ -15,8 +15,10 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
     // ============= GET CURRENT USER/SHOW FRIENDS PROFILES =======================
     userService.getCurrentUser().then(function(res) {
         $rootScope.user = res.data[0];
-
+        console.log($rootScope.user)
+        $scope.isCurrentUser = true;
         if (userId === $rootScope.user._id) {
+            $scope.isCurrentUser = true;
             // ===================== BUTTONS FOR UPLOADING AVATAR/COVER PHOTOS ==========
             function addBtnOnHover(imgDiv, btn) {
                 $(imgDiv).hover(
@@ -45,13 +47,14 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
             $('#uploadPhotoBtn').show();
 
         } else {
+            $scope.isCurrentUser = false;
             //hide input add new post
             $('.addPost').hide();
             //hide upload photo button
             $('#uploadPhotoBtn').hide();
-
+            //================== GET USER PROFILE =====================
             userService.getUserProfile(userId).then(function(res) {
-                console.log(res)
+                $rootScope.profile = res.data[0];
             });
         }
     });

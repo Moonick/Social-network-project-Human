@@ -1,19 +1,19 @@
-<div id="page-wrapper" ng-controller="userController">
+<div id="page-wrapper">
     <div class="row ">
         <div class="col-lg-12">
             <div class="panel panel-default img-panel ">
                 <div class="photos">
                     <form method="POST" action="/user/coverAvatar" enctype="multipart/form-data">
                         <div class="cover-photo">
-                            <a class="thumbnail fancybox cover-fancybox" ng-href="{{user.coverPhotoUrl}}">
-                                <img ng-src="{{user.coverPhotoUrl}}" err-src="../images/cover-photo.jpg" alt="cover photo">
+                            <a class="thumbnail fancybox cover-fancybox" ng-href="{{isCurrentUser ? user.coverPhotoUrl : profile.coverPhotoUrl}}">
+                                <img ng-src="{{isCurrentUser ? user.coverPhotoUrl : profile.coverPhotoUrl}}" err-src="../images/cover-photo.jpg" alt="cover photo">
                             </a>
                             <input id="addCoverImg" type="file" name="cover" onchange="this.form.submit();">
                             <label for="addCoverImg" class="addCoverImg">add Cover photo</label>
                         </div>
                         <div class="profile-photo">
-                            <a class="thumbnail fancybox avatar-fancybox" ng-href="{{user.profileImageUrl}}">
-                                <img ng-src="{{user.profileImageUrl}}" err-src="../images/profile-photo.jpg" alt="profile photo">
+                            <a class="thumbnail fancybox avatar-fancybox" ng-href="{{isCurrentUser ? user.profileImageUrl : profile.profileImageUrl}}">
+                                <img ng-src="{{isCurrentUser ? user.profileImageUrl : profile.profileImageUrl}}" err-src="../images/profile-photo.jpg" alt="profile photo">
                             </a>
                             <input id="addProfImg" type="file" name="avatar" onchange="this.form.submit();">
                             <label for="addProfImg" class="addProfImg">add Avatar</label>
@@ -27,7 +27,7 @@
                         <a href="" ng-click="show=3">Friends</a>
                     </div>
                     <div class="user-name">
-                        <p>{{user.fname +" "+ user.lname}}</p>
+                        <p>{{isCurrentUser ? user.fullName : profile.fullName}}</p>
                     </div>
                 </div>
             </div>
@@ -248,7 +248,7 @@
                         <h4> <i class="fa fa-users" aria-hidden="true"></i> Friends</h4>
                     </div>
                     <div class="pull-right">
-                        <span>All Friends({{user.friends.length}}) </span>
+                        <span>All Friends({{isCurrentUser ? user.friends.length : profile.friends.length}}) </span>
                     </div>
                 </div>
                 <div class="panel-body">

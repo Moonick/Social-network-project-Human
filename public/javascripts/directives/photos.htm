@@ -27,7 +27,7 @@
                     <div class="text-right" ng-click="showHideComments()">{{data.title}} at {{data.location}}<i class="fa fa-times fa-2x" aria-hidden="true"></i></div>
                     <div class="panel-comments" ng-controller="commentController" ng-show="IsVisible">
                         <div class="input-flex ">
-                            <a href=" "><img ng-src="{{user.profImgUrl}}" err-src="../images/profile.jpg" class='img-comments' alt="userImg "> </a>
+                            <a href=" "><img ng-src="{{$root.user.profileImageUrl}}" err-src="../images/profile.jpg" class='img-comments' alt="userImg "> </a>
                             <textarea ng-model="commentText " type="text " name="comment " placeholder="Comment here "> </textarea>
                         </div>
                         <div class="btn-flex">

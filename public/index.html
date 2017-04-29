@@ -25,7 +25,7 @@
 </head>
 
 <body ng-app="myApp">
-    <div id="wrapper">
+    <div id="wrapper" ng-controller="userController">
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top navbar-fixed-top" role="navigation" style="margin-bottom: 0">
@@ -33,7 +33,7 @@
 
                 <a class="navbar-brand" href="#/">human</a>
             </div>
-            <div class="col-md-4 input-search custom-search-form" ng-controller="userController">
+            <div class="col-md-4 input-search custom-search-form">
                 <input id="searchFriendsInput" type="text" class="form-control search" ng-focus="showUsers()" ng-keyup="filterUsers(); showUsers()" placeholder="Find a friend...">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
