@@ -30,6 +30,18 @@ router.get('/', function(req, res) {
         res.json(user);
     });
 });
+
+// =================== GET USER PROFILE =======================
+router.get('/:userId', function(req, res) {
+    var db = req.db;
+    var users = db.get('users');
+    var userId = req.params.userId;
+
+    users.find({ _id: userId }, ["_id", "fname", "lname", "fullName", "profileImageUrl", "coverPhotoUrl", "receiveFriendRequests", "sendFriendRequests", "friends"]).then(function(user) {
+        res.json(user);
+    });
+});
+
 // =================== SEARCH USER BY NAME ====================
 router.get('/find/:userName', function(req, res) {
     var db = req.db;
@@ -219,4 +231,6 @@ router.get('/friends/:userId', function(req, res) {
         });
     });
 });
+
+
 module.exports = router;

@@ -1,6 +1,7 @@
 app.controller('userController', ['$http', '$scope', '$rootScope', 'userService', function($http, $scope, $rootScope, userService) {
     var url = window.location.href;
     var userId = url.substring(url.lastIndexOf('/') + 1);
+
     // ================== LOAD ALL USER POSTS ===================
     userService.downloadUserPosts(userId).then(function(res) {
         $scope.posts = res.data;
@@ -11,9 +12,48 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
         };
     });
 
-    // ============= GET CURRENT USER =======================
+    // ============= GET CURRENT USER/SHOW FRIENDS PROFILES =======================
     userService.getCurrentUser().then(function(res) {
         $rootScope.user = res.data[0];
+
+        if (userId === $rootScope.user._id) {
+            // ===================== BUTTONS FOR UPLOADING AVATAR/COVER PHOTOS ==========
+            function addBtnOnHover(imgDiv, btn) {
+                $(imgDiv).hover(
+                    function() {
+                        $(btn).show()
+                    },
+                    function() {
+                        $(btn).hide()
+                    });
+            };
+            addBtnOnHover('.profile-photo', '.addProfImg');
+            addBtnOnHover('.cover-photo', '.addCoverImg');
+            //show input add new post
+            $('.addPost').show()
+
+            // ===================== ADD PHOTO BUTTON - MODAL WINDOW ==============
+            $scope.uploadPhoto = function() {
+                $(".overlay, #uploadPhoto").show();
+
+                $(".close-photo").on('click', function() {
+                    $(".overlay, #uploadPhoto").hide();
+                });
+            };
+
+            //show upload photo button
+            $('#uploadPhotoBtn').show();
+
+        } else {
+            //hide input add new post
+            $('.addPost').hide();
+            //hide upload photo button
+            $('#uploadPhotoBtn').hide();
+
+            userService.getUserProfile(userId).then(function(res) {
+                console.log(res)
+            });
+        }
     });
 
     // ============= SEARCH USER BY FULL NAME ================
@@ -46,27 +86,9 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
     // ===================== SHOW USER TIMELINE FIRST =====================
     $scope.show = 1;
 
-    // ===================== ADD PHOTO BUTTON - MODAL WINDOW ==============
-    $scope.uploadPhoto = function() {
-        $(".overlay, #uploadPhoto").show();
 
-        $(".close-photo").on('click', function() {
-            $(".overlay, #uploadPhoto").hide();
-        })
-    };
 
-    // ===================== BUTTONS FOR UPLOADING AVATAR/COVER PHOTOS ==========
-    function addBtnOnHover(imgDiv, btn) {
-        $(imgDiv).hover(
-            function() {
-                $(btn).show()
-            },
-            function() {
-                $(btn).hide()
-            });
-    };
-    addBtnOnHover('.profile-photo', '.addProfImg');
-    addBtnOnHover('.cover-photo', '.addCoverImg');
+
 
 
 

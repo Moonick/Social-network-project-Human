@@ -30,5 +30,8 @@ app.factory('userService', function($http, $rootScope) {
     User.prototype.downloadFriends = function(userId) {
         return this.friends = $http.get('/user/friends/' + userId);
     };
+    User.prototype.getUserProfile = function(userId) {
+        return this.profile = $http.get('/user/' + userId);
+    };
     return new User();
 });
