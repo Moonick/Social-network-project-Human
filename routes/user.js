@@ -31,6 +31,37 @@ router.get('/', function(req, res) {
     });
 });
 
+// ======================= LOAD FRIEND REQUESTS ==================
+router.get('/allfriendsrequests', function(req, res) {
+    console.log('here')
+    var db = req.db;
+    var users = db.get('users');
+    var userID = req.session.user._id;
+    var userReceiveFriendRequests;
+    var usersRequests = [];
+
+    users.find({ _id: userID }).then(function(usersReceive) {
+        userReceiveFriendRequests = usersReceive[0].receiveFriendRequests;
+        console.log(userReceiveFriendRequests);
+        users.find({ _id: { $in: usersReceive[0].receiveFriendRequests } }, ["_id", "fname", "lname", "fullName", "profileImageUrl", "coverPhotoUrl", "friends"]).then(function(usersFriendRequests) {
+
+            res.json(usersFriendRequests);
+        });
+
+    });
+});
+//================== LOAD USER POSTS ==================
+router.get('/posts/:userId', function(req, res) {
+    var db = req.db;
+    var posts = db.get('posts');
+    var userID = req.params.userId;
+
+    posts.find({ user_id: userID }, { sort: { date: -1 } }).then(function(posts) {
+        res.json(posts);
+    });
+});
+
+
 // =================== GET USER PROFILE =======================
 router.get('/:userId', function(req, res) {
     var db = req.db;
@@ -68,16 +99,7 @@ router.post('/friendRequest/:userId', function(req, res) {
     });
 });
 
-//================== LOAD USER POSTS ==================
-router.get('/posts/:userId', function(req, res) {
-    var db = req.db;
-    var posts = db.get('posts');
-    var userID = req.params.userId;
 
-    posts.find({ user_id: userID }, { sort: { date: -1 } }).then(function(posts) {
-        res.json(posts);
-    });
-});
 
 //================== ADD NEW POST ===================
 router.post('/newpost', uploading.any(), function(req, res) {
@@ -131,7 +153,7 @@ router.post('/uploadphoto', uploading.any(), function(req, res) {
     }
 
     photos.insert(picture);
-    res.redirect("/#/profile/"+req.session.user._id);
+    res.redirect("/#/profile/" + req.session.user._id);
 });
 
 // ================ ADD AVATAR/COVER PHOTO ======================
@@ -169,25 +191,6 @@ router.post('/coverAvatar', uploading.any(), function(req, res) {
         });
 
     }
-});
-// ======================= LOAD FRIEND REQUESTS ==================
-
-router.get('/requestFriends', function(req, res) {
-    var db = req.db;
-    var users = db.get('users');
-    var userID = req.session.user._id;
-    var userReceiveFriendRequests;
-    var usersRequests = [];
-
-    users.find({ _id: userID }).then(function(usersReceive) {
-        userReceiveFriendRequests = usersReceive[0].receiveFriendRequests;
-        console.log(userReceiveFriendRequests);
-        users.find({ _id: { $in: usersReceive[0].receiveFriendRequests } }, ["_id", "fname", "lname", "fullName", "profileImageUrl", "coverPhotoUrl", "friends"]).then(function(usersFriendRequests) {
-            
-            res.json(usersFriendRequests);
-        });
-
-    });
 });
 
 // ====================== CONFIRM FRIEND REQUEST ====================

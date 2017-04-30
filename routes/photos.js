@@ -22,6 +22,25 @@ var uploading = multer({
     },
 });
 
+// router.get('/allfriendsrequests', function(req, res) {
+//     console.log('here')
+//     var db = req.db;
+//     var users = db.get('users');
+//     var userID = req.session.user._id;
+//     var userReceiveFriendRequests;
+//     var usersRequests = [];
+
+//     users.find({ _id: userID }).then(function(usersReceive) {
+//         userReceiveFriendRequests = usersReceive[0].receiveFriendRequests;
+//         console.log(userReceiveFriendRequests);
+//         users.find({ _id: { $in: usersReceive[0].receiveFriendRequests } }, ["_id", "fname", "lname", "fullName", "profileImageUrl", "coverPhotoUrl", "friends"]).then(function(usersFriendRequests) {
+
+//             res.json(usersFriendRequests);
+//         });
+
+//     });
+// });
+
 //================== LOAD ALL PHOTOS ==================
 router.get('/:userId', function(req, res) {
     var db = req.db;
@@ -51,5 +70,6 @@ router.post('/:photoId', function(req, res) {
         res.send(data);
     })
 });
+
 
 module.exports = router;
