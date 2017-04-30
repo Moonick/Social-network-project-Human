@@ -28,7 +28,7 @@
                     <div class="panel-comments" ng-controller="commentController" ng-show="IsVisible">
                         <div class="input-flex ">
                             <a href=" "><img ng-src="{{$root.user.profileImageUrl}}" err-src="../images/profile.jpg" class='img-comments' alt="userImg "> </a>
-                            <textarea ng-model="commentText " type="text " name="comment " placeholder="Comment here "> </textarea>
+                            <textarea ng-model="commentText" maxlength="200" type="text " name="comment " placeholder="Comment here "> </textarea>
                         </div>
                         <div class="btn-flex">
                             <button ng-click="addComment($event) " class="btn btn-default btn comment-btn ">Send</button>
