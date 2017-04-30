@@ -467,12 +467,14 @@ a.change-color {
 
 /*==================SEARCH FOR FRIENDS ==================*/
 
-.input-search .search:focus {
+.input-search .search:focus,
+.input-search .searchChat:focus {
     outline: none;
 }
 
 .input-group-btn>.btn,
-.input-search .search {
+.input-search .search,
+.input-search .searchChat {
     border-radius: 0;
 }
 
@@ -480,7 +482,8 @@ a.change-color {
     border-bottom: 1px solid gainsboro;
 }
 
-.searchFriends {
+.searchFriends,
+.searchFriendsChat {
     position: absolute;
     top: 34px;
     left: 15px;
@@ -495,7 +498,13 @@ a.change-color {
     border-bottom-right-radius: 4px;
 }
 
-.searchFriends span {
+.searchFriendsChat {
+    width: 279px;
+    max-height: 300px;
+}
+
+.searchFriends span,
+.searchFriendsChat span {
     color: black;
     font-size: 1.1em;
 }

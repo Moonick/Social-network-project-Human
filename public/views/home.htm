@@ -36,16 +36,24 @@
         </div>
         <!-- /.col-lg-8 -->
 
-        <!--=======================chat=====================================-->
-        <div class="col-lg-4 ">
+        <!--======================= CHAT =====================================-->
+        <div class="col-lg-4 " ng-controller="chatUsersController">
+            <div class="col-md-12 input-search custom-search-form">
+                <input id="searchFriendsInputChat" type="text" class="form-control searchChat" ng-focus="showUsersForChat()" ng-keyup="filterUsersForChat(); showUsersForChat()" placeholder="Find a friend...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                </span>
+                <div class="searchFriendsChat">
+                    <div ng-repeat="chat in chatUsers">
+                        <chat-users data='chat'></chat-users>
+                    </div>
+                </div>
+            </div>
             <!-- /.panel -->
             <div class="chat-panel panel panel-default ">
                 <div class="panel-heading chat-window ">
                     <i class="fa fa-comments fa-fw "></i> Chat
-                    <div class="btn-group pull-right ">
-                        <ul class="dropdown-menu slidedown " id="chat-content">
-                        </ul>
-                    </div>
+
                     <!-- /.panel-body -->
                     <div class="panel-footer">
                         <form id="chat-form" action="">
@@ -83,5 +91,4 @@
     </div>
 </div>
 <script src="../javascripts/chat.js">
-
 </script>

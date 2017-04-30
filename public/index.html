@@ -9,22 +9,20 @@
         rel="icon" type="image/x-icon" />
 
     <title>HUMAN</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Work+Sans" rel="stylesheet">
 
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-            crossorigin=" anonymous"></script>
-            <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular.min.js"></script>
-            <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular-route.js"></script>
-            <script src="./javascripts/ng-infinite-scroll.min.js"></script>
-            <script src="./javascripts/autogrow.js"></script>
-            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-            <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin=" anonymous"></script>
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular.min.js"></script>
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular-route.js"></script>
+    <script src="./javascripts/ng-infinite-scroll.min.js"></script>
+    <script src="./javascripts/autogrow.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
 </head>
 
 <body ng-app="myApp">
@@ -37,16 +35,15 @@
                 <a class="navbar-brand" href="#/">human</a>
             </div>
             <div class="col-md-4 input-search custom-search-form">
-                <input id="searchFriendsInput" type="text" class="form-control search" ng-focus="showUsers()" ng-keyup="filterUsers(); showUsers()"
-                    placeholder="Find a friend...">
-                    <span class="input-group-btn">
+                <input id="searchFriendsInput" type="text" class="form-control search" ng-focus="showUsers()" ng-keyup="filterUsers(); showUsers()" placeholder="Find a friend...">
+                <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
                 </span>
-                    <div class="searchFriends">
-                        <div ng-repeat="user in users">
-                            <users data='user'></users>
-                        </div>
+                <div class="searchFriends">
+                    <div ng-repeat="user in users">
+                        <users data='user'></users>
                     </div>
+                </div>
             </div>
             <div class="col-md-2 news-feed">
                 <a href="#/"><i class="fa fa-newspaper-o" aria-hidden="true"></i> News feed</a>
@@ -126,7 +123,7 @@
 
                 <li>
                     <a href="#/profile/{{user._id}}" id="link-profile" class="dropdown-toggle userName" data-toggle="dropdown">
-                        <img class="profile-img" ng-src="{{$root.user.profileImageUrl}}" err-src="../images/profile.jpg" alt="Profile pic">                        {{user.fname + " " + user.lname}}
+                        <img class="profile-img" ng-src="{{$root.user.profileImageUrl}}" err-src="../images/profile.jpg" alt="Profile pic"> {{user.fname + " " + user.lname}}
                     </a>
                 </li>
                 <li class="dropdown">
@@ -145,34 +142,35 @@
     </div>
     <!-- /#wrapper -->
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-        <script src="javascripts/script.js"></script>
-        <script src="javascripts/menu.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="javascripts/script.js"></script>
+    <script src="javascripts/menu.js"></script>
 
-        <!-- modules -->
-        <script src="javascripts/app.js"></script>
+    <!-- modules -->
+    <script src="javascripts/app.js"></script>
 
-        <!-- services -->
-        <script src="javascripts/services/postService.js"></script>
-        <script src="javascripts/services/userService.js"></script>
-        <script src="javascripts/services/commentService.js"></script>
-        <script src="javascripts/services/photoService.js"></script>
+    <!-- services -->
+    <script src="javascripts/services/postService.js"></script>
+    <script src="javascripts/services/userService.js"></script>
+    <script src="javascripts/services/commentService.js"></script>
+    <script src="javascripts/services/photoService.js"></script>
 
-        <!-- controllers -->
-        <script src="javascripts/controllers/postController.js"></script>
-        <script src="javascripts/controllers/commentController.js"></script>
-        <script src="javascripts/controllers/userController.js"></script>
-        <script src="javascripts/controllers/photosController.js"></script>
-        <script src="javascripts/controllers/friendRequestController.js"></script>
-        <script src="javascripts/controllers/friendsController.js"></script>
-        <!-- directives -->
-        <script src="javascripts/directives/posts.js"></script>
-        <script src="javascripts/directives/comments.js"></script>
-        <script src="javascripts/directives/photos.js"></script>
-        <script src="javascripts/directives/users.js"></script>
-        <script src="javascripts/directives/friendRequests.js"></script>
-        <script src="javascripts/directives/friends.js"></script>
+    <!-- controllers -->
+    <script src="javascripts/controllers/postController.js"></script>
+    <script src="javascripts/controllers/commentController.js"></script>
+    <script src="javascripts/controllers/userController.js"></script>
+    <script src="javascripts/controllers/photosController.js"></script>
+    <script src="javascripts/controllers/friendRequestController.js"></script>
+    <script src="javascripts/controllers/friendsController.js"></script>
+    <script src="javascripts/controllers/chatUsersController.js"></script>
+    <!-- directives -->
+    <script src="javascripts/directives/posts.js"></script>
+    <script src="javascripts/directives/comments.js"></script>
+    <script src="javascripts/directives/photos.js"></script>
+    <script src="javascripts/directives/users.js"></script>
+    <script src="javascripts/directives/friendRequests.js"></script>
+    <script src="javascripts/directives/friends.js"></script>
+    <script src="javascripts/directives/chatUsers.js"></script>
 
 </body>
 

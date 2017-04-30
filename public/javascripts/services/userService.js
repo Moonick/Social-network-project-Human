@@ -33,5 +33,8 @@ app.factory('userService', function($http, $rootScope) {
     User.prototype.getUserProfile = function(userId) {
         return this.profile = $http.get('/user/' + userId);
     };
+    User.prototype.getMessages = function(friendId) {
+        return this.profile = $http.get('/user/chat/' + friendId);
+    };
     return new User();
 });

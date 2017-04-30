@@ -7,7 +7,7 @@ app.directive('users', ['$rootScope', "userService", function($rootScope, userSe
         templateUrl: './javascripts/directives/users.htm',
         link: function(scope, $element) {
             var userId = scope.data._id;
-            // ============== 
+            // ============== SHOW/HIDE BTN SEND FRIEND REQUEST ==============
             scope.hasSendRequest = function() {
 
                 if ($rootScope.user.sendFriendRequests.indexOf(userId) == -1) {
@@ -26,7 +26,7 @@ app.directive('users', ['$rootScope', "userService", function($rootScope, userSe
             };
             scope.hasSendRequest();
 
-            //  =============== SEND FRIEND REQUEST =========
+            //=============== SEND FRIEND REQUEST =========
 
             scope.sendFriendRequest = function($event) {
                 userService.sendFriendRequest(userId).then(function(data) {

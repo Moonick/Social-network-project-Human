@@ -59,8 +59,18 @@ router.get('/posts/:userId', function(req, res) {
     });
 });
 
-
-// =================== GET USER PROFILE =======================
+// =================== GET MESSAGES ===================
+router.get('/chat/:friendId', function(req, res) {
+    var db = req.db;
+    var messages = db.get('messages');
+    var friendId = req.params.friendId;
+    console.log(friendId)
+    res.json(friendId);
+    // messages.find({ user_id: userID }, { sort: { date: -1 } }).then(function(messages) {
+    //     res.json(messages);
+    // });
+});
+// =================== GET USER PROFILE ===============
 router.get('/:userId', function(req, res) {
     var db = req.db;
     var users = db.get('users');

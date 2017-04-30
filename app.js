@@ -17,16 +17,15 @@ var user = require('./routes/user');
 var uploads = require('./routes/uploads');
 var photos = require('./routes/photos');
 
-
-
 var app = express();
-var io = socket_io();
-app.io = io;
 
 var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('mongodb://alen:alen1234@ds151060.mlab.com:51060/social-network');
+var io = socket_io();
 
+app.io = io;
+var chat = require('./routes/chat')(io, db);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -39,22 +38,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(expressSession({ secret: 'kjdasbdlas83k54fs5d', resave: false, saveUninitialized: true }));
 // app.use(express.static(path.join(__dirname, 'public')));
-var connections = [];
-
-io.on('connection', function (socket) {
-    connections.push(socket);
-    console.log("CONNECTED: %s", connections.length);
-    socket.on('send message', function (data) {
-        console.log(data);
-        io.sockets.emit('new message', { msg: data });
-    });
-    socket.on('disconnect', function (data) {
-        connections.splice(connections.indexOf(socket), 1);
-        console.log("One DISCONNECTED");
-        console.log("CONNECTED: %s", connections.length);
-    });
-});
-
 
 
 function requireLogin(req, res, next) {
@@ -65,7 +48,7 @@ function requireLogin(req, res, next) {
     }
 };
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     req.db = db;
     res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
     next();
@@ -80,18 +63,19 @@ app.use('/posts', posts);
 app.use('/comments', comments);
 app.use('/uploads', uploads);
 app.use('/photos', photos);
+app.use('/chat', chat);
 
 
 // catch 404 and forward to error handler
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
