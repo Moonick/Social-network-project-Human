@@ -12,8 +12,9 @@ app.directive('chatUsers', ['$rootScope', "userService", function($rootScope, us
                 var friendName = scope.data.fullName;
                 $('#btn-chat').attr('data-friendId', friendId);
                 $('#friendName').html('with <strong>' + friendName + '</strong>');
-
+                $("ul.chat").html("");
                 userService.getMessages(friendId).then(function(res) {
+
                     scope.$parent.$parent.messages = res.data;
                 });
             }
