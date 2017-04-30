@@ -64,11 +64,18 @@ router.get('/chat/:friendId', function(req, res) {
     var db = req.db;
     var messages = db.get('messages');
     var friendId = req.params.friendId;
-    console.log(friendId)
-    res.json(friendId);
-    // messages.find({ user_id: userID }, { sort: { date: -1 } }).then(function(messages) {
-    //     res.json(messages);
-    // });
+    var userId = req.session.user._id;
+
+    messages.find({
+        $or: [
+            { $and: [{ receiverId: userId }, { senderId: friendId }] },
+            { $and: [{ receiverId: friendId }, { senderId: userId }] },
+        ]
+    }, { sort: { date: 1 } }).then(function(messages) {
+        console.log(messages)
+        res.json(messages);
+    });
+
 });
 // =================== GET USER PROFILE ===============
 router.get('/:userId', function(req, res) {

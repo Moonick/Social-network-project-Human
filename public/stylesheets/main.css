@@ -299,11 +299,16 @@ a {
 
 /*=============== CHAT WINDOW ===============*/
 
-div.chat-window {
-    height: 400px;
+#chat-form ul {
+    display: flex;
+    flex-direction: column;
 }
 
-#btn-chat {}
+ul.chat {
+    max-height: 300px;
+    min-height: 300px;
+    /*overflow-y: auto;*/
+}
 
 
 /*=============== ADD NEW POST ==============*/

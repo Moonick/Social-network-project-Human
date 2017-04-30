@@ -8,7 +8,6 @@ module.exports = function(io, db) {
         console.log("CONNECTED: %s");
         socket.on('send message', function(data) {
             messages.insert(data);
-            console.log(data);
             io.sockets.emit('new message', { msg: data });
         });
         socket.on('disconnect', function(data) {

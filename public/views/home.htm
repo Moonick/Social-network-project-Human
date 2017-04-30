@@ -37,58 +37,43 @@
         <!-- /.col-lg-8 -->
 
         <!--======================= CHAT =====================================-->
-        <div class="col-lg-4 " ng-controller="chatUsersController">
-            <div class="col-md-12 input-search custom-search-form">
+        <div class="col-lg-4" ng-controller="chatUsersController">
+            <!-- /.panel -->
+            <div class="input-search custom-search-form">
                 <input id="searchFriendsInputChat" type="text" class="form-control searchChat" ng-focus="showUsersForChat()" ng-keyup="filterUsersForChat(); showUsersForChat()" placeholder="Find a friend...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                </span>
                 <div class="searchFriendsChat">
                     <div ng-repeat="chat in chatUsers">
                         <chat-users data='chat'></chat-users>
                     </div>
                 </div>
             </div>
-            <!-- /.panel -->
-            <div class="chat-panel panel panel-default ">
-                <div class="panel-heading chat-window ">
-                    <i class="fa fa-comments fa-fw "></i> Chat
+            <div class="chat-panel panel panel-default">
+                <div class="panel-heading chat-window">
 
-                    <!-- /.panel-body -->
-                    <div class="panel-footer">
-                        <form id="chat-form" action="">
-                            <ul class="chat ">
-                                <li class="left clearfix ">
-                                    <span class="chat-img pull-left ">
-                                        <img src="http://placehold.it/50/55C1E7/fff " alt="User Avatar " class="img-circle " />
-                                    </span>
-                                    <div class="chat-body clearfix ">
-                                        <div class="header ">
-                                            <strong class="primary-font ">Jack Sparrow</strong>
-                                            <small class="pull-right text-muted ">
-                                                <i class="fa fa-clock-o fa-fw "></i> 12 mins ago
-                                            </small>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="input-group ">
-                                <input id="btn-input-chat" type="text " class="form-control input-sm " placeholder="Type your message here... " />
-                                <span class="input-group-btn ">
-                                    <button class="btn btn-warning btn-sm" id="btn-chat">
-                                        Send
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
+                    <div>
+                        <i class="fa fa-comments fa-fw"></i> Chat <span id="friendName"> </span>
                     </div>
                 </div>
+                <form id="chat-form" action="">
+                    <div class="panel-body">
+                        <ul class="chat">
+                            <div ng-repeat="msg in messages">
+                                <li class='left clearfix'><strong>  {{msg.name}}</strong>: {{msg.text}} </li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input id="btn-input-chat" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                            <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
+                                </span>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-<script src="../javascripts/chat.js">
-</script>
+</div>
+<script src="../javascripts/chat.js"></script>
