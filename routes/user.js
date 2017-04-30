@@ -172,7 +172,7 @@ router.post('/coverAvatar', uploading.any(), function(req, res) {
 });
 // ======================= LOAD FRIEND REQUESTS ==================
 
-router.get('/friendRequests', function(req, res) {
+router.get('/requestFriends', function(req, res) {
     var db = req.db;
     var users = db.get('users');
     var userID = req.session.user._id;
@@ -181,8 +181,9 @@ router.get('/friendRequests', function(req, res) {
 
     users.find({ _id: userID }).then(function(usersReceive) {
         userReceiveFriendRequests = usersReceive[0].receiveFriendRequests;
-
+        console.log(userReceiveFriendRequests);
         users.find({ _id: { $in: usersReceive[0].receiveFriendRequests } }, ["_id", "fname", "lname", "fullName", "profileImageUrl", "coverPhotoUrl", "friends"]).then(function(usersFriendRequests) {
+            
             res.json(usersFriendRequests);
         });
 
