@@ -25,7 +25,9 @@ var uploading = multer({
 router.get('/', function(req, res) {
     var db = req.db;
     var posts = db.get('posts');
-    posts.find({}, { sort: { date: -1 } }, function(err, posts) {
+    var arrayOfFriends=req.session.user.friends;
+    arrayOfFriends.push(req.session.user._id);
+    posts.find({user_id:{ $in: arrayOfFriends}}, { sort: { date: -1 } }, function(err, posts) {
         res.json(posts);
     });
 });
