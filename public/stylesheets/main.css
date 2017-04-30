@@ -563,6 +563,7 @@ a.change-color {
     object-fit: cover;
     border-radius: 100%;
     border: 5px solid white;
+    background-color: white;
     overflow: hidden;
 }
 
