@@ -89,10 +89,8 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
     };
 
     // ===================== SHOW USER TIMELINE FIRST =====================
-    // $scope.show = undefined || 2;
-    console.log('+++++++++++++')
-    console.log($scope.show)
-    console.log('=================')
+     $scope.show = 1;
+  
         // ===================== PHOTO ATTACHED ======================
     $('.input-files').on('change', function() {
         console.log($('.input-files'))

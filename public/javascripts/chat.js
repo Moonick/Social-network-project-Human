@@ -24,6 +24,7 @@ $(function() {
             var userId = data[0]._id;
 
             btnSend.on('click', function(event) {
+                console.log("here");
                 event.preventDefault();
                 var text = $("#btn-input-chat").val();
                 var text = escapeHTML(text);
