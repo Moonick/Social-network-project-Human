@@ -21,7 +21,7 @@ $(function() {
                         text: text,
                         senderId: userId,
                         receiverId: friendId,
-                        date: new Date().toLocaleString()
+                        date: new Date().toLocaleString() 
                     }
                     socket.emit('send message', message);
                 }
@@ -32,7 +32,7 @@ $(function() {
                 var receiver = data.msg.receiverId;
                 var sender = data.msg.senderId;
                 if (receiver == userId || sender == userId) {
-                    var chat = $("ul.chat").append(" <li class='left clearfix'><strong>" + data.msg.name + "</strong>: " + data.msg.text + "</li>");
+                    var chat = $("ul.chat").append(" <div class='listWithMessages'><li class='left clearfix'><strong>" + data.msg.name + "</strong>: " + data.msg.text + "</li></div>");
                 }
             });
         });
