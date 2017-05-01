@@ -2,7 +2,7 @@ $(function() {
     function chat() {
         var socket = io.connect();
 
-        var btnSend = $('#btn-chat');
+        var btnSend = $('.btn-chat');
         var escapeHTML = function(unsafe) {
             return unsafe.replace(/[&<"']/g, function(m) {
                 switch (m) {
@@ -24,6 +24,7 @@ $(function() {
             var userId = data[0]._id;
 
             btnSend.on('click', function(event) {
+                console.log("here");
                 event.preventDefault();
                 var text = $("#btn-input-chat").val();
                 var text = escapeHTML(text);
