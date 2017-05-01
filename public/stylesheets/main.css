@@ -336,6 +336,9 @@ a {
     .chat-fixed {
         left: 2%;
     }
+    .chat-panel .panel-body {
+        height: 150px;
+    }
 }
 
 #chat-form ul {
