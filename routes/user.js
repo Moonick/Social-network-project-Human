@@ -72,7 +72,6 @@ router.get('/chat/:friendId', function(req, res) {
             { $and: [{ receiverId: friendId }, { senderId: userId }] },
         ]
     }, { sort: { date: 1 } }).then(function(messages) {
-        console.log(messages)
         res.json(messages);
     });
 

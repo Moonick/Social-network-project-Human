@@ -7,6 +7,7 @@ app.directive('chatUsers', ['$rootScope', "userService", function ($rootScope, u
         templateUrl: './javascripts/directives/chatUsers.htm',
         link: function (scope, $element) {
             scope.startChat = function () {
+                $("#chatDivScroll").scrollTop($("#chatDivScroll")[0].scrollHeight);
                 var friendId = scope.data._id;
                 var friendName = scope.data.fullName;
                 $('#btn-chat').attr('data-friendId', friendId);

@@ -3,20 +3,22 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
     var userId = url.substring(url.lastIndexOf('/') + 1);
 
     // ================== LOAD ALL USER POSTS ===================
-    userService.downloadUserPosts(userId).then(function (res) {
-        $scope.posts = res.data;
+    if (userId) {
+        userService.downloadUserPosts(userId).then(function (res) {
+            $scope.posts = res.data;
 
-        $scope.somePosts = $scope.posts.slice(0, 5);
-        $scope.loadMore = function () {
-            $scope.somePosts = $scope.posts.slice(0, $scope.somePosts.length + 5);
-        };
-    });
+            $scope.somePosts = $scope.posts.slice(0, 5);
+            $scope.loadMore = function () {
+                $scope.somePosts = $scope.posts.slice(0, $scope.somePosts.length + 5);
+            };
+        });
+    }
 
     // ============= GET CURRENT USER/SHOW FRIENDS PROFILES =======================
     userService.getCurrentUser().then(function (res) {
         $rootScope.user = res.data[0];
         $scope.isCurrentUser = true;
-        if (userId === $rootScope.user._id || userId==="") {
+        if (userId === $rootScope.user._id || userId === "") {
             $scope.isCurrentUser = true;
             // ===================== BUTTONS FOR UPLOADING AVATAR/COVER PHOTOS ==========
             function addBtnOnHover(imgDiv, btn) {
