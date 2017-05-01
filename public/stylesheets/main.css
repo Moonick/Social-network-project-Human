@@ -59,6 +59,10 @@ a {
     color: white;
 }
 
+.navbar-default .navbar-brand:focus {
+    color: #FE5E3A;
+}
+
 .navbar-top-links {
     margin-right: 0;
     text-align: right;
