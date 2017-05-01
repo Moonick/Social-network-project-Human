@@ -70,7 +70,7 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
                 $scope.users = res.data;
             });
         }
-        setTimeout(loadUsersByName, 1000);
+        setTimeout(loadUsersByName, 500);
     };
 
     // ================= SHOW DROPDOWN WITH FOUND USERS BY FULL NAME  =========

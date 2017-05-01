@@ -2,6 +2,20 @@ $(function () {
     function chat() {
         var socket = io.connect();
         var btnSend = $('#btn-chat');
+        var escapeHTML = function (unsafe) {
+            return unsafe.replace(/[&<"']/g, function (m) {
+                switch (m) {
+                    case '&':
+                        return '&amp;';
+                    case '<':
+                        return '&lt;';
+                    case '"':
+                        return '&quot;';
+                    default:
+                        return '&#039;';
+                }
+            });
+        };
 
         $.get("/user", function (data) {
             var senderFullName = data[0].fullName;
@@ -11,6 +25,7 @@ $(function () {
             btnSend.on('click', function (event) {
                 event.preventDefault();
                 var text = $("#btn-input-chat").val();
+                var text = escapeHTML(text);
                 var friendId = btnSend.attr('data-friendId');
                 var friendName = btnSend.attr('data-friendName');
                 if (friendId) {
