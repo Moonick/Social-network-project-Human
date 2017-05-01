@@ -51,12 +51,12 @@
             <ul class="col-md-4 nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <i class="fa fa-user-plus" aria-hidden="true"></i> </i>
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-tasks">
-                        <li>
-                            <p><strong>Friend Requests</strong></p>
-                        </li>
+                    <ul class="dropdown-menu dropdown-fr-requests">
+
+                        <p><strong>Friend Requests</strong></p>
+
                         <div ng-controller="friendRequestController">
                             <div infinite-scroll='loadMore()'>
                                 <div ng-repeat="friend in someRequests">
@@ -66,12 +66,12 @@
                         </div>
 
                     </ul>
-                    <!-- /.dropdown-tasks -->
+                    <!-- /.dropdown-fr-requests-->
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <i class="fa fa-envelope fa-fw"></i> </i>
+                        <i class="fa fa-envelope fa-fw"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
                         <li>
@@ -120,7 +120,6 @@
                     <!-- /.dropdown-messages -->
                 </li>
                 <!-- /.dropdown -->
-
                 <li>
                     <a href="#/profile/{{user._id}}" id="link-profile" class="dropdown-toggle userName" data-toggle="dropdown">
                         <img class="profile-img" ng-src="{{$root.user.profileImageUrl}}" err-src="../images/profile.jpg" alt="Profile pic"> {{user.fname + " " + user.lname}}
@@ -139,12 +138,51 @@
         </nav>
 
         <main ng-view></main>
+        <!--======================= CHAT ===================================== -->
+        <div class="col-lg-4" ng-controller="chatUsersController">
+            <div class="chat-fixed">
+                <div class="input-search custom-search-form slide-toggle">
+                    <input id="searchFriendsInputChat" type="text" class="form-control searchChat" ng-focus="showUsersForChat()" ng-keyup="filterUsersForChat(); showUsersForChat()" placeholder="Find a friend...">
+                    <div class="searchFriendsChat">
+                        <div ng-repeat="chat in chatUsers">
+                            <chat-users data='chat'></chat-users>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-panel panel panel-default">
+                    <div class=" panel-heading chat-window" ng-click="hideShowChat()">
+
+                        <div>
+                            <i class="fa fa-comments fa-fw"></i> Chat <span class="friendName"> </span>
+                        </div>
+                    </div>
+                    <form id="chat-form" class="slide-toggle">
+                        <div class="panel-body" id='chatDivScroll'>
+                            <ul class="chat">
+                                <div ng-repeat="msg in messages" class="listWithMessages">
+                                    <li class='left clearfix'><strong ng-class="{redText : msg.name == $root.user.fullName}">  {{msg.name}}</strong>: {{msg.text}} </li>
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="input-group">
+                                <input id="btn-input-chat" type="text" maxlength="200" class="form-control input-sm" placeholder="Type your message here..." />
+                                <span class="input-group-btn">
+                            <button class="btn btn-chat">Send</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /#wrapper -->
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="javascripts/script.js"></script>
     <script src="javascripts/menu.js"></script>
+    <script src="javascripts/chat.js"></script>
 
     <!-- modules -->
     <script src="javascripts/app.js"></script>

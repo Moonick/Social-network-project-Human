@@ -1,21 +1,21 @@
-app.controller('userController', ['$http', '$scope', '$rootScope', 'userService', function ($http, $scope, $rootScope, userService) {
+app.controller('userController', ['$http', '$scope', '$rootScope', 'userService', function($http, $scope, $rootScope, userService) {
     var url = window.location.href;
     var userId = url.substring(url.lastIndexOf('/') + 1);
 
     // ================== LOAD ALL USER POSTS ===================
     if (userId) {
-        userService.downloadUserPosts(userId).then(function (res) {
+        userService.downloadUserPosts(userId).then(function(res) {
             $scope.posts = res.data;
 
             $scope.somePosts = $scope.posts.slice(0, 5);
-            $scope.loadMore = function () {
+            $scope.loadMore = function() {
                 $scope.somePosts = $scope.posts.slice(0, $scope.somePosts.length + 5);
             };
         });
     }
 
     // ============= GET CURRENT USER/SHOW FRIENDS PROFILES =======================
-    userService.getCurrentUser().then(function (res) {
+    userService.getCurrentUser().then(function(res) {
         $rootScope.user = res.data[0];
         $scope.isCurrentUser = true;
         if (userId === $rootScope.user._id || userId === "") {
@@ -23,10 +23,10 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
             // ===================== BUTTONS FOR UPLOADING AVATAR/COVER PHOTOS ==========
             function addBtnOnHover(imgDiv, btn) {
                 $(imgDiv).hover(
-                    function () {
+                    function() {
                         $(btn).show()
                     },
-                    function () {
+                    function() {
                         $(btn).hide()
                     });
             };
@@ -36,10 +36,10 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
             $('.addPost').show()
 
             // ===================== ADD PHOTO BUTTON - MODAL WINDOW ==============
-            $scope.uploadPhoto = function () {
+            $scope.uploadPhoto = function() {
                 $(".overlay, #uploadPhoto").show();
 
-                $(".close-photo").on('click', function () {
+                $(".close-photo").on('click', function() {
                     $(".overlay, #uploadPhoto").hide();
                 });
             };
@@ -54,7 +54,7 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
             //hide upload photo button
             $('#uploadPhotoBtn').hide();
             //================== GET USER PROFILE =====================
-            userService.getUserProfile(userId).then(function (res) {
+            userService.getUserProfile(userId).then(function(res) {
                 $rootScope.profile = res.data[0];
             });
         }
@@ -62,11 +62,11 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
 
 
     // ============= SEARCH USER BY FULL NAME ================
-    $scope.filterUsers = function () {
+    $scope.filterUsers = function() {
         var userName = $('.search').val();
 
         function loadUsersByName() {
-            userService.getUsers(userName).then(function (res) {
+            userService.getUsers(userName).then(function(res) {
                 $scope.users = res.data;
             });
         }
@@ -74,13 +74,13 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
     };
 
     // ================= SHOW DROPDOWN WITH FOUND USERS BY FULL NAME  =========
-    $scope.showUsers = function () {
+    $scope.showUsers = function() {
         if ($('.search').val() !== "") {
             $('.searchFriends').show();
         } else {
             $('.searchFriends').hide();
         }
-        $('body').on('click', function (evt) {
+        $('body').on('click', function(evt) {
             if (evt.target.id == "searchFriendsInput" || evt.target.className == "searchFriends") {
                 return;
             }
@@ -90,5 +90,14 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
 
     // ===================== SHOW USER TIMELINE FIRST =====================
     $scope.show = 1;
+    // ===================== PHOTO ATTACHED ======================
+    $('.input-files').on('change', function() {
+        console.log($('.input-files'))
+        if ($('.input-files').val()) {
+            $('.file-attached').show();
+        } else {
+            $('.file-attached').hide();
+        }
+    })
 
 }]);

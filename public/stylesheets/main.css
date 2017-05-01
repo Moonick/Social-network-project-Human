@@ -94,9 +94,9 @@ a {
 }
 
 .navbar-top-links .dropdown-messages,
-.navbar-top-links .dropdown-tasks,
+.navbar-top-links .dropdown-fr-requests,
 .navbar-top-links .dropdown-alerts {
-    width: 310px;
+    width: 350px;
     min-width: 0;
 }
 
@@ -104,7 +104,7 @@ a {
     margin-left: 5px;
 }
 
-.navbar-top-links .dropdown-tasks {
+.navbar-top-links .dropdown-fr-requests {
     margin-left: -59px;
 }
 
@@ -207,13 +207,14 @@ a {
         padding-left: 15px;
     }
     .navbar-top-links .dropdown-messages,
-    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-fr-requests,
     .navbar-top-links .dropdown-alerts {
         margin-left: auto;
     }
 }
 
-.btn-outline {
+
+/*.btn-outline {
     color: inherit;
     background-color: transparent;
     transition: all .5s;
@@ -245,7 +246,7 @@ a {
 .btn-warning.btn-outline:hover,
 .btn-danger.btn-outline:hover {
     color: white;
-}
+}*/
 
 .chat {
     margin: 0;
@@ -297,7 +298,60 @@ a {
 }
 
 
+/*=============== FRIENDS REQUESTS DROP DOWN ===========*/
+
+.dropdown-fr-requests {
+    padding: 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.dropdown-fr-requests .confirm-btn {
+    background-color: #FE5E3A;
+    color: white;
+    border: 1px solid #FE5E3A;
+    border-radius: 15px;
+    width: 55px;
+    padding: 5px;
+}
+
+.dropdown-fr-requests .confirm-btn:hover {
+    background-color: white;
+    color: #FE5E3A;
+}
+
+.dropdown-fr-requests .reject-btn {
+    background-color: #404257;
+    color: white;
+    border: 1px solid #404257;
+    border-radius: 15px;
+    width: 55px;
+    padding: 5px;
+}
+
+.dropdown-fr-requests .reject-btn:hover {
+    background-color: white;
+    color: #404257;
+}
+
+.img-fr-requests {
+    max-width: 25px;
+    max-height: 25px;
+    min-width: 25px;
+    min-height: 25px;
+    object-fit: cover;
+}
+
+
 /*=============== CHAT WINDOW ===============*/
+
+.chat-fixed {
+    position: fixed;
+    left: 64%;
+    bottom: 0%;
+    width: 310px;
+    margin-bottom: -22px;
+}
 
 #chat-form ul {
     display: flex;
@@ -307,7 +361,51 @@ a {
 ul.chat {
     max-height: 300px;
     min-height: 300px;
-    /*overflow-y: auto;*/
+}
+
+li.clearfix {
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+.redText {
+    color: #FE5E3A;
+}
+
+#searchFriendsInputChat {
+    width: 309px;
+}
+
+.searchFriendsChat {
+    position: absolute;
+    top: 50px;
+    left: 15px;
+    width: 307px;
+    max-height: 300px;
+    overflow: auto;
+    color: #8C9097;
+    z-index: 1000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #EDF2F6;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-fixed .chat-window {
+    cursor: pointer;
+    background-color: #404257;
+    color: white;
+}
+
+.slide-toggle {
+    display: none;
+}
+
+.btn-chat {
+    width: 60px;
+    height: 30px;
+    background-color: #FE5E3A;
+    color: white;
 }
 
 
@@ -346,6 +444,10 @@ ul.chat {
 
 #create-post a {
     color: black;
+}
+
+.file-attached {
+    display: none;
 }
 
 
@@ -423,7 +525,7 @@ ul.chat {
     min-width: 35px;
     min-height: 35px;
     object-fit: cover;
-    /*border: 2px solid #FE5E3A;*/
+    margin-right: 5px;
 }
 
 .comment-btn {
@@ -487,8 +589,7 @@ a.change-color {
     border-bottom: 1px solid gainsboro;
 }
 
-.searchFriends,
-.searchFriendsChat {
+.searchFriends {
     position: absolute;
     top: 34px;
     left: 15px;
@@ -501,11 +602,6 @@ a.change-color {
     background-color: #EDF2F6;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-}
-
-.searchFriendsChat {
-    width: 279px;
-    max-height: 300px;
 }
 
 .searchFriends span,

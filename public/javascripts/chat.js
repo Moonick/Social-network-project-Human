@@ -1,19 +1,19 @@
-$(function () {
+$(function() {
     function chat() {
         var socket = io.connect();
-        var btnSend = $('#btn-chat');
+        var btnSend = $('.btn-chat');
 
-        $.get("/user", function (data) {
+        $.get("/user", function(data) {
             var senderFullName = data[0].fullName;
             var senderProfilePicture = data[0].profileImageUrl;
             var userId = data[0]._id;
 
-            btnSend.on('click', function (event) {
+            btnSend.on('click', function(event) {
                 event.preventDefault();
                 var text = $("#btn-input-chat").val();
                 var friendId = btnSend.attr('data-friendId');
                 var friendName = btnSend.attr('data-friendName');
-                if (friendId) {
+                if (friendId && text) {
                     var message = {
                         name: senderFullName,
                         picture: senderProfilePicture,
@@ -26,15 +26,19 @@ $(function () {
                 }
                 $("#btn-input-chat").val("");
             });
-
-            socket.on("new message", function (data) {
+            var chat;
+            socket.on("new message", function(data) {
                 var receiver = data.msg.receiverId;
                 var sender = data.msg.senderId;
-                if (receiver == userId || sender == userId) {
-                    var chat = $("ul.chat").append("<div class='listWithMessages'><li class='left clearfix'><strong>" +
+                if (receiver == userId) {
+                    chat = $("ul.chat").append("<div class='listWithMessages'><li class='left clearfix'><strong>" +
                         data.msg.name + "</strong>: " + data.msg.text + "</li></div>");
                     $("#chatDivScroll").scrollTop($("#chatDivScroll")[0].scrollHeight);
 
+                } else if (sender == userId) {
+                    chat = $("ul.chat").append("<div class='listWithMessages'><li class='left clearfix'><strong class='redText'>" +
+                        data.msg.name + "</strong>: " + data.msg.text + "</li></div>");
+                    $("#chatDivScroll").scrollTop($("#chatDivScroll")[0].scrollHeight);
                 }
             });
         });

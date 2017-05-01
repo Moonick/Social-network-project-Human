@@ -5,153 +5,150 @@
   <title>{{title}}</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"> {{!--
-    <link rel='stylesheet' href='/stylesheets/style.css' />--}}
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAJ1njAAD/KgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERAAAAAAAAAREAAAAAAAABEQAAAAIiIiIiIiIiACIiIiIiIiAAAiIiIiIiAAAAIiIiIiAAAAACIiIiAAAAAAAiIiAAAAAAAAIiAAAAAAAAACAAAAAAACIiIiIgAAAAAiIiIgAAAAAAIiIgAAAAAAACIgAAAAAAAAAgAAAAD8fwAA/H8AAPx/AAAAAQAAgAMAAMAHAADgDwAA8B8AAPg/AAD8fwAA/v8AAOAPAADwHwAA+D8AAPx/AAD+/wAA" rel="icon" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"> {{!--
+  <link rel='stylesheet' href='/stylesheets/style.css' />--}}
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAJ1njAAD/KgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERAAAAAAAAAREAAAAAAAABEQAAAAIiIiIiIiIiACIiIiIiIiAAAiIiIiIiAAAAIiIiIiAAAAACIiIiAAAAAAAiIiAAAAAAAAIiAAAAAAAAACAAAAAAACIiIiIgAAAAAiIiIgAAAAAAIiIgAAAAAAACIgAAAAAAAAAgAAAAD8fwAA/H8AAPx/AAAAAQAAgAMAAMAHAADgDwAA8B8AAPg/AAD8fwAA/v8AAOAPAADwHwAA+D8AAPx/AAD+/wAA"
+    rel="icon" type="image/x-icon" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-      html {
-        height: 100%;
-      }
-      
-      body {
-        background-image: url(../images/login.jpg);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        font-family: 'Raleway', sans-serif;
-        padding: 0;
-        margin: 0;
-        color: white;
-      }
-      
-      .layer {
-        background-color: rgba(254, 94, 58, 0.95);
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-      }
-      
-      .right,
-      .left {
-        margin: auto;
-        padding-top: 150px;
-        height: 100%;
-        text-align: center;
-      }
-      
-      .box-form {
-        height: 400px;
-        width: 400px;
-        margin: auto;
-        background-color: #FFFFFF;
-        color: black;
-      }
-      
-      .title {
-        border-bottom: 1px solid #D8DAE6;
-        padding: 20px;
-      }
-      
-      .btn-center {
-        margin: 20px;
-        margin-left: 150px;
-        border-radius: 0;
-      }
-      
-      form {
-        width: 300px;
-        margin: 0 auto;
-      }
-      
-      form input[type="text"],
-      form input[type="password"],
-      form input[type="email"],
-      form input[type="date"] {
-        width: 100%;
-        margin: 0;
-        padding: 10px 10px;
-        background: 0;
-        border: 0;
-        border-bottom: 1px solid #D8DAE6;
-        outline: 0;
-        font-style: italic;
-        font-size: 12px;
-        font-weight: 400;
-        letter-spacing: 1px;
-        margin-bottom: 5px;
-        outline: 0;
-      }
-      
-      form input[type="text"]::-webkit-input-placeholder,
-      form input[type="password"]::-webkit-input-placeholder,
-      form input[type="email"]::-webkit-input-placeholder {
-        color: black;
-      }
-      
-      form input[type="submit"] {
-        width: 100%;
-        font-size: 14px;
-        font-weight: 500;
-        margin-top: 16px;
-        outline: 0;
-        cursor: pointer;
-        letter-spacing: 1px;
-        background-color: #32cb93;
-        border-radius: 0;
-      }
-      
-      form input[type="submit"]:hover {
-        transition: background-color 0.5s ease;
-      }
-      
-      form label,
-      form a {
-        font-size: 16px;
-        font-weight: 400;
-      }
-      
-      form a {
-        color: #32cb93;
-        padding: 10px;
-      }
-      
-      form .create-account {
-        padding: 15px;
-      }
-      
-      form a:hover {
-        color: #2ecc71;
-      }
-      
-      form.register .red-border {
-        border: 1px solid red;
-      }
-      
-      .pr-wrap {
-        width: 100%;
-        height: 100%;
-        min-height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 999;
-        display: none;
-      }
-    </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    html {
+      height: 100%;
+    }
+    
+    body {
+      background: linear-gradient( rgba(254, 94, 58, 0.95), rgba(254, 94, 58, 0.95)), url(http://www.shrinktank.com/wp-content/uploads/2015/06/2366764272_a6752dd4d2_o-810x444.jpg);
+      font-family: 'Raleway', sans-serif;
+      padding: 0;
+      margin: 0;
+      color: white;
+    }
+    
+    .right,
+    .left {
+      margin: auto;
+      padding-top: 150px;
+      height: 100%;
+      text-align: center;
+    }
+    
+    .box-form {
+      height: 400px;
+      width: 400px;
+      margin: auto;
+      background-color: #FFFFFF;
+      color: black;
+    }
+    
+    .title {
+      border-bottom: 1px solid #D8DAE6;
+      padding: 20px;
+      color: #404257;
+      font-weight: bold;
+    }
+    
+    .btn-center {
+      margin-top: 50px;
+      border-radius: 0;
+      color: white;
+      background-color: #404257;
+    }
+       .btn-center:hover {
+   
+      color: white;
+    
+    }
+    
+    form {
+      width: 300px;
+      margin: 0 auto;
+    }
+    
+    form input[type="text"],
+    form input[type="password"],
+    form input[type="email"],
+    form input[type="date"] {
+      width: 100%;
+      margin: 0;
+      padding: 10px 10px;
+      background: 0;
+      border: 0;
+      border-bottom: 1px solid #D8DAE6;
+      outline: 0;
+      font-style: italic;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      outline: 0;
+    }
+    
+    form input[type="text"]::-webkit-input-placeholder,
+    form input[type="password"]::-webkit-input-placeholder,
+    form input[type="email"]::-webkit-input-placeholder {
+      color: black;
+    }
+    
+    form input[type="submit"] {
+      width: 100%;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 16px;
+      outline: 0;
+      cursor: pointer;
+      letter-spacing: 1px;
+      background-color: #32cb93;
+      border-radius: 0;
+    }
+    
+    form input[type="submit"]:hover {
+      transition: background-color 0.5s ease;
+    }
+    
+    form label,
+    form a {
+      font-size: 16px;
+      font-weight: 400;
+    }
+    
+    form a {
+      color: #404257;
+      padding: 10px;
+    }
+    
+    form .create-account {
+      padding: 15px;
+    }
+    
+    form a:hover {
+      color: #32cb93;
+    }
+    
+    form.register .red-border {
+      border: 1px solid red;
+    }
+    
+    .pr-wrap {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
   {{{body}}}
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
     crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-      crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
