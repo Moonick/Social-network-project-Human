@@ -8,7 +8,7 @@ app.controller('chatUsersController', ['$scope', '$rootScope', 'userService', fu
                 $scope.chatUsers = res.data;
             });
         }
-        setTimeout(loadUsersByName, 1000);
+        setTimeout(loadUsersByName, 500);
     };
 
     // ================= SHOW DROPDOWN WITH FOUND USERS BY FULL NAME  =========
