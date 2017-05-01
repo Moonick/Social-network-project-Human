@@ -332,6 +332,12 @@ a {
     }
 }
 
+@media (max-width: 500px) {
+    .chat-fixed {
+        left: 2%;
+    }
+}
+
 #chat-form ul {
     display: flex;
     flex-direction: column;
