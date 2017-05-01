@@ -310,6 +310,7 @@ a {
     left: 64%;
     bottom: 0%;
     width: 310px;
+    z-index: 1500;
     margin-bottom: -22px;
 }
 
