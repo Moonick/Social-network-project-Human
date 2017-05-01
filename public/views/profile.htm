@@ -34,7 +34,7 @@
         </div>
     </div>
     <!--======================================POSTS==============================================-->
-    <div class="row" ng-show="show==1">
+    <div class="row" ng-show="show==1 || show==udefined">
         <div class="col-lg-8">
             <!--============================= NEW POST ========================================-->
             <section class="addPost">
@@ -93,16 +93,16 @@
                                 <form method="POST" action="/user/uploadphoto" enctype="multipart/form-data">
                                     <div class="upload-title">
                                         <label for="photoName">Image Title</label>
-                                        <input type="text" id="photoName" placeholder="Add title" name="title">
+                                        <input type="text" id="photoName" placeholder="Add title" name="title" required>
                                     </div>
                                     <div class="upload-location">
                                         <label for="photoLocation">Location</label>
-                                        <input type="text" id="photoLocation" placeholder="Add Location" name="location">
+                                        <input type="text" id="photoLocation" placeholder="Add Location" name="location" required>
                                     </div>
                                     <div class="upload-btns">
-                                        <input id="choosePhoto" type="file" name="addPhoto" value="Add Photo">
+                                        <input id="choosePhoto" type="file" name="addPhoto" value="Add Photo" required>
                                         <label for="choosePhoto" class="btn btn-default btn comment-btn">Choose File</label>
-                                        <button class="btn btn-default btn comment-btn">Upload Photo</button>
+                                        <button id="uploadPhotoGallery" class="btn btn-default btn comment-btn" ng-click="showPhotoGallery()">Upload Photo</button>
                                     </div>
                                 </form>
                             </div>

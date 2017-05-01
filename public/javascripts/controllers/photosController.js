@@ -19,4 +19,9 @@ app.controller('photosController', ['$scope', 'photoService', 'userService', fun
             }
         });
     });
+    $scope.showPhotoGallery = function() {
+        $scope.$parent.show = 2
+        console.log($scope.$parent.show)
+    }
+
 }]);

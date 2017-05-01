@@ -73,7 +73,7 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
         setTimeout(loadUsersByName, 1000);
     };
 
-    // ================= SHOW DROPDOWN WITH FOUND USERS BY FULL NAME  =========
+    // ================= SHOW DROP DOWN WITH FOUND USERS BY FULL NAME  =========
     $scope.showUsers = function() {
         if ($('.search').val() !== "") {
             $('.searchFriends').show();
@@ -89,8 +89,11 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
     };
 
     // ===================== SHOW USER TIMELINE FIRST =====================
-    $scope.show = 1;
-    // ===================== PHOTO ATTACHED ======================
+    // $scope.show = undefined || 2;
+    console.log('+++++++++++++')
+    console.log($scope.show)
+    console.log('=================')
+        // ===================== PHOTO ATTACHED ======================
     $('.input-files').on('change', function() {
         console.log($('.input-files'))
         if ($('.input-files').val()) {

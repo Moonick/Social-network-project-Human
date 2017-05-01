@@ -61,6 +61,7 @@ a {
 
 .navbar-top-links {
     margin-right: 0;
+    text-align: right;
 }
 
 .navbar-top-links li {
@@ -72,8 +73,7 @@ a {
 }
 
 .navbar-top-links li a {
-    padding: 15px;
-    min-height: 50px;
+    height: 50px;
 }
 
 .navbar-top-links .dropdown-menu li {
@@ -100,16 +100,8 @@ a {
     min-width: 0;
 }
 
-.navbar-top-links .dropdown-messages {
-    margin-left: 5px;
-}
-
 .navbar-top-links .dropdown-fr-requests {
     margin-left: -59px;
-}
-
-.navbar-top-links .dropdown-alerts {
-    margin-left: -123px;
 }
 
 .navbar-top-links .dropdown-user {
@@ -138,11 +130,10 @@ a {
 .input-search {
     margin-top: 15px;
     display: table;
-    /*width: 100%;*/
 }
 
 .news-feed {
-    margin-top: 25px;
+    /*margin-top: 25px;*/
     text-align: center;
     font-weight: bold;
     text-decoration: none;
@@ -212,41 +203,6 @@ a {
         margin-left: auto;
     }
 }
-
-
-/*.btn-outline {
-    color: inherit;
-    background-color: transparent;
-    transition: all .5s;
-}
-
-.btn-primary.btn-outline {
-    color: #428bca;
-}
-
-.btn-success.btn-outline {
-    color: #5cb85c;
-}
-
-.btn-info.btn-outline {
-    color: #5bc0de;
-}
-
-.btn-warning.btn-outline {
-    color: #f0ad4e;
-}
-
-.btn-danger.btn-outline {
-    color: #d9534f;
-}
-
-.btn-primary.btn-outline:hover,
-.btn-success.btn-outline:hover,
-.btn-info.btn-outline:hover,
-.btn-warning.btn-outline:hover,
-.btn-danger.btn-outline:hover {
-    color: white;
-}*/
 
 .chat {
     margin: 0;
@@ -353,6 +309,24 @@ a {
     margin-bottom: -22px;
 }
 
+@media (max-width: 880px) {
+    .chat-fixed {
+        left: 58%;
+    }
+}
+
+@media (max-width: 780px) {
+    .chat-fixed {
+        left: 50%;
+    }
+}
+
+@media (max-width: 650px) {
+    .chat-fixed {
+        left: 44%;
+    }
+}
+
 #chat-form ul {
     display: flex;
     flex-direction: column;
@@ -423,6 +397,7 @@ li.clearfix {
     margin-bottom: 10px;
     outline: none;
     max-width: 100%;
+    width: 100%;
 }
 
 .addPost input[type=submit] {
@@ -666,8 +641,8 @@ a.change-color {
 
 .profile-photo {
     position: absolute;
-    top: 90px;
-    left: 419px;
+    top: 45%;
+    left: 42%;
     width: 150px;
     height: 150px;
     object-fit: cover;
@@ -748,6 +723,26 @@ div.btns-username {
 
 .btn-menu a:hover {
     color: #FE5E3A;
+}
+
+@media (max-width: 880px) {
+    .btn-menu a {
+        font-size: 1em;
+    }
+    .user-name {
+        font-size: 1.1em;
+    }
+    .profile-photo {
+        top: 69%;
+        width: 100px;
+        height: 100px;
+    }
+    .profile-photo img {
+        min-width: 100px;
+        max-width: 100px;
+        min-height: 100px;
+        max-height: 100px;
+    }
 }
 
 
@@ -882,8 +877,8 @@ div.btns-username {
 
 #showComments {
     position: fixed;
-    top: 80px;
-    left: 300px;
+    top: 20%;
+    left: 25%;
     width: 50%;
     height: auto;
     z-index: 1055;
@@ -899,7 +894,20 @@ div.btns-username {
 
 #showComments .comments-area {
     overflow: auto;
-    max-height: 350px;
+    max-height: 300px;
+}
+
+@media (max-width: 800px) {
+    #showComments {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+    #showComments .comments-area {
+        overflow: auto;
+        max-height: 100%;
+    }
 }
 
 
