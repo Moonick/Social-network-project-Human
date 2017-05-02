@@ -43,7 +43,7 @@
                         <h5>Status</h5>
                     </div>
                     <div class="panel-body">
-                        <div id="create-post">
+                        <div class="create-post">
                             <form action="/user/newpost" method="POST" enctype="multipart/form-data">
                                 <div class="input-flex">
                                     <a href="#/profile/{{$root.user_id}}">
@@ -54,7 +54,7 @@
                                 <div id="inputForFiles">
                                     <input class="input-files" type="file" name="picture">
                                 </div>
-                                <button type="button" class="btn btn-default btn btnPicture"><i class="fa fa-picture-o" aria-hidden="true"></i> Photo/Video</button>
+                                <button type="button" class="btn btn-default btn btnPicture" ng-click="addImageBtnPost()"><i class="fa fa-picture-o" aria-hidden="true"></i> Photo/Video</button>
                                 <span class="file-attached">File attached</span>
                                 <!--<button type="button" class="btn btn-default btn"><i class="fa fa-map-marker" aria-hidden="true"></i> Location</button>
                                 <button type="button" class="btn btn-default btn">Tag Friends</button>-->
@@ -83,7 +83,7 @@
                         <h4> <i class="fa fa-camera-retro" aria-hidden="true"></i> Photos</h4>
                     </div>
                     <div class="pull-right">
-                        <button id="uploadPhotoBtn" type="button" class="btn btn-default btn comment-btn" ng-click="uploadPhoto()"><i class="fa fa-picture-o" aria-hidden="true"></i> Add Photo</button>
+                        <button id="uploadPhotoBtn" type="button" class="btn btn-default btn comment-btn" ng-click="uploadPhoto()"><i class="fa fa-picture-o" aria-hidden="true" ></i> Add Photo</button>
                     </div>
                 </div>
                 <div>

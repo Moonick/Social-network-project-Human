@@ -89,9 +89,9 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
     };
 
     // ===================== SHOW USER TIMELINE FIRST =====================
-     $scope.show = 1;
-  
-        // ===================== PHOTO ATTACHED ======================
+    $scope.show = 1;
+
+    // ===================== PHOTO ATTACHED ======================
     $('.input-files').on('change', function() {
         console.log($('.input-files'))
         if ($('.input-files').val()) {
@@ -99,6 +99,20 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
         } else {
             $('.file-attached').hide();
         }
-    })
+    });
+    // ======================= ADD UPLOAD PICTURE TO POST ==================
+    $scope.addImageBtnPost = function() {
+        // $('#create-post .btnPicture').on('click', function() {
+        $('.create-post input[type=file]').click();
+        // });
+    };
+    // $scope.addImageBtnPost();
+
+    // $scope.addImageBtnPhoto = function() {
+    // $('#add-photo .btnPicture').on('click', function() {
+    // $('#add-photo input[type=file]').click();
+    // });
+    // };
+    // $scope.addImageBtnPhoto();
 
 }]);
