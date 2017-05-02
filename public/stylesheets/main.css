@@ -59,6 +59,10 @@ a {
     color: white;
 }
 
+.navbar-default .navbar-brand:focus {
+    color: #FE5E3A;
+}
+
 .navbar-top-links {
     margin-right: 0;
     text-align: right;
@@ -306,6 +310,7 @@ a {
     left: 64%;
     bottom: 0%;
     width: 310px;
+    z-index: 1500;
     margin-bottom: -22px;
 }
 
@@ -324,6 +329,15 @@ a {
 @media (max-width: 650px) {
     .chat-fixed {
         left: 44%;
+    }
+}
+
+@media (max-width: 500px) {
+    .chat-fixed {
+        left: 2%;
+    }
+    .chat-panel .panel-body {
+        height: 150px;
     }
 }
 
