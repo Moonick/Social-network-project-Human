@@ -6,6 +6,7 @@ module.exports = function(io, db) {
 
     io.on('connection', function(socket) {
         socket.on('send message', function(data) {
+            data.date=new Date();
             messages.insert(data);
             io.sockets.emit('new message', { msg: data });
         });
