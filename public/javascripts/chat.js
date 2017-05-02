@@ -37,7 +37,6 @@ $(function() {
                         text: text,
                         senderId: userId,
                         receiverId: friendId,
-                        date: new Date().toLocaleString()
                     }
                     socket.emit('send message', message);
                 }
