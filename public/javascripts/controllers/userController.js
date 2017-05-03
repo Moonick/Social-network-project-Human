@@ -102,17 +102,7 @@ app.controller('userController', ['$http', '$scope', '$rootScope', 'userService'
     });
     // ======================= ADD UPLOAD PICTURE TO POST ==================
     $scope.addImageBtnPost = function() {
-        // $('#create-post .btnPicture').on('click', function() {
         $('.create-post input[type=file]').click();
-        // });
     };
-    // $scope.addImageBtnPost();
-
-    // $scope.addImageBtnPhoto = function() {
-    // $('#add-photo .btnPicture').on('click', function() {
-    // $('#add-photo input[type=file]').click();
-    // });
-    // };
-    // $scope.addImageBtnPhoto();
 
 }]);
